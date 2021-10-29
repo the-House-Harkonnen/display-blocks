@@ -1,0 +1,16 @@
+@import '../../styles/variable.module.scss';
+
+.btn {
+  width: 130px;
+  height: 42px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 18px;
+  color: $c-head-foot-l;
+  background: #ffffff;
+  
+  &:hover{
+    cursor: pointer;
+  }
+}
