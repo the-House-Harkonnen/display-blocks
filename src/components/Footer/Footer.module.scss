@@ -1,0 +1,25 @@
+@import '../../styles/variable.module.scss';
+
+.footer {
+  width: 100%;
+  height: 190px;
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  background-color: $c-head-foot-l;
+  color: #fff;
+
+  &__links {
+    width: 169px;
+    height: 83px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  &__item {
+    color: $c-light;
+  }
+  // &__rights {
+  //   align-items: flex-start;
+  // }
+}

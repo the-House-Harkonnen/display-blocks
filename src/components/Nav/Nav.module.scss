@@ -1,0 +1,17 @@
+@import '../../styles/variable.module.scss';
+
+.nav {
+  width: 70%;
+  display: flex;
+  justify-content: flex-end;
+
+  &__list {
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__link {
+    color: $c-light;
+  }
+}
