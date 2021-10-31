@@ -1,16 +1,15 @@
 /* eslint-disable arrow-body-style */
 import React from 'react';
-import Table from '../Table';
+import { Block } from '../../pages/Block';
+import { Blocks } from '../../pages/Blocks';
+
 import styles from './Main.module.scss';
 
 const Main = () => {
   return (
     <div className={styles.main}>
-      <p className={styles.main__route}>Home &#62; Blocks</p>
-      <h1>Blocks</h1>
-      <div className={styles.main__table}>
-        <Table />
-      </div>
+      <Blocks />
+      <Block />
     </div>
   );
 };
