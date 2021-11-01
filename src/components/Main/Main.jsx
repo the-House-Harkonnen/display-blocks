@@ -11,12 +11,12 @@ const Main = () => {
     <div className={styles.main}>
       <Switch>
         <Route exact path='/'>
-          <Redirect to='/blocks' />
+          <Redirect to='/home/blocks' />
         </Route>
-        <Route exact path='/blocks'>
+        <Route exact path='/home/blocks'>
           <Blocks />
         </Route>
-        <Route exact path='/blocks/:blockId'>
+        <Route exact path='home/blocks/:blockId'>
           <Block />
         </Route>
       </Switch>
