@@ -5,14 +5,13 @@
 /* eslint-disable no-debugger */
 /* eslint-disable no-console */
 import React from 'react';
+import { sortKeys } from '../blocklistUtils/sortConfig';
 
-export const HCell = (str) => <th>{str}</th>;
+export const HCell = ({str}) => <th>{str}</th>;
 
 export const SHCell = ({str, sort, callBack}) => {
-  console.log(str, sort);
 
   const icon = !sort.inc && sort.key === str ? '˄' : '˅';
-  console.log(icon)
   const action = {
     type: sort.inc ? 'decrement' : 'increment',
     key: str,
@@ -24,3 +23,14 @@ export const SHCell = ({str, sort, callBack}) => {
     </th>
   );
 };
+
+export const headCreator = (arr, sort, callback)=> arr.map((titleCell,i)=>{
+
+    const key = `${i}-${titleCell}`
+    if(sortKeys.find(sortKey=> sortKey === titleCell)){
+        console.log(titleCell)
+        return <SHCell key={key} sort={sort} str={titleCell} callBack={callback} />
+    }
+    return <HCell str={titleCell}/>
+
+})
