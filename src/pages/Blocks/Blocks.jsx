@@ -2,7 +2,7 @@
 /* eslint-disable arrow-body-style */
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { Table } from '../../components/Table';
+import { BlocksList } from '../../components/BlocksList/BlocksList';
 
 export const Blocks = () => {
   const location = useLocation();
@@ -11,7 +11,7 @@ export const Blocks = () => {
     <div>
       <p>Home &#62; Blocks</p>
       <h2>Blocks</h2>
-      <Table />
+      <BlocksList />
     </div>
   );
 };
