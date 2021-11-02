@@ -3,11 +3,13 @@
 /* eslint-disable no-console */
 import React, { useContext, useReducer } from 'react';
 import { BlocksContext } from '../BlocksProvider/BlocksProvider';
-import { Table } from '../Table/Table';
-// import { Table } from '../Table';
-import { filtrListData } from './blocklistUtils/filtrListData';
-import sortReducer from './blocklistUtils/sortReducer';
-import { headCreator, rowsCreator, SHCell } from './Cell/Cell';
+import { Table } from '../Table';
+import { filtrListData } from './__utils/filtrListData';
+import sortReducer from './__utils/sortReducer';
+import { headCreator } from './__head/BlockListHead';
+import { rowsCreator } from './__body/BlockListBody';
+import { linkKeys } from './__utils/linkConfig';
+import { sortKeys } from './__utils/sortConfig';
 
 export const BlocksList = () => {
   const [sort, sortDispatch] = useReducer(sortReducer, { inc: true, key: '' });
@@ -16,14 +18,9 @@ export const BlocksList = () => {
   const { blocks } = useContext(BlocksContext);
   if (blocks.length < 1) return null;
   const filtredBlocks = filtrListData(blocks);
-
-  console.log(filtredBlocks);
   const titles = Object.keys(filtredBlocks[0]);
-  const rows = filtredBlocks.map((row) => Object.entries(row));
-
-  const headers = headCreator(titles, sort, sortHandler);
-  const body = rowsCreator(rows);
-  console.log(body);
+  const headers = headCreator(titles, sort, sortHandler, sortKeys);
+  const body = rowsCreator(filtredBlocks);
 
   return <Table head={headers} body={body} />;
 };
