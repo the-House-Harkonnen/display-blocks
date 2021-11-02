@@ -1,6 +1,35 @@
+@import './../../styles/resets.scss';
 .table {
-  padding: 20px 15px; 
-  background-color: #363636;
+  font-family: $f-family;
+  padding: 20px 15px;
+  max-width: 1380px;
   border: 1px solid #000;
   margin-bottom: 110px;
+  width: 100%;
+  border: solid;
+  text-align: start;
+  thead{
+    tr{
+      th{
+        font-size: 14px;
+        line-height: 17.07px;
+        font-weight: 600;
+      }
+    }
+  }
+
+  tbody{
+    tr{
+      padding: 20px 0;
+
+      td{
+        border: solid;
+        height: 20px;
+        font-size: 14px;
+        line-height: 17.07px;
+        font-weight: 400;
+      }
+    }
+  }
+
 }

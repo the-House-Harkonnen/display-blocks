@@ -1,0 +1,13 @@
+@import './../../styles/resets.scss';
+.icell{
+  display: grid;
+  grid-column-gap: 12px;
+  align-items: center;
+  grid-template-columns: 20px auto;
+  img{
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+  }
+
+}

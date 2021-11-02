@@ -18,16 +18,9 @@ export const BlocksList = () => {
   const { blocks } = useContext(BlocksContext);
   if (blocks.length < 1) return null;
   const filtredBlocks = filtrListData(blocks);
-  const imgs = blocks.map(
-    (block) =>
-      `https://teztracker.com/static/validators-logo/${block.baker}.png`,
-  );
-  console.log(imgs);
   const titles = Object.keys(filtredBlocks[0]);
-  const rows = filtredBlocks.map((row) => Object.entries(row));
-
   const headers = headCreator(titles, sort, sortHandler, sortKeys);
-  const body = rowsCreator(rows, linkKeys);
+  const body = rowsCreator(filtredBlocks);
 
   return <Table head={headers} body={body} />;
 };
