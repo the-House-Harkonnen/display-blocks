@@ -1,14 +1,17 @@
 @import '../../styles/variable.scss';
 
-.nav {
-  width: 70%;
-  display: flex;
-  justify-content: flex-end;
+.nav { 
+
 
   &__list {
-    width: 30%;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap:10px;
+    width: 100%;
+    @media screen and (max-width: 768px) {
+      grid-auto-flow: row;
+ 
+    }
   }
 
   &__link {
