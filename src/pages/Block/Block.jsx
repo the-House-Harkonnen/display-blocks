@@ -4,10 +4,12 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import styles from './Block.module.scss';
+import background from '../../imgs/Background.png';
 
 export const Block = () => {
   const location = useLocation();
   console.log(location, styles);
+
   return (
     <div className={styles.block}>
       <table>

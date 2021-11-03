@@ -1,6 +1,7 @@
 .block{
   padding: 48px 25px;
   border: solid;
+
  
   @media screen and(max-width: 678px) {
     padding: 15px;
@@ -11,20 +12,17 @@
     display: grid;
     grid-template-columns: repeat(2, minmax(436px, 547px));
     justify-content: space-around;
+  
     
     border: solid;
     @media screen and(max-width: 992px) {
       grid-template-columns: minmax(min-content, 547px);
       justify-content: start;
     }
-
-
     tbody{
       display: grid;
       row-gap: 8px;
       border: solid;
-      background-color: aqua;
-     
       
       tr{
         width: fit-content;
@@ -37,11 +35,7 @@
         *{
           border: solid 0.1px;
         }
-
-      }
-      
+      } 
     }
   }
- 
- 
 }

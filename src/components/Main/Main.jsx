@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable arrow-body-style */
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
@@ -6,10 +7,14 @@ import { Block } from '../../pages/Block';
 import { Blocks } from '../../pages/Blocks';
 
 import styles from './Main.module.scss';
+import background from '../../imgs/Background.png';
 
 const Main = () => {
+  const style = {
+    backgroundImage: `url(${background})`,
+  };
   return (
-    <div className={styles.main}>
+    <div className={styles.main} style={style}>
       <Switch>
         <Route exact path='/'>
           <Redirect to='/home/blocks' />
