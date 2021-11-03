@@ -6,6 +6,7 @@ import { useLocation } from 'react-router-dom';
 import styles from './Block.module.scss';
 import background from '../../imgs/Background.png';
 import { getBlockFromApi } from '../../api';
+import { ICell } from '../../components/Cell';
 
 export const Block = () => {
   const location = useLocation();
@@ -16,7 +17,7 @@ export const Block = () => {
     const blockdata = await getBlockFromApi(blockId);
     setBlock(blockdata.block);
   }, []);
-
+  console.log(block);
   if (!block) return null;
   return (
     <div className={styles.block}>
@@ -25,53 +26,57 @@ export const Block = () => {
         <tbody>
           <tr>
             <td>Hush:</td>
-            <td>BLTZPtYMPfYzFSa1ZsouaRcL8iPPrLuazzZUNQ1s5uwK5S1RAGf</td>
+            <td>{block.hash}</td>
           </tr>
           <tr>
             <td>Created at:</td>
-            <td>BLTZPtYMPfYzFSa1ZsouaRcL8iPPrLuazzZUNQ1s5uwK5S1RAGf</td>
+            <td>{block.timestamp}</td>
           </tr>
           <tr>
             <td>Backer:</td>
-            <td>BLTZPtYMPfYzFSa1ZsouaRcL8iPPrLuazzZUNQ1s5uwK5S1RAGf</td>
+            <ICell
+              src={block.baker}
+              name={block.bakerName}
+              alt={block.bakerName}
+            />
           </tr>
           <tr>
             <td>Backer.s fee:</td>
-            <td>BLTZPtYMPfYzFSa1ZsouaRcL8iPPrLuazzZUNQ1s5uwK5S1RAGf</td>
+            <td>{block.fees}</td>
           </tr>
           <tr>
             <td>Backer.s priority</td>
-            <td>BLTZPtYMPfYzFSa1ZsouaRcL8iPPrLuazzZUNQ1s5uwK5S1RAGf</td>
+            <td>{block.priority}</td>
           </tr>
           <tr>
             <td>Transactions volume:</td>
-            <td>BLTZPtYMPfYzFSa1ZsouaRcL8iPPrLuazzZUNQ1s5uwK5S1RAGf</td>
+            <td>{block.volume}</td>
           </tr>
         </tbody>
         <tbody>
           <tr>
             <td>Block time:</td>
-            <td>BLTZPtYMPfYzFSa1ZsouaRcL8iPPrLuazzZUNQ1s5uwK5S1RAGf</td>
+            <td>{block.blockTime}</td>
           </tr>
           <tr>
             <td>Block fitness:</td>
-            <td>BLTZPtYMPfYzFSa1ZsouaRcL8iPPrLuazzZUNQ1s5uwK5S1RAGf</td>
+            <td>{block.fitness}</td>
           </tr>
           <tr>
             <td>Gas used:</td>
-            <td>BLTZPtYMPfYzFSa1ZsouaRcL8iPPrLuazzZUNQ1s5uwK5S1RAGf</td>
+            <td>{block.consumedGas}</td>
           </tr>
           <tr>
             <td>Protocol version:</td>
-            <td>BLTZPtYMPfYzFSa1ZsouaRcL8iPPrLuazzZUNQ1s5uwK5S1RAGf</td>
+            <td>{block.protocol}</td>
           </tr>
           <tr>
             <td>Cycle:</td>
-            <td>BLTZPtYMPfYzFSa1ZsouaRcL8iPPrLuazzZUNQ1s5uwK5S1RAGf</td>
+            <td>{block.metaCycle}</td>
           </tr>
           <tr>
             <td>Cycle position:</td>
-            <td>BLTZPtYMPfYzFSa1ZsouaRcL8iPPrLuazzZUNQ1s5uwK5S1RAGf</td>
+            <td>{block.metaCyclePosition}</td>
           </tr>
         </tbody>
       </table>
