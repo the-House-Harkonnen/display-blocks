@@ -1,17 +1,50 @@
 @import '../../styles/variable.scss';
+@import '../../styles/mixins.scss';
 
 .nav {
-  width: 70%;
+  width: 73%;
   display: flex;
   justify-content: flex-end;
 
-  &__list {
-    width: 30%;
+  &__show {
+    @include mq-tablet {
+      flex-flow: column nowrap;
+      justify-content: start;
+      background-color: $c-head-foot-l;
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100vh;
+      width: 200px;
+      padding-top: 3.5rem;
+    }
+  }
+  
+  &__hide {
     display: flex;
     justify-content: space-between;
+    @include mq-tablet{
+      flex-flow: column nowrap;
+      justify-content: start;
+      background-color: $c-head-foot-l;
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100vh;
+      width: 200px;
+      padding-top: 3.5rem;
+      transform: translateX(100%) translateX(0);
+    }
+  }
+
+  &__item {
+    @include mq-tablet {
+      padding: 10px;
+    }
   }
 
   &__link {
     color: $c-light;
+    padding: 0 10px;
   }
 }

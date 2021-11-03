@@ -1,16 +1,20 @@
 /* eslint-disable arrow-body-style */
 /* eslint-disable prettier/prettier */
 import React from 'react';
+import BurgerBtn from '../BurgerBtn/BurgerBtn';
 import LoginBtn from '../LoginBtn';
 import Logo from '../Logo';
-import Nav from '../Nav';
+import Person from '../svg/Person';
 import styles from './Header.module.scss';
 
 const Header = () => {
   return (
     <div className={styles.header}>
       <Logo />
-      <Nav />
+      <div className={styles.person}>
+        <Person />
+      </div>
+      <BurgerBtn />
       <LoginBtn />
     </div>
   );

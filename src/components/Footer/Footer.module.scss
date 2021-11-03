@@ -1,4 +1,5 @@
 @import '../../styles/variable.scss';
+@import '../../styles/mixins.scss';
 
 .footer {
   width: 100%;
@@ -8,6 +9,9 @@
   justify-content: space-between;
   background-color: $c-head-foot-l;
   color: #fff;
+  @include mq-tablet {
+    height: 130px;
+  }
 
   &__links {
     width: 169px;
@@ -15,11 +19,11 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    @include mq-tablet {
+      display: none;
+    }
   }
   &__item {
     color: $c-light;
   }
-  // &__rights {
-  //   align-items: flex-start;
-  // }
 }
