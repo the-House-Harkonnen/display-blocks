@@ -1,4 +1,5 @@
 @import '../../styles/variable.scss';
+@import '../../styles/mixins.scss';
 
 .btn {
   width: 130px;
@@ -9,7 +10,9 @@
   font-size: 18px;
   color: $c-head-foot-l;
   background: #ffffff;
-  
+  @include mq-tablet {
+    display: none;
+  }
   &:hover{
     cursor: pointer;
   }
