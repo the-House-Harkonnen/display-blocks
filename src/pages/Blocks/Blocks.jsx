@@ -3,6 +3,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { BlocksList } from '../../components/BlocksList/BlocksList';
+// import styles from './Blocks.module.scss';
 
 export const Blocks = () => {
   const location = useLocation();

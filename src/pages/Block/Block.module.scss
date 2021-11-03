@@ -1,0 +1,43 @@
+@import './../../styles/variable.scss';
+.block{
+  display: grid;
+  font-family: $f-family;
+
+  h2{
+    text-align: center;
+    margin-bottom: 62px;
+    font-size: 32px;
+    line-height: 39,01px;
+  }
+
+  table{
+    background-color: #fff;
+    border-radius: 30px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(436px, 547px));
+    justify-content: space-around;
+    column-gap: 30px;
+    padding: 48px 25px;
+    margin-bottom: 140px;
+    
+
+    @media screen and(max-width: 992px) {
+      grid-template-columns: minmax(min-content, 547px);
+      justify-content: start;
+    }
+    tbody{
+      display: grid;
+      row-gap: 8px;      
+      tr{
+        width: fit-content;
+        display: grid;
+        grid-template-columns: 180px 1fr;
+        @media screen and(max-width: 768px) {
+          grid-template-columns: minmax(min-content, 1fr);
+        }
+        word-break: break-all;
+      
+      } 
+    }
+  }
+}
