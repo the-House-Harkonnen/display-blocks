@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable no-console */
@@ -7,9 +8,10 @@ import { Table } from '../Table';
 import { filtrListData } from './__utils/filtrListData';
 import sortReducer from './__utils/sortReducer';
 import { headCreator } from './__head/BlockListHead';
-import { rowsCreator } from './__body/BlockListBody';
-import { linkKeys } from './__utils/linkConfig';
 import { sortKeys } from './__utils/sortConfig';
+import styles from './BlocksList.module.scss';
+import { rowsCreator } from './__body/BlockListBody';
+import { Pagination } from '../Pagination';
 
 export const BlocksList = () => {
   const [sort, sortDispatch] = useReducer(sortReducer, { inc: true, key: '' });
@@ -22,5 +24,14 @@ export const BlocksList = () => {
   const headers = headCreator(titles, sort, sortHandler, sortKeys);
   const body = rowsCreator(filtredBlocks);
 
-  return <Table head={headers} body={body} />;
+  return (
+    <div className={styles.container}>
+      <div className={styles.body}>
+        <Table head={headers} body={body} />
+        <div className={styles.pagination}>
+          <Pagination />
+        </div>
+      </div>
+    </div>
+  );
 };

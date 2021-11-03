@@ -1,0 +1,18 @@
+.container{
+  display: grid;
+  
+
+
+  .body{
+    display: grid;
+    border-radius: 30px;
+    background-color: #fff;
+    margin-bottom: 110px;
+    padding: 25px;
+
+  }
+  .pagination{
+    justify-self: flex-end;
+    border: solid;
+  }
+}
