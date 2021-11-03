@@ -17,6 +17,12 @@ export const BlocksProvider = ({ children }) => {
     blocks,
     limit,
     offset,
+    totalCount,
+    handleLimit: (val) => {
+      setLimit(val);
+      setOffset(0);
+    },
+    handleOffset: (val) => setOffset(val),
   };
 
   useEffect(async () => {

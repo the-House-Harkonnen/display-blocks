@@ -1,0 +1,54 @@
+.container{
+  padding: 3px;
+  height: 53px;
+  display: grid;
+  grid-template-columns: auto auto;
+  column-gap: 48px;
+  align-items: flex-end;
+  justify-content: flex-end;
+
+  button{
+    height: 18px;
+    background-color: #fff;
+    border: none;
+    outline: none;    
+
+  }
+  .limit{
+
+  }
+  .offset{
+    display: grid;
+    grid-auto-flow: column;
+    column-gap: 8px;
+  }
+  select{
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+    appearance:none;
+    background-color: #fff;
+    border: none;
+    outline: none;    
+    padding-right: 10px;
+    margin-left: 8px;
+    z-index: 0;
+    color: white;
+    
+  }
+
+  label{
+    position: relative;
+    &::after{
+      content: '';
+      position: absolute;
+      display: block;
+      border: 7px solid transparent; border-top: 7px solid #536DFB;
+      transform: translateY(40%);
+      left: 12px;
+      top: 0;
+      z-index: 2;
+      pointer-events: none;
+    }
+  }
+
+}
