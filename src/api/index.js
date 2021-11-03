@@ -12,7 +12,7 @@ export const getBlocksFromApi = async (offset = 0, limit = 10) => {
   };
 };
 
-export const getBlocksApi = async (hash) => {
+export const getBlockFromApi = async (hash) => {
   const ress = await axios.get(`${BASE_URL}/${NETWORK}/blocks/${hash}`);
   return ress.data;
 };
