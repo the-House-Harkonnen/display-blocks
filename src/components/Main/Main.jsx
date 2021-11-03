@@ -2,6 +2,7 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { Block } from '../../pages/Block';
+
 import { Blocks } from '../../pages/Blocks';
 
 import styles from './Main.module.scss';
@@ -13,12 +14,8 @@ const Main = () => {
         <Route exact path='/'>
           <Redirect to='/home/blocks' />
         </Route>
-        <Route exact path='/home/blocks'>
-          <Blocks />
-        </Route>
-        <Route exact path='home/blocks/:blockId'>
-          <Block />
-        </Route>
+        <Route exact path='/home/blocks' component={Blocks} />
+        <Route exact path='/home/blocks/:blockId' component={Block} />
       </Switch>
     </div>
   );
