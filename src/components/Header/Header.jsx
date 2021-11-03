@@ -4,7 +4,7 @@ import React from 'react';
 import BurgerBtn from '../BurgerBtn/BurgerBtn';
 import LoginBtn from '../LoginBtn';
 import Logo from '../Logo';
-import Person from '../Svg/Person';
+import Person from '../svg/Person';
 import styles from './Header.module.scss';
 
 const Header = () => {
