@@ -1,9 +1,15 @@
 @import './../../styles/resets.scss';
+.container{
+  overflow: scroll;
+
+}
 .table {
   font-family: $f-family;
   padding: 20px 15px;
   border: 1px solid #000;
   width: 100%;
+  // display: block;
+  overflow: scroll;
 
   text-align: start;
   thead{
