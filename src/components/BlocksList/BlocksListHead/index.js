@@ -1,0 +1,1 @@
+export { BlocksListHead } from './BlocksListHead';
