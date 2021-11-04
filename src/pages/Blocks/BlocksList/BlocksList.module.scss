@@ -1,8 +1,5 @@
 .container{
   display: grid;
-
-
-
   .body{
     display: grid;
     border-radius: 30px;
@@ -13,6 +10,5 @@
   }
   .pagination{
     justify-self: flex-end;
-    
   }
 }
