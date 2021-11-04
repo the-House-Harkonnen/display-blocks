@@ -1,5 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
-
 import React, { createContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { getBlocksFromApi } from '../../api';

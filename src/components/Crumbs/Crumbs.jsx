@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/interactive-supports-focus */
 import React from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import styles from './Crumbs.module.scss';
@@ -26,6 +25,7 @@ export const Crumbs = () => {
               role='link'
               onClick={() => history.push(el)}
               onKeyDown={() => history.push(el)}
+              tabIndex={0}
             >
               {pages[i]}
             </span>
