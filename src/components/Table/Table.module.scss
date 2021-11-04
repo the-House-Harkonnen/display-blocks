@@ -6,10 +6,9 @@
 .table {
   font-family: $f-family;
   padding: 20px 15px;
-  border: 1px solid #000;
   width: 100%;
-  // display: block;
   overflow: scroll;
+
 
   text-align: start;
   thead{
@@ -18,16 +17,17 @@
         font-size: 14px;
         line-height: 17.07px;
         font-weight: 600;
+        min-width: 140px;
       }
     }
   }
 
   tbody{
     tr{
+      height: 63px;
       padding: 20px 0;
-
       td{
-        border: solid;
+
         height: 20px;
         font-size: 14px;
         line-height: 17.07px;
