@@ -4,7 +4,8 @@
   &__list {
     display: grid;
     grid-auto-flow: column;
-    grid-gap: 56px;
+    grid-column-gap: 56px;
+    row-gap: 20px;
     width: 100%;
     @media screen and (max-width: 768px) {
       grid-auto-flow: row;

@@ -5,12 +5,13 @@ import { useHistory } from 'react-router-dom';
 import icon from '../../imgs/icon.png';
 import styles from './Cell.module.scss';
 
-export const HCell = ({ str }) => <th>{str}</th>;
+export const HCell = ({ str }) => <th className={styles.blue}>{str}</th>;
 
 export const LBCell = ({ cell }) => {
   const history = useHistory();
   return (
     <td
+      className={styles.blue}
       role='link'
       aria-label='link'
       onClick={() => history.push(`/home/blocks/${cell}`)}
@@ -30,6 +31,7 @@ export const ICellLinc = ({ src, name, alt, href }) => {
 
   return (
     <td
+      className={styles.blue}
       role='link'
       aria-label='link'
       onClick={() => history.push(`/home/blocks/${href}`)}
