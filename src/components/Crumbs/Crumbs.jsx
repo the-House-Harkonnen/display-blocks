@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import styles from './Crumbs.module.scss';
 
@@ -16,21 +16,22 @@ export const Crumbs = () => {
   return (
     <div className={styles.container}>
       {links.map((el, i) => {
-        const key = `key-${el}`;
+        const key = `key-${el}-${i}`;
         return (
-          <>
-            <span
-              className={styles.link}
-              key={key}
-              role='link'
-              onClick={() => history.push(el)}
-              onKeyDown={() => history.push(el)}
-              tabIndex={0}
-            >
-              {pages[i]}
-            </span>
-            <span>{`>`}</span>
-          </>
+          <Fragment key={key}>
+            <>
+              <span
+                className={styles.link}
+                role='link'
+                onClick={() => history.push(el)}
+                onKeyDown={() => history.push(el)}
+                tabIndex={0}
+              >
+                {pages[i]}
+              </span>
+              <span>{`>`}</span>
+            </>
+          </Fragment>
         );
       })}
       <span className={styles.current}>{current}</span>

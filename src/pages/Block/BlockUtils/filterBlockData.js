@@ -5,7 +5,7 @@ export const filtrBlockData = (block) => [
   {
     Hush: block.level,
     'Created at': timeFormatHandler(block.timestamp),
-    Backer: block.backerName,
+    Backer: block.bakerName,
     'Backer.s fee': inTezosHandler(block.fees),
     'Backer.s priority': block.priority,
     'Transactions volume': inTezosHandler(block.volume),

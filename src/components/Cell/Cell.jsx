@@ -60,7 +60,14 @@ export const ICell = ({ src, name, alt }) => {
   return (
     <td>
       <div className={styles.icell}>
-        <img src={url} alt={alt} />
+        <img
+          src={url}
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = icon;
+          }}
+          alt={alt}
+        />
         <span>{name || 'tezos backer'}</span>
       </div>
     </td>
