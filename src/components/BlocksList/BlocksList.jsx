@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { useContext, useReducer } from 'react';
 import { BlocksContext } from '../BlocksProvider/BlocksProvider';
 import { Table } from '../Table';
@@ -9,6 +10,7 @@ import { Pagination } from '../Pagination';
 import { Spiner } from '../Spiner';
 import { BlocksListHead } from './BlocksListHead';
 import { BlocksListBody } from './BlocksListBody';
+import { sortDataHandler } from '../../utils/sortDataHandler';
 
 export const BlocksList = () => {
   const [sort, sortDispatch] = useReducer(sortReducer, { inc: true, key: '' });
@@ -19,7 +21,12 @@ export const BlocksList = () => {
   const filtredBlocks = filtrListData(blocks);
   const titles = Object.keys(filtredBlocks[0]);
   const headers = BlocksListHead(titles, sort, sortHandler, sortKeys);
-  const body = BlocksListBody(filtredBlocks);
+
+  console.log(filtredBlocks);
+  const sortedBlocks = sort.key
+    ? sortDataHandler(sort.key, filtredBlocks, sort.inc)
+    : filtredBlocks;
+  const body = BlocksListBody(sortedBlocks);
 
   return (
     <div className={styles.container}>
