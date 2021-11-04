@@ -20,19 +20,21 @@ export const Block = () => {
   return (
     <div className={styles.block}>
       <Crumbs />
-      <div className='pagination'>
+      <div className={styles.pagination}>
         <button
+          className={styles.btn}
           type='button'
           onClick={() => setBlockId((prev) => Number(prev) - 1)}
         >{`<`}</button>
         <h2 className={styles.title}>Block :{blockId} </h2>
         <button
           type='button'
+          className={styles.btn}
           onClick={() => setBlockId((prev) => Number(prev) + 1)}
         >{`>`}</button>
       </div>
 
-      <table>
+      <table className={styles.table}>
         <tbody>
           <tr>
             <td>Hush:</td>

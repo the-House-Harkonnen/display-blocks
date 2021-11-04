@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 import React, { useContext } from 'react';
 

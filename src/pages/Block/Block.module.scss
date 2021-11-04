@@ -2,15 +2,25 @@
 .block{
   display: grid;
   font-family: $f-family;
+  .pagination{
+    margin-bottom: 62px;
+    display: grid;
+    justify-content: center;
+    grid-auto-flow: column;
+  }
 
   h2{
-    text-align: center;
-    margin-bottom: 62px;
+    width: fit-content;
     font-size: 32px;
     line-height: 39,01px;
   }
+  .btn{
+    outline: none;
+    background-color: transparent;
+    border: none;
+  }
 
-  table{
+  .table{
     background-color: #fff;
     border-radius: 30px;
     display: grid;
@@ -19,12 +29,11 @@
     column-gap: 30px;
     padding: 48px 25px;
     margin-bottom: 140px;
-    
-
     @media screen and(max-width: 992px) {
       grid-template-columns: minmax(min-content, 547px);
       justify-content: start;
     }
+    
     tbody{
       display: grid;
       row-gap: 8px;      
