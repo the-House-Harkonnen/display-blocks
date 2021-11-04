@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import styles from './Block.module.scss';
@@ -5,6 +7,7 @@ import { getBlockFromApi } from '../../api';
 import { ICell } from '../../components/Cell';
 import { Crumbs } from '../../components/Crumbs/Crumbs';
 import { Spiner } from '../../components/Spiner';
+import { filtrBlockData } from './BlockUtils/filterBlockData';
 
 export const Block = () => {
   const location = useLocation();
@@ -17,6 +20,8 @@ export const Block = () => {
   }, [blockId]);
   if (!block) return <Spiner />;
 
+  const filtredBlock = filtrBlockData(block);
+  console.log(filtredBlock);
   return (
     <div className={styles.block}>
       <Crumbs />
@@ -33,64 +38,29 @@ export const Block = () => {
           onClick={() => setBlockId((prev) => Number(prev) + 1)}
         >{`>`}</button>
       </div>
-
       <table className={styles.table}>
-        <tbody>
-          <tr>
-            <td>Hush:</td>
-            <td>{block.hash}</td>
-          </tr>
-          <tr>
-            <td>Created at:</td>
-            <td>{block.timestamp}</td>
-          </tr>
-          <tr>
-            <td>Backer:</td>
-            <ICell
-              src={block.baker}
-              name={block.bakerName}
-              alt={block.bakerName}
-            />
-          </tr>
-          <tr>
-            <td>Backer.s fee:</td>
-            <td>{block.fees}</td>
-          </tr>
-          <tr>
-            <td>Backer.s priority</td>
-            <td>{block.priority}</td>
-          </tr>
-          <tr>
-            <td>Transactions volume:</td>
-            <td>{block.volume}</td>
-          </tr>
-        </tbody>
-        <tbody>
-          <tr>
-            <td>Block time:</td>
-            <td>{block.blockTime}</td>
-          </tr>
-          <tr>
-            <td>Block fitness:</td>
-            <td>{block.fitness}</td>
-          </tr>
-          <tr>
-            <td>Gas used:</td>
-            <td>{block.consumedGas}</td>
-          </tr>
-          <tr>
-            <td>Protocol version:</td>
-            <td>{block.protocol}</td>
-          </tr>
-          <tr>
-            <td>Cycle:</td>
-            <td>{block.metaCycle}</td>
-          </tr>
-          <tr>
-            <td>Cycle position:</td>
-            <td>{block.metaCyclePosition}</td>
-          </tr>
-        </tbody>
+        {filtredBlock.map((tbEl) => {
+          console.log(tbEl);
+          return (
+            <tbody className={styles.tbody}>
+              {Object.entries(tbEl).map((trEl) => {
+                if (trEl[0] === 'Backer')
+                  return (
+                    <tr>
+                      <td>{trEl[0]}</td>
+                      <ICell src={block.backer} name={trEl[1]} alt={trEl[1]} />
+                    </tr>
+                  );
+                return (
+                  <tr>
+                    <td>{trEl[0]}</td>
+                    <td>{trEl[1]}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          );
+        })}
       </table>
     </div>
   );

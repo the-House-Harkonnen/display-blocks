@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 /* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
 /* eslint-disable react/prop-types */
 import React from 'react';
@@ -21,18 +22,17 @@ export const LBCell = ({ cell }) => {
   );
 };
 
-export const ICell = ({ src, name, alt }) => (
-  <td>
-    <div className={styles.icell}>
-      <img
-        src={src}
-        onError={(e) => {
-          e.target.onerror = null;
-          e.target.src = icon;
-        }}
-        alt={alt}
-      />
-      <span>{name || 'tezos backer'}</span>
-    </div>
-  </td>
-);
+export const ICell = ({ src, name, alt }) => {
+  const url = src
+    ? `https://teztracker.com/static/validators-logo/${src}.png`
+    : icon;
+
+  return (
+    <td>
+      <div className={styles.icell}>
+        <img src={url} alt={alt} />
+        <span>{name || 'tezos backer'}</span>
+      </div>
+    </td>
+  );
+};
