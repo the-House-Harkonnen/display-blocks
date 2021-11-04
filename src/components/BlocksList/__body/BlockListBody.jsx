@@ -17,5 +17,3 @@ export const rowsCreator = (blocks) =>
       </tr>
     );
   });
-
-// blockId, created , backer ,priority ,# of opertions ,volume , fees , endoserments
