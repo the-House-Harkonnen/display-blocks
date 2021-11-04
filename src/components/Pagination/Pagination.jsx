@@ -11,7 +11,6 @@ export const Pagination = () => {
     useContext(BlocksContext);
   const totalPage = Math.ceil(totalCount / limit);
   const lastPage = totalCount - (totalCount % limit);
-  console.log(totalCount % limit);
 
   const curentPage = offset / limit + 1;
   return (
@@ -24,8 +23,9 @@ export const Pagination = () => {
             id='select'
             className='select'
             onChange={(e) => handleLimit(e.target.value)}
+            value={limit}
           >
-            <option value='70'>10</option>
+            <option value='10'>10</option>
             <option value='30'>30</option>
             <option value='50'>50</option>
             <option value='70'>70</option>

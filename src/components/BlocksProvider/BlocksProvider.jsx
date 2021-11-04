@@ -12,6 +12,7 @@ export const BlocksProvider = ({ children }) => {
   const [blocks, setBlocks] = useState([]);
   const [offset, setOffset] = useState(0);
   const [totalCount, setTotalCount] = useState(0);
+  const [isFetching, setIsFetching] = useState(false);
 
   const blocksContextValue = {
     blocks,
@@ -25,17 +26,28 @@ export const BlocksProvider = ({ children }) => {
     handleOffset: (val) => setOffset(val),
   };
 
+  useEffect(() => {
+    setBlocks([]);
+  }, [limit, offset]);
+
   useEffect(async () => {
     const dataFromBlocksApi = await getBlocksFromApi(offset, limit);
-    setBlocks(dataFromBlocksApi.blocks);
-    setTotalCount(Number(dataFromBlocksApi.totalCount));
-  }, [limit, offset]);
+    setBlocks((prev) => {
+      if (!blocks.length) return dataFromBlocksApi.blocks;
+      return prev;
+    });
+    setTotalCount((prev) => {
+      if (!blocks.length) return Number(dataFromBlocksApi.totalCount);
+      return prev;
+    });
+  }, [blocks]);
+
   return (
-    <div>
+    <>
       <BlocksContext.Provider value={blocksContextValue}>
         {children}
       </BlocksContext.Provider>
-    </div>
+    </>
   );
 };
 
