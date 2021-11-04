@@ -4,8 +4,9 @@ import styles from './Block.module.scss';
 import { getBlockFromApi } from '../../api';
 import { ICell } from '../../components/Cell';
 import { Crumbs } from '../../components/Crumbs/Crumbs';
-import { Spiner } from '../../components/Spiner';
+
 import { filtrBlockData } from './BlockUtils/filterBlockData';
+import { Spinner } from '../../components/Spinner';
 
 export const Block = () => {
   const location = useLocation();
@@ -16,7 +17,7 @@ export const Block = () => {
     const blockdata = await getBlockFromApi(blockId);
     setBlock(blockdata.block);
   }, [blockId]);
-  if (!block) return <Spiner />;
+  if (!block) return <Spinner />;
 
   const filtredBlock = filtrBlockData(block);
   return (
@@ -36,38 +37,35 @@ export const Block = () => {
         >{`>`}</button>
       </div>
       <table className={styles.table}>
-        {filtredBlock.map((tbEl) => {
-          console.log(tbEl);
-          return (
-            <tbody className={styles.tbody}>
-              {Object.entries(tbEl).map((trEl) => {
-                if (
-                  trEl[0] === 'Backer.s fee' ||
-                  trEl[0] === 'Transactions volume'
-                )
-                  return (
-                    <tr>
-                      <td>{trEl[0]}</td>
-                      <td>{trEl[1]}&#42793;</td>
-                    </tr>
-                  );
-                if (trEl[0] === 'Backer')
-                  return (
-                    <tr>
-                      <td>{trEl[0]}</td>
-                      <ICell src={block.backer} name={trEl[1]} alt={trEl[1]} />
-                    </tr>
-                  );
+        {filtredBlock.map((tbEl) => (
+          <tbody className={styles.tbody}>
+            {Object.entries(tbEl).map((trEl) => {
+              if (
+                trEl[0] === 'Backer.s fee' ||
+                trEl[0] === 'Transactions volume'
+              )
                 return (
                   <tr>
-                    <td>{trEl[0]}</td>
-                    <td>{trEl[1]}</td>
+                    <td className={styles.td}>{trEl[0]}</td>
+                    <td className={styles.th}>{trEl[1]}&#42793;</td>
                   </tr>
                 );
-              })}
-            </tbody>
-          );
-        })}
+              if (trEl[0] === 'Backer')
+                return (
+                  <tr>
+                    <td className={styles.td}>{trEl[0]}</td>
+                    <ICell src={block.backer} name={trEl[1]} alt={trEl[1]} />
+                  </tr>
+                );
+              return (
+                <tr>
+                  <td className={styles.td}>{trEl[0]}</td>
+                  <td className={styles.th}>{trEl[1]}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        ))}
       </table>
     </div>
   );

@@ -6,32 +6,34 @@
 .table {
   font-family: $f-family;
   padding: 20px 15px;
-  border: 1px solid #000;
   width: 100%;
-  // display: block;
   overflow: scroll;
-
+  border: none;
   text-align: start;
+  @media screen and (max-width:400px) {
+    padding: 20px 7px;
+  }
   thead{
     tr{
       th{
         font-size: 14px;
         line-height: 17.07px;
         font-weight: 600;
+        min-width: 140px;
+        border: none;
       }
     }
   }
-
   tbody{
     tr{
+      height: 63px;
       padding: 20px 0;
-
       td{
-        border: solid;
         height: 20px;
         font-size: 14px;
         line-height: 17.07px;
         font-weight: 400;
+        border: none;
       }
     }
   }
