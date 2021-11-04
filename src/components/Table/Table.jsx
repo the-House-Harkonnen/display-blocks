@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './Table.module.scss';
 
 export const Table = ({ head, body }) => (
@@ -12,3 +12,8 @@ export const Table = ({ head, body }) => (
     </table>
   </div>
 );
+
+Table.propTypes = {
+  head: PropTypes.node.isRequired,
+  body: PropTypes.node.isRequired,
+};

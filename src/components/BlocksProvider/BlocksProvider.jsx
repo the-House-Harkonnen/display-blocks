@@ -1,6 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-console */
 import React, { createContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { getBlocksFromApi } from '../../api';
@@ -12,7 +9,6 @@ export const BlocksProvider = ({ children }) => {
   const [blocks, setBlocks] = useState([]);
   const [offset, setOffset] = useState(0);
   const [totalCount, setTotalCount] = useState(0);
-  const [isFetching, setIsFetching] = useState(false);
 
   const blocksContextValue = {
     blocks,

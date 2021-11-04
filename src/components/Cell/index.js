@@ -1,1 +1,1 @@
-export { HCell, LBCell, ICell } from './Cell';
+export { HCell, LBCell, ICell, ICellLinc } from './Cell';

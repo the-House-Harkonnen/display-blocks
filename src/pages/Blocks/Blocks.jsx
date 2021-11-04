@@ -1,5 +1,5 @@
 import React from 'react';
-import { BlocksList } from '../../components/BlocksList/BlocksList';
+import { BlocksList } from './BlocksList';
 import { Crumbs } from '../../components/Crumbs';
 import styles from './Blocks.module.scss';
 

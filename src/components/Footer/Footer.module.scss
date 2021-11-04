@@ -24,8 +24,6 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    border: solid;
-
     @media screen and (max-width: 768px) {
       display: none;
     }
@@ -35,14 +33,14 @@
     color: $c-light;
     font-size: 14px;
     font-weight: 500;
-    border: solid;
+
   }
 
   &__group {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    border: solid;
+
   }
 
   &__rights {

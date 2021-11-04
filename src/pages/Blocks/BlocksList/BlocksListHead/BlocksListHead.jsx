@@ -1,5 +1,5 @@
 import React from 'react';
-import { HCell } from '../../Cell';
+import { HCell } from '../../../../components/Cell';
 import { SHCell } from '../SHCell';
 
 export const BlocksListHead = (arr, sort, callback, sortKeys) =>
