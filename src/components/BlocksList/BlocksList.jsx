@@ -12,13 +12,14 @@ import { sortKeys } from './__utils/sortConfig';
 import styles from './BlocksList.module.scss';
 import { rowsCreator } from './__body/BlockListBody';
 import { Pagination } from '../Pagination';
+import { Spiner } from '../Spiner';
 
 export const BlocksList = () => {
   const [sort, sortDispatch] = useReducer(sortReducer, { inc: true, key: '' });
 
   const sortHandler = (val) => sortDispatch(val);
   const { blocks } = useContext(BlocksContext);
-  if (blocks.length < 1) return null;
+  if (blocks.length < 1) return <Spiner />;
   const filtredBlocks = filtrListData(blocks);
   const titles = Object.keys(filtredBlocks[0]);
   const headers = headCreator(titles, sort, sortHandler, sortKeys);

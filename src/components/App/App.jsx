@@ -4,9 +4,10 @@ import { BlocksProvider } from '../BlocksProvider';
 import Footer from '../Footer';
 import Header from '../Header/Header';
 import Main from '../Main';
+import styles from './App.module.scss';
 
 export const App = () => (
-  <div>
+  <div className={styles.app}>
     <Router>
       <BlocksProvider>
         <Header />

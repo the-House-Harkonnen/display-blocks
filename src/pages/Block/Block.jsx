@@ -8,6 +8,7 @@ import background from '../../imgs/Background.png';
 import { getBlockFromApi } from '../../api';
 import { ICell } from '../../components/Cell';
 import { Crumbs } from '../../components/Crumbs/Crumbs';
+import { Spiner } from '../../components/Spiner';
 
 export const Block = () => {
   const location = useLocation();
@@ -18,8 +19,7 @@ export const Block = () => {
     const blockdata = await getBlockFromApi(blockId);
     setBlock(blockdata.block);
   }, []);
-  console.log(block);
-  if (!block) return null;
+  if (!block) return <Spiner />;
 
   return (
     <div className={styles.block}>
