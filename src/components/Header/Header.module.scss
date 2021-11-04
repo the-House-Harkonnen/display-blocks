@@ -8,22 +8,26 @@
   grid-column-gap: 116px;
   justify-content: space-between;
   align-items: center;
+  align-content: center;
   color: $c-light;
+
 
 
   @media screen and (max-width: 768px) {
     grid-template-columns: 72px 1fr;
     flex-wrap: wrap;
   }
-  .burger{
+
+  .burger {
     display: none;
 
-    button{
+    button {
       background-color: transparent;
       border: none;
       outline: none;
 
     }
+
     @media screen and (max-width: 768px) {
       display: grid;
       grid-column-gap: 10px;
@@ -31,13 +35,15 @@
       justify-self: flex-end;
     }
   }
-  .nav{
-    margin-top: 30px;
+
+  .nav {
+
     display: grid;
     grid-auto-flow: column;
     justify-content: flex-end;
     align-items: center;
     grid-column-gap: 116px;
+
     @media screen and (max-width: 768px) {
       grid-auto-flow: row;
       display: none;
@@ -45,10 +51,11 @@
       width: 100%;
       justify-content: stretch;
       padding: 10px 0;
- 
+
     }
   }
-  .show{
+
+  .show {
     @media screen and (max-width: 768px) {
       display: grid;
     }

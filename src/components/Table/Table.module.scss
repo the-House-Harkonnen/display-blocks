@@ -5,22 +5,23 @@
 }
 .table {
   font-family: $f-family;
-  padding: 20px 15px;
+  padding: 0px 15px;
   width: 100%;
   overflow: scroll;
-  border: none;
   text-align: start;
   @media screen and (max-width:400px) {
-    padding: 20px 7px;
+    padding: 0px 7px;
   }
   thead{
     tr{
+      height: 63px;
       th{
         font-size: 14px;
         line-height: 17.07px;
         font-weight: 600;
         min-width: 140px;
-        border: none;
+        text-align: left;  
+        border-bottom: solid rgba(217, 223, 248, 0.65) 0.5px;     
       }
     }
   }
@@ -28,12 +29,13 @@
     tr{
       height: 63px;
       padding: 20px 0;
+      
       td{
         height: 20px;
         font-size: 14px;
         line-height: 17.07px;
         font-weight: 400;
-        border: none;
+        border-bottom: solid rgba(217, 223, 248, 0.65) 0.5px;
       }
     }
   }
