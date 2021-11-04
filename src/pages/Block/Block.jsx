@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import styles from './Block.module.scss';
@@ -21,7 +19,6 @@ export const Block = () => {
   if (!block) return <Spiner />;
 
   const filtredBlock = filtrBlockData(block);
-  console.log(filtredBlock);
   return (
     <div className={styles.block}>
       <Crumbs />
@@ -44,6 +41,16 @@ export const Block = () => {
           return (
             <tbody className={styles.tbody}>
               {Object.entries(tbEl).map((trEl) => {
+                if (
+                  trEl[0] === 'Backer.s fee' ||
+                  trEl[0] === 'Transactions volume'
+                )
+                  return (
+                    <tr>
+                      <td>{trEl[0]}</td>
+                      <td>{trEl[1]}&#42793;</td>
+                    </tr>
+                  );
                 if (trEl[0] === 'Backer')
                   return (
                     <tr>

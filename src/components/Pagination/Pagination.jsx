@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useContext } from 'react';
 
 import { BlocksContext } from '../BlocksProvider/BlocksProvider';
@@ -8,7 +7,8 @@ export const Pagination = () => {
   const { limit, offset, totalCount, handleLimit, handleOffset } =
     useContext(BlocksContext);
   const totalPage = Math.ceil(totalCount / limit);
-  const lastPage = totalCount - (totalCount % limit);
+  const lastPage =
+    totalCount % limit ? totalCount - (totalCount % limit) : totalCount - limit;
 
   const curentPage = offset / limit + 1;
   return (
@@ -44,13 +44,15 @@ export const Pagination = () => {
           onClick={() => handleOffset(offset - limit)}
         >{`<`}</button>
         <span>
-          {offset / limit + 1} of {totalPage}
+          {curentPage} of {totalPage}
         </span>
         <button
           type='button'
+          disabled={lastPage === offset}
           onClick={() => handleOffset(offset + limit)}
         >{`>`}</button>
         <button
+          disabled={lastPage === offset}
           type='button'
           onClick={() => handleOffset(lastPage)}
         >{`>>`}</button>

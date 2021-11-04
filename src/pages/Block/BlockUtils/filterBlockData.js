@@ -1,11 +1,14 @@
+import { inTezosHandler } from '../../../utils/inTezosHandler';
+import { timeFormatHandler } from '../../../utils/timeFormatHandler';
+
 export const filtrBlockData = (block) => [
   {
     Hush: block.level,
-    'Created at': block.timestamp,
+    'Created at': timeFormatHandler(block.timestamp),
     Backer: block.backerName,
-    'Backer.s fee': block.fees,
+    'Backer.s fee': inTezosHandler(block.fees),
     'Backer.s priority': block.priority,
-    'Transactions volume': block.volume,
+    'Transactions volume': inTezosHandler(block.volume),
   },
   {
     'Block time': block.blockTime,

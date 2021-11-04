@@ -12,7 +12,6 @@ import userIcon from "../../imgs/Group.svg";
 
 const Header = () => {
   const [showNav, setShowNav] = useState(false)
-  console.log(showNav);
   const classNav = showNav? `${styles.nav} ${styles.show}`: styles.nav;
   return (
     <div className={styles.header}>

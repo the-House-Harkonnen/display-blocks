@@ -1,5 +1,8 @@
 import React from 'react';
-import { LBCell, ICell } from '../../Cell';
+import { inTezosHandler } from '../../../utils/inTezosHandler';
+import { timeFormatHandler } from '../../../utils/timeFormatHandler';
+import { LBCell } from '../../Cell';
+import { ICellLinc } from '../../Cell/Cell';
 
 export const BlocksListBody = (blocks) =>
   blocks.map((row, rowindex) => {
@@ -7,12 +10,17 @@ export const BlocksListBody = (blocks) =>
     return (
       <tr key={rowkey}>
         <LBCell cell={row.blockId} />
-        <td>{row.created}</td>
-        <ICell src={row.src} name={row.backer} alt={row.backer} />
+        <td>{timeFormatHandler(row.created)}</td>
+        <ICellLinc
+          src={row.src}
+          name={row.backer}
+          alt={row.backer}
+          href={row.blockId}
+        />
         <td>{row.Priority}</td>
         <td>{row['# of operations']}</td>
-        <td>{row.volume}</td>
-        <td>{row.fees}</td>
+        <td>{`${inTezosHandler(row.volume)} `}&#42793;</td>
+        <td>{`${inTezosHandler(row.fees)} `}&#42793;</td>
         <td>{row.endorsements}</td>
       </tr>
     );
