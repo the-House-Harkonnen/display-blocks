@@ -11,6 +11,8 @@
   text-align: left;
   align-items: flex-end;
   justify-content: flex-end;
+  color: #536DFB;
+
   @media screen and (max-width:768px) {
     column-gap: 5px;
   }
@@ -20,15 +22,19 @@
     background-color: #fff;
     border: none;
     outline: none;
+    color: #536DFB;
 
   }
 
-  .limit {}
+  .limit {
+    color: #536DFB;
+  }
 
   .offset {
     display: grid;
     grid-auto-flow: column;
     column-gap: 8px;
+    color: #536DFB;
   }
 
   select {
