@@ -7,6 +7,7 @@ import styles from './Block.module.scss';
 import background from '../../imgs/Background.png';
 import { getBlockFromApi } from '../../api';
 import { ICell } from '../../components/Cell';
+import { Crumbs } from '../../components/Crumbs/Crumbs';
 
 export const Block = () => {
   const location = useLocation();
@@ -19,8 +20,10 @@ export const Block = () => {
   }, []);
   console.log(block);
   if (!block) return null;
+
   return (
     <div className={styles.block}>
+      <Crumbs />
       <h2 className={styles.title}>Block :{blockId} </h2>
       <table>
         <tbody>

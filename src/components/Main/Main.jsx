@@ -19,6 +19,9 @@ const Main = () => {
         <Route exact path='/'>
           <Redirect to='/home/blocks' />
         </Route>
+        <Route exact path='/home'>
+          <Redirect to='/home/blocks' />
+        </Route>
         <Route exact path='/home/blocks' component={Blocks} />
         <Route exact path='/home/blocks/:blockId' component={Block} />
       </Switch>
