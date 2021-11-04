@@ -2,7 +2,6 @@
 /* eslint-disable arrow-body-style */
 /* eslint-disable prettier/prettier */
 import React, { useState } from 'react';
-// import { Burger } from '../Burger';
 import LoginBtn from '../LoginBtn';
 import Logo from '../Logo';
 import Nav from '../Nav';

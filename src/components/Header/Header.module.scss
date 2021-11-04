@@ -1,7 +1,8 @@
 @import '../../styles/variable.scss';
 
 .header {
-  padding: 20px 30px;
+  padding: 0 30px;
+  height: 82px;
   background-color: $c-head-foot-l;
   display: grid;
   grid-template-columns: 72px 1fr;
@@ -9,12 +10,12 @@
   justify-content: space-between;
   align-items: center;
   color: $c-light;
-  // width: 100vw;
 
 
   @media screen and (max-width: 768px) {
     grid-template-columns: 72px 1fr;
     flex-wrap: wrap;
+    height: 62px;
   }
   .burger{
     display: none;
