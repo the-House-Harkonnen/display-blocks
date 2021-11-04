@@ -1,7 +1,4 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable array-callback-return */
-/* eslint-disable consistent-return */
-/* eslint-disable no-console */
+/* eslint-disable jsx-a11y/interactive-supports-focus */
 import React from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 
@@ -16,7 +13,6 @@ export const Crumbs = () => {
     return acc;
   }, []);
 
-  console.log(current, links, pages);
   return (
     <div>
       {links.map((el, i) => {
@@ -24,6 +20,7 @@ export const Crumbs = () => {
         return (
           <span
             key={key}
+            role='link'
             onClick={() => history.push(el)}
             onKeyDown={() => history.push(el)}
           >
