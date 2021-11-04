@@ -21,6 +21,8 @@ export const BlocksList = () => {
   const filtredBlocks = filtrListData(blocks);
   const titles = Object.keys(filtredBlocks[0]);
   const headers = BlocksListHead(titles, sort, sortHandler, sortKeys);
+
+  console.log(filtredBlocks);
   const sortedBlocks = sort.key
     ? sortDataHandler(sort.key, filtredBlocks, sort.inc)
     : filtredBlocks;
