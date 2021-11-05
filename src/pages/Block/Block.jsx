@@ -36,38 +36,35 @@ export const Block = () => {
         >{`>`}</button>
       </div>
       <table className={styles.table}>
-        {filtredBlock.map((tbEl) => {
-          console.log(tbEl);
-          return (
-            <tbody className={styles.tbody}>
-              {Object.entries(tbEl).map((trEl) => {
-                if (
-                  trEl[0] === 'Backer.s fee' ||
-                  trEl[0] === 'Transactions volume'
-                )
-                  return (
-                    <tr>
-                      <td>{trEl[0]}</td>
-                      <td>{trEl[1]}&#42793;</td>
-                    </tr>
-                  );
-                if (trEl[0] === 'Backer')
-                  return (
-                    <tr>
-                      <td>{trEl[0]}</td>
-                      <ICell src={block.backer} name={trEl[1]} alt={trEl[1]} />
-                    </tr>
-                  );
+        {filtredBlock.map((tbEl) => (
+          <tbody className={styles.tbody}>
+            {Object.entries(tbEl).map((trEl) => {
+              if (
+                trEl[0] === 'Backer.s fee' ||
+                trEl[0] === 'Transactions volume'
+              )
                 return (
                   <tr>
                     <td>{trEl[0]}</td>
-                    <td>{trEl[1]}</td>
+                    <td>{trEl[1]}&#42793;</td>
                   </tr>
                 );
-              })}
-            </tbody>
-          );
-        })}
+              if (trEl[0] === 'Backer')
+                return (
+                  <tr>
+                    <td>{trEl[0]}</td>
+                    <ICell src={block.backer} name={trEl[1]} alt={trEl[1]} />
+                  </tr>
+                );
+              return (
+                <tr>
+                  <td>{trEl[0]}</td>
+                  <td>{trEl[1]}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        ))}
       </table>
     </div>
   );
