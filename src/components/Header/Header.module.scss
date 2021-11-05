@@ -11,8 +11,6 @@
   align-content: center;
   color: $c-light;
 
-
-
   @media screen and (max-width: 768px) {
     grid-template-columns: 72px 1fr;
     flex-wrap: wrap;

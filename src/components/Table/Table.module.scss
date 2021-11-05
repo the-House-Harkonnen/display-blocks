@@ -1,4 +1,4 @@
-@import './../../styles/resets.scss';
+@import './../../styles/index.scss';
 .container{
   overflow: scroll;
   &::-webkit-scrollbar {
@@ -9,8 +9,6 @@
     background-color: #D9DFF8;
     border-radius: 15px;
   }
-
-
 }
 .table {
   font-family: $f-family;
