@@ -1,8 +1,7 @@
 import React from 'react';
-import { inTezosHandler } from '../../../utils/inTezosHandler';
-import { timeFormatHandler } from '../../../utils/timeFormatHandler';
-import { LBCell } from '../../Cell';
-import { ICellLinc } from '../../Cell/Cell';
+import { inTezosHandler } from '../../../../utils/inTezosHandler';
+import { timeFormatHandler } from '../../../../utils/timeFormatHandler';
+import { LBCell, ICellLinc } from '../../../../components/Cell';
 
 export const BlocksListBody = (blocks) =>
   blocks.map((row, rowindex) => {

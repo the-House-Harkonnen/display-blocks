@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './SHCell.module.scss';
 
 export const SHCell = ({ str, sort, callBack }) => {
@@ -17,4 +17,13 @@ export const SHCell = ({ str, sort, callBack }) => {
       </div>
     </th>
   );
+};
+
+SHCell.propTypes = {
+  str: PropTypes.string.isRequired,
+  sort: PropTypes.shape({
+    key: PropTypes.string.isRequired,
+    inc: PropTypes.bool.isRequired,
+  }).isRequired,
+  callBack: PropTypes.func.isRequired,
 };

@@ -1,48 +1,70 @@
-.container{
+.container {
   padding: 3px;
   height: 53px;
   display: grid;
   grid-template-columns: auto auto;
-  column-gap: 48px;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: left;
   align-items: flex-end;
   justify-content: flex-end;
+  color: #536DFB;
 
-  button{
+  @media screen and (max-width:768px) {
+    column-gap: 5px;
+  }
+
+  button {
     height: 18px;
     background-color: #fff;
     border: none;
-    outline: none;    
+    outline: none;
+    color: #536DFB;
 
   }
-  .limit{
 
+  .limit {
+    color: #536DFB;
   }
-  .offset{
+
+  .offset {
     display: grid;
     grid-auto-flow: column;
     column-gap: 8px;
+    color: #536DFB;
   }
-  select{
-    -moz-appearance:none; /* Firefox */
-    -webkit-appearance:none; /* Safari and Chrome */
-    appearance:none;
+
+  select {
+    -moz-appearance: none;
+    /* Firefox */
+    -webkit-appearance: none;
+    /* Safari and Chrome */
+    appearance: none;
     background-color: #fff;
     border: none;
-    outline: none;    
+    outline: none;
     padding-right: 10px;
     margin-left: 8px;
     z-index: 0;
     color: white;
-    
+    option{
+      color: blue;
+    }
+
   }
 
-  label{
+  label {
     position: relative;
-    &::after{
+
+    &::after {
       content: '';
       position: absolute;
       display: block;
-      border: 7px solid transparent; border-top: 7px solid #536DFB;
+      border: 7px solid transparent;
+      border-top: 7px solid #536DFB;
       transform: translateY(40%);
       left: 12px;
       top: 0;

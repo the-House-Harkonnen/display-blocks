@@ -1,31 +1,32 @@
-/* eslint-disable no-console */
 import React, { useContext, useReducer } from 'react';
-import { BlocksContext } from '../BlocksProvider/BlocksProvider';
-import { Table } from '../Table';
+import { Table } from '../../../components/Table';
 import { filtrListData } from './utils/filtrListData';
 import sortReducer from './utils/sortReducer';
 import { sortKeys } from './utils/sortConfig';
 import styles from './BlocksList.module.scss';
-import { Pagination } from '../Pagination';
-import { Spiner } from '../Spiner';
+import { Pagination } from '../../../components/Pagination';
 import { BlocksListHead } from './BlocksListHead';
 import { BlocksListBody } from './BlocksListBody';
-import { sortDataHandler } from '../../utils/sortDataHandler';
+import { sortDataHandler } from '../../../utils/sortDataHandler';
+import { Spinner } from '../../../components/Spinner';
+import { BlocksContext } from '../../../components/BlocksProvider';
 
 export const BlocksList = () => {
   const [sort, sortDispatch] = useReducer(sortReducer, { inc: true, key: '' });
 
   const sortHandler = (val) => sortDispatch(val);
   const { blocks } = useContext(BlocksContext);
-  if (blocks.length < 1) return <Spiner />;
+
+  if (blocks.length < 1) return <Spinner />;
+
   const filtredBlocks = filtrListData(blocks);
   const titles = Object.keys(filtredBlocks[0]);
-  const headers = BlocksListHead(titles, sort, sortHandler, sortKeys);
 
-  console.log(filtredBlocks);
   const sortedBlocks = sort.key
     ? sortDataHandler(sort.key, filtredBlocks, sort.inc)
     : filtredBlocks;
+
+  const headers = BlocksListHead(titles, sort, sortHandler, sortKeys);
   const body = BlocksListBody(sortedBlocks);
 
   return (

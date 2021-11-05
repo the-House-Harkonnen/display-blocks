@@ -1,0 +1,21 @@
+@import './../../styles/index.scss';
+.container{
+  margin-bottom: 80px;
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: start;
+  grid-gap: 15px;
+  @include media(678px) {
+    margin-bottom: 40px;  
+  }
+}
+
+.current{
+font-size: 18px;
+font-style: normal;
+font-weight: 600;
+line-height: 22px;
+letter-spacing: 0em;
+text-align: left;
+
+}

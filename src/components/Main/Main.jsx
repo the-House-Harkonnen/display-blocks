@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable arrow-body-style */
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { Block } from '../../pages/Block';
