@@ -48,21 +48,21 @@ export const Block = () => {
                   trEl[0] === 'Transactions volume'
                 )
                   return (
-                    <tr key={key}>
+                    <tr key={key} className={styles.tr}>
                       <td className={styles.td}>{trEl[0]}</td>
                       <td className={styles.th}>{trEl[1]}&#42793;</td>
                     </tr>
                   );
                 if (trEl[0] === 'Backer') {
                   return (
-                    <tr key={key}>
+                    <tr key={key} className={styles.tr}>
                       <td className={styles.td}>{trEl[0]}</td>
                       <ICell src={block.baker} name={trEl[1]} alt={trEl[1]} />
                     </tr>
                   );
                 }
                 return (
-                  <tr key={key}>
+                  <tr key={key} className={styles.tr}>
                     <td className={styles.td}>{trEl[0]}</td>
                     <td className={styles.th}>{trEl[1]}</td>
                   </tr>
