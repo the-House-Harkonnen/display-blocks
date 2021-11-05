@@ -1,11 +1,12 @@
+@import './../../styles/index.scss';
 .container{
   margin-bottom: 80px;
   display: grid;
   grid-auto-flow: column;
   justify-content: start;
   grid-gap: 15px;
-  @media screen and (max-width:678px) {
-    margin-bottom: 40px;   
+  @include media(678px) {
+    margin-bottom: 40px;  
   }
 }
 

@@ -79,14 +79,14 @@ HCell.propTypes = {
 };
 
 LBCell.propTypes = {
-  cell: PropTypes.string.isRequired,
+  cell: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 };
 
 ICellLinc.propTypes = {
   src: PropTypes.string,
   name: PropTypes.string,
   alt: PropTypes.string,
-  href: PropTypes.string,
+  href: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 ICellLinc.defaultProps = {
   src: '',
