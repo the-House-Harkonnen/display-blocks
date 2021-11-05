@@ -48,11 +48,12 @@ h2{
   width: fit-content;
   display: grid;
   grid-template-columns: 180px 1fr;
-  border: solid;
   word-break: break-all;
-  @media screen and(max-width: 768px) {
-    grid-template-columns: minmax(min-content, 1fr);
-  }     
+  @media screen and (max-width:400px){
+    grid-template-columns: 1fr;   
+  }
+   
+  
 } 
 td{
   word-wrap: break-word;

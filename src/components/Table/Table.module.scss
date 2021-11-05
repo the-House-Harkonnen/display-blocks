@@ -1,6 +1,15 @@
 @import './../../styles/resets.scss';
 .container{
   overflow: scroll;
+  &::-webkit-scrollbar {
+    height: 5px;
+    width: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #D9DFF8;
+    border-radius: 15px;
+  }
+
 
 }
 .table {
