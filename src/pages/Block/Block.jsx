@@ -1,24 +1,24 @@
 /* eslint-disable no-console */
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import styles from './Block.module.scss';
-import { getBlockFromApi } from '../../api';
 import { ICell } from '../../components/Cell';
 import { Crumbs } from '../../components/Crumbs/Crumbs';
 
 import { filtrBlockData } from './BlockUtils/filterBlockData';
 import { Spinner } from '../../components/Spinner';
+import { useSingleBlockContext } from '../../context/singleBlockContext';
 
 export const Block = () => {
-  const location = useLocation();
-  const [blockId, setBlockId] = useState(location.pathname.split('/').pop(-1));
-  const [block, setBlock] = useState(null);
+  const initialLocation = useLocation().pathname.split('/').pop(-1);
+  const [location, setLocation] = useState(initialLocation);
+  const { block, isFetching, setBlock } = useSingleBlockContext();
 
-  useEffect(async () => {
-    const blockdata = await getBlockFromApi(blockId);
-    setBlock(blockdata.block);
-  }, [blockId]);
-  if (!block) return <Spinner />;
+  useEffect(() => {
+    setBlock(location);
+  }, [location]);
+
+  if (isFetching) return <Spinner />;
   const filtredBlock = filtrBlockData(block);
   return (
     <div className={styles.block}>
@@ -27,13 +27,13 @@ export const Block = () => {
         <button
           className={styles.btn}
           type='button'
-          onClick={() => setBlockId((prev) => Number(prev) - 1)}
+          onClick={() => setLocation((prew) => Number(prew) - 1)}
         >{`<`}</button>
-        <h2 className={styles.title}>Block :{blockId} </h2>
+        <h2 className={styles.title}>Block :{location} </h2>
         <button
           type='button'
           className={styles.btn}
-          onClick={() => setBlockId((prev) => Number(prev) + 1)}
+          oonClick={() => setLocation((prew) => Number(prew) + 1)}
         >{`>`}</button>
       </div>
       <table className={styles.table}>

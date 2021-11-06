@@ -3,7 +3,7 @@ import { BASE_URL } from './config';
 
 const NETWORK = 'mainnet';
 
-export const getBlocksFromApi = async (offset = 0, limit = 10) => {
+export const getBlocks = async (offset = 0, limit = 10) => {
   const url = `${BASE_URL}/${NETWORK}/blocks?offset=${offset}&limit=${limit}`;
   const res = await axios.get(url);
   return {
@@ -12,7 +12,7 @@ export const getBlocksFromApi = async (offset = 0, limit = 10) => {
   };
 };
 
-export const getBlockFromApi = async (hash) => {
+export const getBlock = async (hash) => {
   const ress = await axios.get(`${BASE_URL}/${NETWORK}/blocks/${hash}`);
   return ress.data;
 };
