@@ -9,12 +9,16 @@ export const BlocksProvider = ({ children }) => {
   const [blocks, setBlocks] = useState([]);
   const [offset, setOffset] = useState(0);
   const [totalCount, setTotalCount] = useState(0);
+  const [isFetching, setIsFetching] = useState(true);
+  const [isError, setIsError] = useState(false);
 
   const blocksContextValue = {
     blocks,
     limit,
     offset,
     totalCount,
+    isFetching,
+    isError,
     handleLimit: (val) => {
       setLimit(val);
       setOffset(0);
@@ -23,20 +27,21 @@ export const BlocksProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    setBlocks([]);
+    const setData = async () => {
+      setIsFetching(true);
+      setIsError(false);
+      try {
+        const data = await getBlocksFromApi(offset, limit);
+        setBlocks(data.blocks);
+        setTotalCount(data.totalCount);
+      } catch (error) {
+        setIsError(true);
+      } finally {
+        setIsFetching(false);
+      }
+    };
+    setData();
   }, [limit, offset]);
-
-  useEffect(async () => {
-    const dataFromBlocksApi = await getBlocksFromApi(offset, limit);
-    setBlocks((prev) => {
-      if (!blocks.length) return dataFromBlocksApi.blocks;
-      return prev;
-    });
-    setTotalCount((prev) => {
-      if (!blocks.length) return Number(dataFromBlocksApi.totalCount);
-      return prev;
-    });
-  }, [blocks]);
 
   return (
     <>

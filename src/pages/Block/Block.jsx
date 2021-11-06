@@ -67,22 +67,10 @@ export const Block = () => {
                     <td className={styles.th}>{trEl[1]}</td>
                   </tr>
                 );
-              if (trEl[0] === 'Backer')
-                return (
-                  <tr>
-                    <td>{trEl[0]}</td>
-                    <ICell src={block.backer} name={trEl[1]} alt={trEl[1]} />
-                  </tr>
-                );
-              return (
-                <tr>
-                  <td>{trEl[0]}</td>
-                  <td>{trEl[1]}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        ))}
+              })}
+            </tbody>
+          );
+        })}
       </table>
     </div>
   );
