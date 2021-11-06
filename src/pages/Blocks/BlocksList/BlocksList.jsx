@@ -1,22 +1,22 @@
 /* eslint-disable no-console */
-import React, { useContext, useReducer } from 'react';
+import React, { useReducer } from 'react';
 import { Table } from '../../../components/Table';
 import { filtrListData } from './utils/filtrListData';
 import sortReducer from './utils/sortReducer';
 import { sortKeys } from './utils/sortConfig';
 import styles from './BlocksList.module.scss';
-import { Pagination } from '../../../components/Pagination';
 import { BlocksListHead } from './BlocksListHead';
 import { BlocksListBody } from './BlocksListBody';
 import { sortDataHandler } from '../../../utils/sortDataHandler';
 import { Spinner } from '../../../components/Spinner';
-import { BlocksContext } from '../../../components/BlocksProvider';
+import { useBlocksContext } from '../../../context/blocksContext';
+import { BlocksPagination } from '../../../components/BlocksPagination/BlocksPagination';
 
 export const BlocksList = () => {
   const [sort, sortDispatch] = useReducer(sortReducer, { inc: true, key: '' });
 
   const sortHandler = (val) => sortDispatch(val);
-  const { blocks, isFetching } = useContext(BlocksContext);
+  const { blocks, isFetching } = useBlocksContext();
   console.log(blocks, isFetching);
 
   if (isFetching) return <Spinner />;
@@ -36,7 +36,7 @@ export const BlocksList = () => {
       <div className={styles.body}>
         <Table head={headers} body={body} />
         <div className={styles.pagination}>
-          <Pagination />
+          <BlocksPagination />
         </div>
       </div>
     </div>

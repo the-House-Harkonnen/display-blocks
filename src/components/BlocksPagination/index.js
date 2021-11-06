@@ -1,0 +1,1 @@
+export { BlocksPagination } from './BlocksPagination';

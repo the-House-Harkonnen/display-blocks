@@ -1,8 +1,9 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { getBlocksFromApi } from '../../api';
+import { getBlocks } from '../api';
 
-export const BlocksContext = createContext();
+const BlocksContext = createContext();
+export const useBlocksContext = () => useContext(BlocksContext);
 
 export const BlocksProvider = ({ children }) => {
   const [limit, setLimit] = useState(10);
@@ -31,7 +32,7 @@ export const BlocksProvider = ({ children }) => {
       setIsFetching(true);
       setIsError(false);
       try {
-        const data = await getBlocksFromApi(offset, limit);
+        const data = await getBlocks(offset, limit);
         setBlocks(data.blocks);
         setTotalCount(data.totalCount);
       } catch (error) {

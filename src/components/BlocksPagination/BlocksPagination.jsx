@@ -1,11 +1,10 @@
-import React, { useContext } from 'react';
-
-import { BlocksContext } from '../BlocksProvider/BlocksProvider';
+import React from 'react';
+import { useBlocksContext } from '../../context/blocksContext';
 import styles from './Pagination.module.scss';
 
-export const Pagination = () => {
+export const BlocksPagination = () => {
   const { limit, offset, totalCount, handleLimit, handleOffset } =
-    useContext(BlocksContext);
+    useBlocksContext();
   const totalPage = Math.ceil(totalCount / limit);
   const lastPage =
     totalCount % limit ? totalCount - (totalCount % limit) : totalCount - limit;
