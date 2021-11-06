@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { useContext, useReducer } from 'react';
 import { Table } from '../../../components/Table';
 import { filtrListData } from './utils/filtrListData';
@@ -15,9 +16,10 @@ export const BlocksList = () => {
   const [sort, sortDispatch] = useReducer(sortReducer, { inc: true, key: '' });
 
   const sortHandler = (val) => sortDispatch(val);
-  const { blocks } = useContext(BlocksContext);
+  const { blocks, isFetching } = useContext(BlocksContext);
+  console.log(blocks, isFetching);
 
-  if (blocks.length < 1) return <Spinner />;
+  if (isFetching) return <Spinner />;
 
   const filtredBlocks = filtrListData(blocks);
   const titles = Object.keys(filtredBlocks[0]);
