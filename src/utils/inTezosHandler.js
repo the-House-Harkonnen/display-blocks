@@ -1,1 +1,1 @@
-export const inTezosHandler = (val) => val / 1000000;
+export const inTezosHandler = (val) => `${val / 1000000} ꜩ`;
