@@ -25,53 +25,22 @@ h2{
 }
 
 .table{
-  display: grid;
   border-radius: 30px;
-  grid-template-columns: repeat(2, minmax(436px, 1fr));
+  background-color: #fff;
   padding: 48px 25px;
-  margin-bottom: 140px;
-  background-color: white;
-  justify-content: space-between;
-  grid-gap: 50px;
-  @include media(992px) {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(436px, 1fr));
+    @include media(992px) {
     grid-template-columns: minmax(min-content, 547px);
     justify-content: start;
     grid-gap: 0;  
   }
 }
-.tbody{
-  display: grid;
-  row-gap: 8px;
-}
-
-.tr{
-  width: fit-content;
+.row{
   display: grid;
   grid-template-columns: 180px 1fr;
   word-break: break-all;
-  @media screen and (max-width:400px){
-      
-  }
-
-  @include media(400px) {
-    grid-template-columns: 1fr; 
-  }
-   
-  
-} 
-td{
-  word-wrap: break-word;
-  white-space: pre-wrap;
-  word-break: break-all;
   line-height: 32px;
-}
-.th{
-  font-weight: 600;
-
-}
-.td{
-  width: 180px;
-  
 }
 .btn{
   outline: none;

@@ -1,10 +1,10 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-console */
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import styles from './Block.module.scss';
 import { ICell } from '../../components/Cell';
 import { Crumbs } from '../../components/Crumbs/Crumbs';
-
 import { filtrBlockData } from './BlockUtils/filterBlockData';
 import { Spinner } from '../../components/Spinner';
 import { useSingleBlockContext } from '../../context/singleBlockContext';
@@ -20,6 +20,7 @@ export const Block = () => {
 
   if (isFetching) return <Spinner />;
   const filtredBlock = filtrBlockData(block);
+
   return (
     <div className={styles.block}>
       <Crumbs />
@@ -33,45 +34,24 @@ export const Block = () => {
         <button
           type='button'
           className={styles.btn}
-          oonClick={() => setLocation((prew) => Number(prew) + 1)}
+          onClick={() => setLocation((prew) => Number(prew) + 1)}
         >{`>`}</button>
       </div>
-      <table className={styles.table}>
-        {filtredBlock.map((tbEl, i) => {
-          const keybody = `keybody-${i}`;
+      <div className={styles.table}>
+        {filtredBlock.map((row, i) => {
+          const blockRowKey = `blockRowKey-${i}`;
           return (
-            <tbody className={styles.tbody} key={keybody}>
-              {Object.entries(tbEl).map((trEl) => {
-                const key = `key-${trEl[0]}-${trEl[1]}`;
-                if (
-                  trEl[0] === 'Backer.s fee' ||
-                  trEl[0] === 'Transactions volume'
-                )
-                  return (
-                    <tr key={key} className={styles.tr}>
-                      <td className={styles.td}>{trEl[0]}</td>
-                      <td className={styles.th}>{trEl[1]}&#42793;</td>
-                    </tr>
-                  );
-                if (trEl[0] === 'Backer') {
-                  return (
-                    <tr key={key} className={styles.tr}>
-                      <td className={styles.td}>{trEl[0]}</td>
-                      <ICell src={block.baker} name={trEl[1]} alt={trEl[1]} />
-                    </tr>
-                  );
-                }
-                return (
-                  <tr key={key} className={styles.tr}>
-                    <td className={styles.td}>{trEl[0]}</td>
-                    <td className={styles.th}>{trEl[1]}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
+            <div className={styles.row} key={blockRowKey}>
+              <div className={styles.th}>{row[0]}</div>
+              {row[0] === 'Baker' ? (
+                <ICell src={block.baker} name={row[1]} alt={row[1]} />
+              ) : (
+                <div className={styles.th}>{row[1]}</div>
+              )}
+            </div>
           );
         })}
-      </table>
+      </div>
     </div>
   );
 };

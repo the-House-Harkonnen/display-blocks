@@ -58,7 +58,7 @@ export const ICell = ({ src, name, alt }) => {
     : icon;
 
   return (
-    <td>
+    <>
       <div className={styles.icell}>
         <img
           src={url}
@@ -70,7 +70,7 @@ export const ICell = ({ src, name, alt }) => {
         />
         <span>{name || 'tezos backer'}</span>
       </div>
-    </td>
+    </>
   );
 };
 
