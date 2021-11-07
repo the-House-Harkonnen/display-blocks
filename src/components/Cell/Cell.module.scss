@@ -14,3 +14,34 @@
 .blue{
   color: #536DFB;
 }
+
+.container{
+  display: flex;
+  align-items: center;
+  color: #536DFB;
+}
+.arrowup{
+  position: relative;
+&::after{
+  content: '';
+  position: absolute;
+  display: block;
+  border: 7px solid transparent; border-top: 7px solid #536DFB;
+  transform: translateY(-20%);
+  left: 8px;
+  top: 0;
+}
+}
+.arrowdown{
+position: relative;
+&::after{
+  content: '';
+  position: absolute;
+  display: block;
+  border: 7px solid transparent; border-bottom: 7px solid #536DFB;
+  transform: translateY(-80%);
+  left: 8px;
+  top: 0;
+}
+
+}

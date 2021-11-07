@@ -2,7 +2,7 @@ export const filtrListData = (data) =>
   data.map((block) => ({
     blockId: block.level,
     created: block.timestamp,
-    backer: block.bakerName,
+    baker: block.bakerName,
     src: block.baker,
     Priority: block.priority,
     '# of operations': block.number_of_operations,
