@@ -74,6 +74,32 @@ export const ICell = ({ src, name, alt }) => {
   );
 };
 
+export const SHCell = ({ str, sort, callBack }) => {
+  const className =
+    !sort.inc && sort.key === str ? styles.arrowup : styles.arrowdown;
+  const action = {
+    type: sort.inc ? 'decrement' : 'increment',
+    key: str,
+  };
+  return (
+    <th onClick={() => callBack(action)} className={styles.cell}>
+      <div className={styles.container}>
+        <span className={styles.text}>{str}</span>
+        <span className={className} />
+      </div>
+    </th>
+  );
+};
+
+SHCell.propTypes = {
+  str: PropTypes.string.isRequired,
+  sort: PropTypes.shape({
+    key: PropTypes.string.isRequired,
+    inc: PropTypes.bool.isRequired,
+  }).isRequired,
+  callBack: PropTypes.func.isRequired,
+};
+
 HCell.propTypes = {
   str: PropTypes.string.isRequired,
 };
