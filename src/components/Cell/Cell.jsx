@@ -5,9 +5,12 @@ import PropTypes from 'prop-types';
 import icon from '../../imgs/icon.png';
 import styles from './Cell.module.scss';
 
-export const HCell = ({ str }) => <th className={styles.blue}>{str}</th>;
+export const CellTh = ({ str }) => <th className={styles.blue}>{str}</th>;
+CellTh.propTypes = {
+  str: PropTypes.string.isRequired,
+};
 
-export const LBCell = ({ cell }) => {
+export const CellLinkOption = ({ cell }) => {
   const history = useHistory();
   return (
     <td
@@ -21,8 +24,11 @@ export const LBCell = ({ cell }) => {
     </td>
   );
 };
+CellLinkOption.propTypes = {
+  cell: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+};
 
-export const ICellLinc = ({ src, name, alt, href }) => {
+export const CellLinkIcon = ({ src, name, alt, href }) => {
   const history = useHistory();
   const url =
     name && src
@@ -51,8 +57,20 @@ export const ICellLinc = ({ src, name, alt, href }) => {
     </td>
   );
 };
+CellLinkIcon.propTypes = {
+  src: PropTypes.string,
+  name: PropTypes.string,
+  alt: PropTypes.string,
+  href: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+};
+CellLinkIcon.defaultProps = {
+  src: '',
+  name: '',
+  alt: '',
+  href: '',
+};
 
-export const ICell = ({ src, name, alt }) => {
+export const CellIcon = ({ src, name, alt }) => {
   const url = src
     ? `https://teztracker.com/static/validators-logo/${src}.png`
     : icon;
@@ -68,13 +86,23 @@ export const ICell = ({ src, name, alt }) => {
           }}
           alt={alt}
         />
-        <span>{name || 'tezos backer'}</span>
+        <span>{name || 'tezos baker'}</span>
       </div>
     </>
   );
 };
+CellIcon.propTypes = {
+  src: PropTypes.string,
+  name: PropTypes.string,
+  alt: PropTypes.string,
+};
+CellIcon.defaultProps = {
+  src: '',
+  name: '',
+  alt: '',
+};
 
-export const SHCell = ({ str, sort, callBack }) => {
+export const CellSortOption = ({ str, sort, callBack }) => {
   const className =
     !sort.inc && sort.key === str ? styles.arrowup : styles.arrowdown;
   const action = {
@@ -90,45 +118,11 @@ export const SHCell = ({ str, sort, callBack }) => {
     </th>
   );
 };
-
-SHCell.propTypes = {
+CellSortOption.propTypes = {
   str: PropTypes.string.isRequired,
   sort: PropTypes.shape({
     key: PropTypes.string.isRequired,
     inc: PropTypes.bool.isRequired,
   }).isRequired,
   callBack: PropTypes.func.isRequired,
-};
-
-HCell.propTypes = {
-  str: PropTypes.string.isRequired,
-};
-
-LBCell.propTypes = {
-  cell: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-};
-
-ICellLinc.propTypes = {
-  src: PropTypes.string,
-  name: PropTypes.string,
-  alt: PropTypes.string,
-  href: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-};
-ICellLinc.defaultProps = {
-  src: '',
-  name: '',
-  alt: '',
-  href: '',
-};
-
-ICell.propTypes = {
-  src: PropTypes.string,
-  name: PropTypes.string,
-  alt: PropTypes.string,
-};
-
-ICell.defaultProps = {
-  src: '',
-  name: '',
-  alt: '',
 };

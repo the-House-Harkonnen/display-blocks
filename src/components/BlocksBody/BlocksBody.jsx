@@ -5,7 +5,7 @@ import { filtrListData } from '../../pages/Blocks/utils/filtrListData';
 import { inTezosHandler } from '../../utils/inTezosHandler';
 import { sortDataHandler } from '../../utils/sortDataHandler';
 import { timeFormatHandler } from '../../utils/timeFormatHandler';
-import { LBCell, ICellLinc } from '../Cell';
+import { CellLinkOption, CellLinkIcon } from '../Cell';
 
 export const BlocksBody = ({ sort }) => {
   const { blocks } = useBlocksContext();
@@ -19,9 +19,9 @@ export const BlocksBody = ({ sort }) => {
         const rowkey = `rowKey-${rowIndex}`;
         return (
           <tr key={rowkey}>
-            <LBCell cell={row.blockId} />
+            <CellLinkOption cell={row.blockId} />
             <td>{timeFormatHandler(row.created)}</td>
-            <ICellLinc
+            <CellLinkIcon
               src={row.src}
               name={row.baker}
               alt={row.backer}
