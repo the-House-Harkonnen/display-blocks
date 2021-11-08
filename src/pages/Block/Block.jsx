@@ -47,7 +47,7 @@ export const Block = () => {
               {row[0] === 'Baker' ? (
                 <CellIcon src={block.baker} name={row[1]} alt={row[1]} />
               ) : (
-                <div className={styles.th}>{row[1]}</div>
+                <div className={styles.td}>{row[1]}</div>
               )}
             </div>
           );

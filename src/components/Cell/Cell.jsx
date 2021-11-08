@@ -86,7 +86,7 @@ export const CellIcon = ({ src, name, alt }) => {
           }}
           alt={alt}
         />
-        <span>{name || 'tezos baker'}</span>
+        <span className={styles.blue}>{name || 'tezos baker'}</span>
       </div>
     </>
   );
