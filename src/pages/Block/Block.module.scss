@@ -49,4 +49,9 @@ h2{
   grid-template-columns: 180px 1fr;
   word-break: break-all;
   line-height: 32px;
+  div:nth-child(2){
+    font-weight: 600;
+  }
+
+
 }
