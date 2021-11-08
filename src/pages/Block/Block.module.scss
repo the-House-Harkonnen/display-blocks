@@ -1,14 +1,19 @@
 @import './../../styles/index.scss';
 
-.block{
+.container{
   display: grid;
   font-family: $f-family;
+
 }
-.pagination{
+.head{
   margin-bottom: 62px;
   display: grid;
   justify-content: center;
   grid-auto-flow: column;
+  width: fit-content;
+  justify-self: center;
+  column-gap: 32px;
+  text-align: center;
 }
 
 .btn{
@@ -17,6 +22,9 @@
   font-weight: 700;
   line-height: 30px;
   padding: 5px;
+  outline: none;
+  border: none;
+  cursor: pointer;
 }
 h2{
   width: fit-content;
@@ -41,9 +49,4 @@ h2{
   grid-template-columns: 180px 1fr;
   word-break: break-all;
   line-height: 32px;
-}
-.btn{
-  outline: none;
-  background-color: transparent;
-  border: none;
 }

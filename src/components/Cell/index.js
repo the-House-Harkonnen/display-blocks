@@ -1,1 +1,7 @@
-export { HCell, LBCell, ICell, ICellLinc, SHCell } from './Cell';
+export {
+  CellLinkOption,
+  CellIcon,
+  CellLinkIcon,
+  CellSortOption,
+  CellTh,
+} from './Cell';

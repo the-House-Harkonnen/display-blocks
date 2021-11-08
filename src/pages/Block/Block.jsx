@@ -1,9 +1,7 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-console */
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import styles from './Block.module.scss';
-import { ICell } from '../../components/Cell';
+import { CellIcon } from '../../components/Cell';
 import { Crumbs } from '../../components/Crumbs/Crumbs';
 import { filtrBlockData } from './BlockUtils/filterBlockData';
 import { Spinner } from '../../components/Spinner';
@@ -22,15 +20,18 @@ export const Block = () => {
   const filtredBlock = filtrBlockData(block);
 
   return (
-    <div className={styles.block}>
+    <div className={styles.container}>
       <Crumbs />
-      <div className={styles.pagination}>
+      <div className={styles.head}>
         <button
           className={styles.btn}
           type='button'
           onClick={() => setLocation((prew) => Number(prew) - 1)}
         >{`<`}</button>
-        <h2 className={styles.title}>Block :{location} </h2>
+        <hgroup>
+          <h2 className={styles.title}>Block: {location} </h2>
+          <span className={styles.subtitle}>block information</span>
+        </hgroup>
         <button
           type='button'
           className={styles.btn}
@@ -44,7 +45,7 @@ export const Block = () => {
             <div className={styles.row} key={blockRowKey}>
               <div className={styles.th}>{row[0]}</div>
               {row[0] === 'Baker' ? (
-                <ICell src={block.baker} name={row[1]} alt={row[1]} />
+                <CellIcon src={block.baker} name={row[1]} alt={row[1]} />
               ) : (
                 <div className={styles.th}>{row[1]}</div>
               )}

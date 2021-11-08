@@ -2,7 +2,7 @@
 import React from 'react';
 import { useBlocksContext } from '../../context/blocksContext';
 import { filtrListData } from '../../pages/Blocks/utils/filtrListData';
-import { HCell, SHCell } from '../Cell';
+import { CellSortOption, CellTh } from '../Cell';
 
 export const BlocksHead = ({ sort, callback, sortKeys }) => {
   const { blocks } = useBlocksContext();
@@ -14,10 +14,15 @@ export const BlocksHead = ({ sort, callback, sortKeys }) => {
         if (titleCell === 'src') return null;
         if (sortKeys.find((sortKey) => sortKey === titleCell)) {
           return (
-            <SHCell key={key} sort={sort} str={titleCell} callBack={callback} />
+            <CellSortOption
+              key={key}
+              sort={sort}
+              str={titleCell}
+              callBack={callback}
+            />
           );
         }
-        return <HCell key={key} str={titleCell} />;
+        return <CellTh key={key} str={titleCell} />;
       })}
     </>
   );
