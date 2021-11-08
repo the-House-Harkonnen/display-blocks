@@ -29,8 +29,8 @@ export const BlocksBody = ({ sort }) => {
             />
             <td>{row.Priority}</td>
             <td>{row['# of operations']}</td>
-            <td>{`${inTezosHandler(row.volume)} `}&#42793;</td>
-            <td>{`${inTezosHandler(row.fees)} `}&#42793;</td>
+            <td>{inTezosHandler(row.volume)}</td>
+            <td>{inTezosHandler(row.fees)}</td>
             <td>{row.endorsements}</td>
           </tr>
         );
