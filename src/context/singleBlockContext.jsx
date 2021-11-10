@@ -1,5 +1,6 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
+import { useCallback } from 'react/cjs/react.development';
 import { getBlock } from '../api';
 
 const SingleBlockContext = createContext();
@@ -11,27 +12,33 @@ export const SingleBlocksProvider = ({ children }) => {
   const [isFetching, setIsFetching] = useState(true);
   const [isError, setIsError] = useState(false);
 
-  const fetchBlock = async (nevBlockId) => {
-    setIsFetching(true);
-    setIsError(false);
-    try {
-      const data = await getBlock(nevBlockId);
-      setBlock(data.block);
-    } catch (error) {
-      setIsError(true);
-    } finally {
-      setIsFetching(false);
-    }
-  };
+  const fetchBlock = useCallback(
+    async (nevBlockId) => {
+      setIsFetching(true);
+      setIsError(false);
+      try {
+        const data = await getBlock(nevBlockId);
+        setBlock(data.block);
+      } catch (error) {
+        setIsError(true);
+      } finally {
+        setIsFetching(false);
+      }
+    },
+    [setIsFetching, setBlock, setIsError, setBlockId],
+  );
 
-  const value = {
-    setBlockId,
-    setBlock: (val) => fetchBlock(val),
-    isFetching,
-    isError,
-    block,
-    blockId,
-  };
+  const value = useMemo(
+    () => ({
+      setBlockId,
+      setBlock: (val) => fetchBlock(val),
+      isFetching,
+      isError,
+      block,
+      blockId,
+    }),
+    [block, isError, blockId, setBlock, setBlockId, isFetching],
+  );
 
   return (
     <>
