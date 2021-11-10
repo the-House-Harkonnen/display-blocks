@@ -1,4 +1,11 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import PropTypes from 'prop-types';
 import { getBlocks } from '../api';
 
@@ -13,19 +20,28 @@ export const BlocksProvider = ({ children }) => {
   const [isFetching, setIsFetching] = useState(true);
   const [isError, setIsError] = useState(false);
 
-  const blocksContextValue = {
-    blocks,
-    limit,
-    offset,
-    totalCount,
-    isFetching,
-    isError,
-    handleLimit: (val) => {
+  const handleLimit = useCallback(
+    (val) => {
       setLimit(val);
       setOffset(0);
     },
-    handleOffset: (val) => setOffset(val),
-  };
+    [setLimit, setOffset],
+  );
+  const handleOffset = useCallback((val) => setOffset(val), [setOffset]);
+
+  const blocksContextValue = useMemo(
+    () => ({
+      blocks,
+      limit,
+      offset,
+      totalCount,
+      isFetching,
+      isError,
+      handleLimit,
+      handleOffset,
+    }),
+    [blocks, isError, limit, offset, isFetching],
+  );
 
   useEffect(() => {
     const setData = async () => {
