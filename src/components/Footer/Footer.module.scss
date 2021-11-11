@@ -8,6 +8,7 @@
   grid-template-columns: 1fr 1fr 1fr;
   background-color: $c-head-foot-l;
   color: #fff;
+  display: none;
 
   @include media(1200px) {
     height: 259px;
