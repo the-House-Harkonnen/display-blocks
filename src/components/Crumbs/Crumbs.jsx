@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { Fragment } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import styles from './Crumbs.module.scss';
@@ -13,6 +14,7 @@ export const Crumbs = () => {
     return acc;
   }, []);
 
+  console.log(pages);
   return (
     <div className={styles.container}>
       {links.map((el, i) => {
@@ -29,7 +31,7 @@ export const Crumbs = () => {
               >
                 {pages[i]}
               </span>
-              <span>{`>`}</span>
+              <span className={styles.arrow}>{`>`}</span>
             </>
           </Fragment>
         );
