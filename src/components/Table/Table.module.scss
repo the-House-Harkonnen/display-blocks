@@ -1,6 +1,6 @@
 @import './../../styles/index.scss';
 .container{
-  overflow: scroll;
+  width: 100vw;
   &::-webkit-scrollbar {
     height: 5px;
     width: 5px;
@@ -9,12 +9,11 @@
     background-color: #D9DFF8;
     border-radius: 15px;
   }
+  overflow: scroll;
 }
 .table {
   font-family: $f-family;
-  padding: 0px 15px;
   width: 100%;
-  overflow: scroll;
   text-align: start;
   @media screen and (max-width:400px) {
     padding: 0px 7px;
