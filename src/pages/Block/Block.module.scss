@@ -37,6 +37,7 @@ h2{
   background-color: #fff;
   padding: 48px 25px;
   display: grid;
+  border: 5px solid #D9DFF8;
   grid-template-columns: repeat(2, minmax(436px, 1fr));
     @include media(992px) {
     grid-template-columns: minmax(min-content, 547px);
