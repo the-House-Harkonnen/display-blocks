@@ -23,10 +23,11 @@ const Header = () => {
       </button>
       </div>
       <div className={classNav}> 
+      <div className={styles.navigation}>
       <Nav />
+      </div>
       <LoginBtn />
-      </div>   
-      
+      </div>
     </div>
   );
 }

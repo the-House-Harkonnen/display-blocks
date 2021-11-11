@@ -45,6 +45,7 @@
   }
 
   &__rights {
+    color: $c-light;
     font-size: 14px;
     font-weight: 500;
     display: flex;
@@ -60,8 +61,6 @@
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
-    font-size: 24px;
-    font-weight: 700;
     order: 3;
     @include media(768px) {
       display: flex;
