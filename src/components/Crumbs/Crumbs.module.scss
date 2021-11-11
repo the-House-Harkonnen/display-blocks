@@ -5,9 +5,28 @@
   grid-auto-flow: column;
   justify-content: start;
   grid-gap: 15px;
+  color: #2D3B59;
   @include media(678px) {
     margin-bottom: 40px;  
   }
+}
+.link{
+font-family: Montserrat;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: 22px;
+letter-spacing: 0em;
+text-align: left;
+&:first-letter{
+  text-transform: uppercase;
+}
+}
+
+.arrow{
+  display: block;
+  line-height: 24px;
+  font-weight: 500;
 }
 
 .current{
