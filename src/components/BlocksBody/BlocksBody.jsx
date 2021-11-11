@@ -20,7 +20,7 @@ export const BlocksBody = ({ sort }) => {
         const rowkey = `rowKey-${rowIndex}`;
         return (
           <tr key={rowkey}>
-            <CellLinkOption cell={row.blockId} />
+            <CellLinkOption cell={row.blockId.toLocaleString()} />
             <td>{timeFormatHandler(row.created)}</td>
             <CellLinkIcon
               src={row.src}
