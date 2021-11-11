@@ -1,14 +1,11 @@
 .main {
-  padding: 50px 32px;
-  // background-color:#F0F2F4;
-  //Pass through  F0F2F4
-  // ECF0F9
+  padding: 50px 32px; 
   background-color: #ECF0F9;
   @media screen and (max-width:768px) {
     padding: 50px 15px;
   }
   &__table {
-    width: 1380px;
+    // width: 1380px;
     margin: 60px auto 110px;
   }
   &__route {

@@ -12,9 +12,15 @@
   align-items: flex-end;
   justify-content: flex-end;
   color: #536DFB;
+  @media screen and (max-width:992px) {
+  justify-content: space-between;
+  width: 100%;
+    
+  }
 
   @media screen and (max-width:768px) {
     column-gap: 5px;
+
   }
 
   button {

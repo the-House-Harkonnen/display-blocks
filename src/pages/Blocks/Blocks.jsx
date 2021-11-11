@@ -19,7 +19,7 @@ export const Blocks = () => {
   if (isFetching) return <Spinner />;
 
   return (
-    <div>
+    <>
       <Crumbs />
       <h2 className={styles.title}>Blocks</h2>
       <div className={styles.list}>
@@ -37,6 +37,6 @@ export const Blocks = () => {
           <BlocksPagination />
         </div>
       </div>
-    </div>
+    </>
   );
 };
