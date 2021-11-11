@@ -112,7 +112,7 @@ export const CellSortOption = ({ str, sort, callBack }) => {
   return (
     <th onClick={() => callBack(action)} className={styles.cell}>
       <div className={styles.container}>
-        <span className={styles.text}>{str}</span>
+        <span className={styles.blue}>{str}</span>
         <span className={className} />
       </div>
     </th>
