@@ -15,12 +15,10 @@
   @media screen and (max-width:992px) {
   justify-content: space-between;
   width: 100%;
-    
   }
 
   @media screen and (max-width:768px) {
     column-gap: 5px;
-
   }
 
   button {
@@ -29,7 +27,6 @@
     border: none;
     outline: none;
     color: #536DFB;
-
   }
 
   .limit {
@@ -56,10 +53,10 @@
     margin-left: 8px;
     z-index: 0;
     color: white;
+    cursor: pointer;
     option{
       color: blue;
     }
-
   }
 
   label {
