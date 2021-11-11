@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
-import Logo from '../Logo/Logo';
+import Logo from '../Logo';
 import styles from './Footer.module.scss';
 
 // eslint-disable-next-line arrow-body-style

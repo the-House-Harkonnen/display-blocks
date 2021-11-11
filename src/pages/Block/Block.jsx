@@ -26,7 +26,7 @@ export const Block = () => {
         <button
           className={styles.btn}
           type='button'
-          onClick={() => setLocation((prew) => Number(prew) - 1)}
+          onClick={() => setLocation((prev) => Number(prev) - 1)}
         >{`<`}</button>
         <hgroup>
           <h2 className={styles.title}>Block: {location} </h2>
@@ -35,7 +35,7 @@ export const Block = () => {
         <button
           type='button'
           className={styles.btn}
-          onClick={() => setLocation((prew) => Number(prew) + 1)}
+          onClick={() => setLocation((prev) => Number(prev) + 1)}
         >{`>`}</button>
       </div>
       <div className={styles.table}>

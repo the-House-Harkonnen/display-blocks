@@ -10,6 +10,7 @@
   align-items: center;
   align-content: center;
   color: $c-light;
+  position: relative;
 
   @media screen and (max-width: 768px) {
     grid-template-columns: 72px 1fr;
@@ -23,7 +24,7 @@
       background-color: transparent;
       border: none;
       outline: none;
-
+      cursor: pointer;
     }
 
     @media screen and (max-width: 768px) {
@@ -35,12 +36,11 @@
   }
 
   .nav {
-
     display: grid;
     grid-auto-flow: column;
     justify-content: flex-end;
-    align-items: center;
     grid-column-gap: 116px;
+    align-items: center;
 
     @media screen and (max-width: 768px) {
       grid-auto-flow: row;
@@ -49,13 +49,21 @@
       width: 100%;
       justify-content: stretch;
       padding: 10px 0;
-
+      position: absolute;
+      width: 280px;
+      top: 100%;
+      left: -30px;
+      min-height: 100vh;
+      z-index: 2;
+      align-items: flex-start;
     }
   }
 
   .show {
     @media screen and (max-width: 768px) {
       display: grid;
+      background-color: #fff;
+      color: #2D3B59;
     }
 
   }

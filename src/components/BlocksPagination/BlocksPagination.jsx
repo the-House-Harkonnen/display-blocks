@@ -1,6 +1,6 @@
 import React from 'react';
 import { useBlocksContext } from '../../context/blocksContext';
-import styles from './Pagination.module.scss';
+import styles from './BlocksPagination.module.scss';
 
 export const BlocksPagination = () => {
   const { limit, offset, totalCount, handleLimit, handleOffset } =
@@ -9,7 +9,7 @@ export const BlocksPagination = () => {
   const lastPage =
     totalCount % limit ? totalCount - (totalCount % limit) : totalCount - limit;
 
-  const curentPage = offset / limit + 1;
+  const currentPage = offset / limit + 1;
   return (
     <div className={styles.container}>
       <div className={styles.limit} id='handler'>
@@ -43,7 +43,7 @@ export const BlocksPagination = () => {
           onClick={() => handleOffset(offset - limit)}
         >{`<`}</button>
         <span>
-          {curentPage} of {totalPage}
+          {currentPage} of {totalPage}
         </span>
         <button
           type='button'

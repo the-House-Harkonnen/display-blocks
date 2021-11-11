@@ -6,8 +6,7 @@ import LoginBtn from '../LoginBtn';
 import Logo from '../Logo';
 import Nav from '../Nav';
 import styles from './Header.module.scss';
-import burgerIcon from "../../imgs/Vector.svg";
-import userIcon from "../../imgs/Group.svg";
+import { BurgerIcon, UserIcon } from '../Icons/Icons';
 
 const Header = () => {
   const [showNav, setShowNav] = useState(false)
@@ -17,10 +16,10 @@ const Header = () => {
       <Logo />
       <div className={styles.burger}>
       <button type='button'>
-      <img src={userIcon} alt="burger" />
+      <UserIcon />
       </button>
       <button type='button' onClick={()=> setShowNav(!showNav)}>
-      <img src={burgerIcon} alt="burger" />
+      <BurgerIcon />
       </button>
       </div>
       <div className={classNav}> 

@@ -43,7 +43,7 @@ export const CellLinkIcon = ({ src, name, alt, href }) => {
       onClick={() => history.push(`/home/blocks/${href}`)}
       onKeyPress={() => history.push(`/home/blocks/${href}`)}
     >
-      <div className={styles.icell}>
+      <div className={styles.icon__cell}>
         <img
           src={url}
           onError={(e) => {
@@ -77,7 +77,7 @@ export const CellIcon = ({ src, name, alt }) => {
 
   return (
     <>
-      <div className={styles.icell}>
+      <div className={styles.icon__cell}>
         <img
           src={url}
           onError={(e) => {
