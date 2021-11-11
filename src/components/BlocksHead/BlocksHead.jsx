@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useBlocksContext } from '../../context/blocksContext';
 import { filtrListData } from '../../pages/Blocks/utils/filtrListData';
 import { CellSortOption, CellTh } from '../Cell';
@@ -26,4 +27,13 @@ export const BlocksHead = ({ sort, callback, sortKeys }) => {
       })}
     </>
   );
+};
+
+BlocksHead.propTypes = {
+  sort: PropTypes.shape({
+    key: PropTypes.string.isRequired,
+    inc: PropTypes.bool.isRequired,
+  }).isRequired,
+  callback: PropTypes.func.isRequired,
+  sortKeys: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
