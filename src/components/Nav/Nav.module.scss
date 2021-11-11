@@ -55,6 +55,7 @@
     display: none;
     @media screen and (max-width: 768px) {
       display: flex;
+      margin-right: 10px;
     }
   }
 
@@ -112,6 +113,7 @@
 }
 
 .copyrights {
+  color: #2D3B59;
   display: none;
   @media screen and (max-width: 768px) {
     display: block;

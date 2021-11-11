@@ -12,7 +12,7 @@
   color: $c-light;
   position: relative;
   @media screen and (max-width: 1200px) {
-    grid-column-gap: 0px;
+    grid-column-gap: 10px;
   }
 
   @media screen and (max-width: 768px) {
