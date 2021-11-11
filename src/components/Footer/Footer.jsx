@@ -43,7 +43,7 @@ const Footer = () => {
         </div>
       </div>
       <div className={styles.footer__rights}>
-        <p>@ Copyright. Company name. 2021</p>
+        @ Copyright. Company name. 2021
       </div>
       <div className={styles.footer__logo}>
         <Logo />
