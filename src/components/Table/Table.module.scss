@@ -1,6 +1,6 @@
 @import './../../styles/index.scss';
 .container{
-  width: 100vw;
+  width: calc(100vw - 124px);
   &::-webkit-scrollbar {
     height: 5px;
     width: 5px;
@@ -10,6 +10,9 @@
     border-radius: 15px;
   }
   overflow: scroll;
+  @media screen and (max-width:768px) {
+    width: calc(100vw - 94px);
+  }
 }
 .table {
   font-family: $f-family;
