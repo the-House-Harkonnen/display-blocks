@@ -5,7 +5,7 @@ import { Block } from '../../pages/Block';
 import { Blocks } from '../../pages/Blocks';
 
 import styles from './Main.module.scss';
-import background from '../../imgs/Background.png';
+import background from '../../imgs/background.png';
 
 const Main = () => {
   const style = {
