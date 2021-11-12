@@ -11,6 +11,7 @@
   align-content: center;
   color: $c-light;
   position: relative;
+
   @media screen and (max-width: 1200px) {
     grid-column-gap: 10px;
   }
@@ -22,6 +23,7 @@
 
   .burger {
     display: none;
+
     button {
       background-color: transparent;
       border: none;
@@ -40,11 +42,12 @@
   .nav {
     display: grid;
     grid-auto-flow: column;
+    grid-template-columns: minmax(508px, 945px) auto;
     justify-content: flex-end;
     grid-column-gap: 116px;
     align-items: center;
 
-    @media screen and (max-width: 1200px) {
+    @media screen and (max-width: 992px) {
       grid-column-gap: 16px;
     }
 
