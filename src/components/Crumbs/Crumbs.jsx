@@ -14,7 +14,6 @@ export const Crumbs = () => {
     return acc;
   }, []);
 
-  console.log(pages);
   return (
     <div className={styles.container}>
       {links.map((el, i) => {

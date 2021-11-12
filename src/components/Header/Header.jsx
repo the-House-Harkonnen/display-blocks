@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+/* eslint-disable no-console */
+import React, { useState, useEffect, createRef } from 'react';
+import { useCallback } from 'react/cjs/react.development';
 import LoginBtn from '../LoginBtn';
 import Logo from '../Logo';
 import Nav from '../Nav';
@@ -8,6 +10,21 @@ import { BurgerIcon, UserIcon } from '../Icons/Icons';
 const Header = () => {
   const [showNav, setShowNav] = useState(false);
   const classNav = showNav ? `${styles.nav} ${styles.show}` : styles.nav;
+  const navRef = createRef();
+
+  const clickOutside = useCallback((e) => {
+    setShowNav((prev) => {
+      if (e.target === e.currentTarget) return false;
+      return prev;
+    });
+  }, []);
+  useEffect(() => {
+    if (showNav) {
+      navRef.current.addEventListener('click', clickOutside);
+    } else {
+      navRef.current.removeEventListener('click', clickOutside);
+    }
+  }, [showNav]);
 
   return (
     <div className={styles.header}>
@@ -20,7 +37,7 @@ const Header = () => {
           <BurgerIcon />
         </button>
       </div>
-      <div className={classNav}>
+      <div className={classNav} ref={navRef}>
         <Nav />
         <LoginBtn />
       </div>
