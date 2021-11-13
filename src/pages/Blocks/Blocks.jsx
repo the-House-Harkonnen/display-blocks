@@ -18,37 +18,37 @@ export const Blocks = () => {
     {
       name: 'Block ID',
       key: 'level',
-      process: (value) => <CellLinkOption cell={value} />,
+      process: (value = '____', key) => <td key={key}>{value}</td>,
     },
     {
       name: 'Created',
       key: 'timestamp',
-      process: (value) => <td>{value}</td>,
+      process: (value, key) => <td key={key}>{value}</td>,
     },
     {
       name: 'Baker',
       key: 'bakerName',
-      process: (value) => <td>{value}</td>,
+      process: (value = 'no baker', key) => <td key={key}>{value}</td>,
     },
     {
       name: 'Priority',
       key: 'priority',
-      process: (value) => <td>{value}</td>,
+      process: (value, key) => <td key={key}>{value}</td>,
     },
     {
       name: '# of operations',
       key: 'number_of_operations',
-      process: (value) => <td>{value}</td>,
+      process: (value, key) => <td key={key}>{value}</td>,
     },
     {
       name: 'Volume',
       key: 'volume',
-      process: (value) => <td>{inT(value)}</td>,
+      process: (value, key) => <td key={key}>{value}</td>,
     },
     {
       name: '# of endorsements',
       key: 'endorsements',
-      process: (value) => <td>{inTezosHandler(value)}</td>,
+      process: (value, key) => <td key={key}>{value}</td>,
     },
   ];
 
