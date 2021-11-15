@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
 import React, { useReducer } from 'react';
 import { BlocksPagination } from '../../components/BlocksPagination/BlocksPagination';
 import { Crumbs } from '../../components/Crumbs';
@@ -8,7 +6,7 @@ import { Table } from '../../components/Table';
 import { useBlocksContext } from '../../context/blocksContext';
 import styles from './Blocks.module.scss';
 import sortReducer from './utils/sortReducer';
-import { CellLinkIcon, CellLinkOption } from '../../components/Cell';
+import { CellLinkIcon } from '../../components/Cell';
 
 export const Blocks = () => {
   const [sort, sortDispatch] = useReducer(sortReducer, { inc: true, key: '' });
@@ -17,55 +15,76 @@ export const Blocks = () => {
   const headConfig = [
     {
       name: 'Block ID',
+      sort: true,
       key: 'level',
-      process: (value = '____', key) => <td key={key}>{value}</td>,
+      process: (row, key) => <td key={key}>{row.level}</td>,
     },
     {
       name: 'Created',
+      sort: true,
       key: 'timestamp',
-      process: (value, key) => <td key={key}>{value}</td>,
+      process: (row, key) => <td key={key}>{row.timestamp}</td>,
     },
     {
       name: 'Baker',
       key: 'bakerName',
-      process: (value = 'no baker', key) => <td key={key}>{value}</td>,
+      process: (row, key) => (
+        <CellLinkIcon
+          src={row.baker}
+          name={row.bakerName}
+          alt={row.baker}
+          href={row.level}
+          key={key}
+        />
+      ),
     },
     {
       name: 'Priority',
       key: 'priority',
-      process: (value, key) => <td key={key}>{value}</td>,
+      process: (row, key) => <td key={key}>{row.priority}</td>,
     },
     {
       name: '# of operations',
       key: 'number_of_operations',
-      process: (value, key) => <td key={key}>{value}</td>,
+      process: (row, key) => <td key={key}>{row.number_of_operations}</td>,
     },
     {
       name: 'Volume',
       key: 'volume',
-      process: (value, key) => <td key={key}>{value}</td>,
+      process: (row, key) => <td key={key}>{row.volume}</td>,
     },
     {
       name: '# of endorsements',
+      sort: true,
       key: 'endorsements',
-      process: (value, key) => <td key={key}>{value}</td>,
+      process: (row, key) => <td key={key}>{row.endorsements}</td>,
     },
   ];
 
   const { blocks, isFetching } = useBlocksContext();
-  if (isFetching) return <Spinner />;
 
   return (
     <>
       <Crumbs />
       <h2 className={styles.title}>Blocks</h2>
       <div className={styles.list}>
-        <div className={styles.table}>
-          <Table head={headConfig} body={blocks} />
-        </div>
-        <div className={styles.pagination}>
-          <BlocksPagination />
-        </div>
+        {isFetching ? (
+          <Spinner />
+        ) : (
+          <>
+            <div className={styles.table}>
+              <Table
+                head={headConfig}
+                body={blocks}
+                sortHandler={sortHandler}
+                sort={sort}
+              />
+            </div>
+            <div className={styles.pagination}>
+              <BlocksPagination />
+            </div>
+          </>
+        )}
       </div>
     </>
   );
