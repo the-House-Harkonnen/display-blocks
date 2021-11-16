@@ -19,9 +19,15 @@
     padding: 25px;
 }
 
-.table{
-    display: grid;
+.table {
+    width: 100%;
     overflow: scroll;
+    td{
+        padding: 5px;
+    }
+    th{
+        padding: 5px;
+    }
 }
 
 
