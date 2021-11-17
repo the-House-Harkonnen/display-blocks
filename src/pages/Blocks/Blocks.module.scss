@@ -27,6 +27,7 @@
     }
     th{
         padding: 5px;
+        text-align: left;
     }
 }
 
@@ -34,4 +35,43 @@
 .pagination {
     justify-self: flex-end;
     width: 100%;
+}
+.container{
+    display: flex;
+    align-items: center;
+    color: #536DFB;
+  }
+.active{
+   color:  #536DFB;
+}
+.dormant{
+    color: #D9DF;
+}
+
+.up{
+    position: relative;
+    &::after{
+      content: '';
+      position: absolute;
+      display: block;
+      border: 7px solid transparent; border-top: 7px solid currentColor;
+      transform: translateY(-20%);
+      left: 8px;
+      top: 0;
+    }
+
+}
+
+.down{
+    position: relative;
+&::after{
+  content: '';
+  position: absolute;
+  display: block;
+  border: 7px solid transparent; border-bottom: 7px solid currentColor;
+  transform: translateY(-80%);
+  left: 8px;
+  top: 0;
+}
+
 }

@@ -1,21 +1,15 @@
+/* eslint-disable no-console */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable no-console */
-/* eslint-disable no-unused-vars */
-import React, { useMemo, useReducer } from 'react';
+import React, { useMemo } from 'react';
 import { useTable, useSortBy } from 'react-table';
 import { BlocksPagination } from '../../components/BlocksPagination/BlocksPagination';
 import { Crumbs } from '../../components/Crumbs';
-import { Spinner } from '../../components/Spinner';
 import { useBlocksContext } from '../../context/blocksContext';
 import styles from './Blocks.module.scss';
-import sortReducer from './utils/sortReducer';
 
 export const Blocks = () => {
-  const [sort, sortDispatch] = useReducer(sortReducer, { inc: true, key: '' });
-  const sortHandler = (val) => sortDispatch(val);
-
-  const { blocks, isFetching } = useBlocksContext();
+  const { blocks } = useBlocksContext();
 
   const columns = useMemo(
     () => [
@@ -34,18 +28,22 @@ export const Blocks = () => {
       {
         Header: 'Priority',
         accessor: 'priority',
+        disableSortBy: true,
       },
       {
         Header: '# of operations',
         accessor: 'number_of_operations',
+        disableSortBy: true,
       },
       {
         Header: 'Volume',
         accessor: 'volume',
+        disableSortBy: true,
       },
       {
         Header: '# of endorsements',
         accessor: 'endorsements',
+        disableSortBy: true,
       },
     ],
     [blocks],
@@ -60,10 +58,6 @@ export const Blocks = () => {
       },
       useSortBy,
     );
-  // in table getTableProps for table tag;
-  // {...column.getHeaderProps(  )}
-
-  if (isFetching) return <Spinner />;
 
   return (
     <>
@@ -76,20 +70,31 @@ export const Blocks = () => {
               {headerGroups.map((headerGroup) => (
                 <tr {...headerGroup.getHeaderGroupProps()}>
                   {headerGroup.headers.map((column) => {
+                    if (!column.canSort) {
+                      return (
+                        <th {...column.getHeaderProps()}>
+                          {column.render('Header')}
+                        </th>
+                      );
+                    }
+                    const className = column.isSorted
+                      ? column.isSortedDesc
+                        ? `${styles.active} ${styles.down}`
+                        : `${styles.active} ${styles.up}`
+                      : ` ${styles.dormant} ${styles.up}`;
                     return (
                       <th
-                        {...column.getHeaderProps(
-                          column.getSortByToggleProps(),
-                        )}
+                        {...column.getHeaderProps()}
+                        onClick={() =>
+                          column.toggleSortBy(!column.isSortedDesc)
+                        }
                       >
-                        {column.render('Header')}
-                        <span>
-                          {column.isSorted
-                            ? column.isSortedDec
-                              ? 'ᐯ'
-                              : 'ᐱ'
-                            : ' '}
-                        </span>
+                        <div className={styles.container}>
+                          <span className={styles.blue}>
+                            {column.render('Header')}
+                          </span>
+                          <span className={className} />
+                        </div>
                       </th>
                     );
                   })}
