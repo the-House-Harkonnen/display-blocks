@@ -16,13 +16,14 @@
     border-radius: 30px;
     border: 5px solid #D9DFF8;
     display: grid;
-    justify-content: center;
     padding: 25px;
 }
 
-.table {
-    width: 100%;
+.table{
+    display: grid;
+    overflow: scroll;
 }
+
 
 .pagination {
     justify-self: flex-end;
