@@ -22,25 +22,16 @@
 }
 .arrowup{
   position: relative;
-&::after{
-  content: '';
-  position: absolute;
   display: block;
+  left: 10px;
+  top: 6px;
   border: 7px solid transparent; border-top: 7px solid #536DFB;
-  transform: translateY(-20%);
-  left: 8px;
-  top: 0;
-}
 }
 .arrowdown{
-position: relative;
-&::after{
-  content: '';
-  position: absolute;
+  position: relative;
   display: block;
   border: 7px solid transparent; border-bottom: 7px solid #536DFB;
   transform: translateY(-80%);
-  left: 8px;
-  top: 0;
-}
+  left: 10px;
+  top: 6px;
 }

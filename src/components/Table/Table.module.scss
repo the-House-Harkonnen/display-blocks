@@ -1,6 +1,6 @@
 @import './../../styles/index.scss';
 .container{
-  width: calc(100vw - 124px);
+  overflow: scroll;
   &::-webkit-scrollbar {
     height: 5px;
     width: 5px;
@@ -9,44 +9,37 @@
     background-color: #D9DFF8;
     border-radius: 15px;
   }
-  overflow: scroll;
-  @media screen and (max-width:768px) {
-    width: calc(100vw - 94px);
-  }
 }
+
 .table {
   font-family: $f-family;
-  width: 100%;
   text-align: start;
+  width: 100%;
   @media screen and (max-width:400px) {
     padding: 0px 7px;
   }
-  thead{
-    tr{
-      height: 63px;
-      th{
-        font-size: 14px;
-        line-height: 17.07px;
-        font-weight: 600;
-        min-width: 140px;
-        text-align: left;  
-        border-bottom: solid rgba(217, 223, 248, 0.65) 0.5px;     
-      }
-    }
-  }
-  tbody{
-    tr{
-      height: 63px;
-      padding: 20px 0;
-      
-      td{
-        height: 20px;
-        font-size: 14px;
-        line-height: 17.07px;
-        font-weight: 400;
-        border-bottom: solid rgba(217, 223, 248, 0.65) 0.5px;
-      }
-    }
-  }
-
 }
+th{
+  padding: 0px 35px 0 0;
+  vertical-align: text-top;
+  white-space: nowrap;
+}
+td{
+  padding: 0 5px;
+  white-space: nowrap;
+}
+thead{
+  tr{
+    height: 45px;
+    border: solid;
+  }
+}
+
+tbody{
+  tr{
+    border: solid;
+    height: 63px;
+  }
+}
+
+

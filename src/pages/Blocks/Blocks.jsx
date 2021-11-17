@@ -23,16 +23,10 @@ export const Blocks = () => {
       <Crumbs />
       <h2 className={styles.title}>Blocks</h2>
       <div className={styles.list}>
-        <div className={styles.table}>
-          <Table>
-            <BlocksHead
-              sort={sort}
-              callback={sortHandler}
-              sortKeys={sortKeys}
-            />
-            <BlocksBody sort={sort} />
-          </Table>
-        </div>
+        <Table>
+          <BlocksHead sort={sort} callback={sortHandler} sortKeys={sortKeys} />
+          <BlocksBody sort={sort} />
+        </Table>
         <div className={styles.pagination}>
           <BlocksPagination />
         </div>
