@@ -1,32 +1,84 @@
-/* eslint-disable no-unused-vars */
-import React, { useReducer } from 'react';
-import { BlocksBody } from '../../components/BlocksBody';
-import { BlocksHead } from '../../components/BlocksHead';
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/prop-types */
+import React, { useMemo } from 'react';
 import { BlocksPagination } from '../../components/BlocksPagination/BlocksPagination';
+import { CellLinkIcon } from '../../components/Cell/Cell';
 import { Crumbs } from '../../components/Crumbs';
-import { Spinner } from '../../components/Spinner';
-import { Table } from '../../components/Table';
+import { Table } from '../../components/Table/Table';
 import { useBlocksContext } from '../../context/blocksContext';
+import { convertTezos } from '../../utils/convertTezos';
+import { convertTimestamp } from '../../utils/convertTimestamp';
 import styles from './Blocks.module.scss';
-import { sortKeys } from './utils/sortConfig';
-import sortReducer from './utils/sortReducer';
 
 export const Blocks = () => {
-  const [sort, sortDispatch] = useReducer(sortReducer, { inc: true, key: '' });
-  const sortHandler = (val) => sortDispatch(val);
+  const { blocks } = useBlocksContext();
 
-  const { blocks, isFetching } = useBlocksContext();
-  if (isFetching) return <Spinner />;
+  const columns = useMemo(
+    () => [
+      {
+        Header: 'Block ID',
+        accessor: 'level',
+        Cell: ({ value }) => <span style={{ color: 'blue' }}>{value}</span>,
+      },
+      {
+        Header: 'Created',
+        accessor: 'timestamp',
+        // eslint-disable-next-line react/prop-types
+        Cell: ({ value }) => (
+          <span className={styles.blue}>{convertTimestamp(value)}</span>
+        ),
+      },
+      {
+        Header: 'Baker',
+        accessor: 'bakerName',
+        Cell: (value) => (
+          <CellLinkIcon
+            src={value.row.original.baker}
+            name={value.row.original.bakerName}
+            href={value.row.original.level}
+          />
+        ),
+      },
+      {
+        Header: 'Priority',
+        accessor: 'priority',
+        disableSortBy: true,
+      },
+      {
+        Header: '# of operations',
+        accessor: 'number_of_operations',
+        disableSortBy: true,
+      },
+      {
+        Header: 'Volume',
+        accessor: 'volume',
+        disableSortBy: true,
+        Cell: ({ value }) => convertTezos(value),
+      },
+      {
+        Header: 'Fee',
+        accessor: 'fees',
+        disableSortBy: true,
+        Cell: ({ value }) => convertTezos(value),
+      },
+      {
+        Header: '# of endorsements',
+        accessor: 'endorsements',
+        disableSortBy: true,
+      },
+    ],
+    [blocks],
+  );
+  const data = useMemo(() => blocks, [blocks]);
 
   return (
     <>
       <Crumbs />
       <h2 className={styles.title}>Blocks</h2>
       <div className={styles.list}>
-        <Table>
-          <BlocksHead sort={sort} callback={sortHandler} sortKeys={sortKeys} />
-          <BlocksBody sort={sort} />
-        </Table>
+        <div className={styles.table}>
+          <Table columns={columns} data={data} />
+        </div>
         <div className={styles.pagination}>
           <BlocksPagination />
         </div>

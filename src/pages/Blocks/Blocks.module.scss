@@ -19,8 +19,7 @@
     padding: 25px;
 }
 
-.table{
-    display: grid;
+.table {
     overflow: scroll;
 }
 
@@ -29,3 +28,15 @@
     justify-self: flex-end;
     width: 100%;
 }
+.container{
+    display: flex;
+    align-items: center;
+    color: #536DFB;
+  }
+.active{
+   color:  #536DFB;
+}
+.dormant{
+    color: #D9DF;
+}
+

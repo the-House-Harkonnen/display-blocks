@@ -1,6 +1,9 @@
 @import './../../styles/index.scss';
-.container{
-  overflow: scroll;
+
+.table {
+  font-family: $f-family;
+  text-align: start;
+  width: 100%;
   &::-webkit-scrollbar {
     height: 5px;
     width: 5px;
@@ -9,29 +12,31 @@
     background-color: #D9DFF8;
     border-radius: 15px;
   }
-}
-
-.table {
-  font-family: $f-family;
-  text-align: start;
-  width: 100%;
   @media screen and (max-width:400px) {
     padding: 0px 7px;
   }
 }
 th{
-  padding: 0px 35px 0 0;
   vertical-align: text-top;
+  color: #536DFB;
   white-space: nowrap;
+  padding: 5px 15px 0 0;
+  text-align: start;
+  max-width: 160px;
+}
+th:last-child{
+  padding: 5px 0;
 }
 td{
-  padding: 0 5px;
   white-space: nowrap;
+  padding: 5px 15px 0 0;
+}
+td:last-child{
+  padding: 5px 0;
 }
 thead{
   tr{
     height: 45px;
-    border: solid;
   }
 }
 
@@ -42,4 +47,33 @@ tbody{
   }
 }
 
+.container{
+  display: flex;
+  align-items: center;
+  color: #536DFB;
+  height: 36px;
+  width:max-content;
+  width: min-content;
+  width: 100%;
+  padding: 0;
+}
+.active{
+ color:  #536DFB;
+}
+.dormant{
+  color: #D9DF;
+}
 
+.up{
+    border: 7px solid transparent; border-top: 7px solid currentColor;
+    transform: translate(10px, 3px);
+}
+
+.down{
+border: 7px solid transparent; border-bottom: 7px solid currentColor;
+transform: translate(10px, -3px);
+}
+
+.blue{
+  color: #536DFB;
+}
