@@ -8,19 +8,19 @@
   grid-template-columns: 1fr 1fr 1fr;
   background-color: $c-head-foot-l;
   color: #fff;
-  // display: none;
+  grid-row-gap: 20px;
 
   @include media(1200px) {
     height: 259px;
     grid-template-columns: none;
   }
+
   @include media(768px) {
     height: 130px;
   }
 
-
   &__links {
-    width: 270px;
+    width: 333px;
     height: 115px;
     display: flex;
     flex-wrap: wrap;
@@ -35,14 +35,12 @@
     color: $c-light;
     font-size: 14px;
     font-weight: 500;
-
   }
 
   &__group {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
   }
 
   &__rights {
@@ -53,6 +51,7 @@
     align-items: flex-end;
     justify-content: center;
     order: 2;
+
     @include media(1200px) {
       order: 3;
     }
@@ -63,10 +62,13 @@
     align-items: flex-end;
     justify-content: flex-end;
     order: 3;
+
     @include media(768px) {
       display: flex;
+      align-items: flex-start;
       justify-content: center;
-    } 
+    }
+
     @include media(1200px) {
       order: 2;
     }
