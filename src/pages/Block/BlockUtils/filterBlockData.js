@@ -1,19 +1,19 @@
-import { inTezosHandler } from '../../../utils/inTezosHandler';
-import { timeFormatHandler } from '../../../utils/timeFormatHandler';
+import { convertTezos } from '../../../utils/convertTezos';
+import { convertTimestamp } from '../../../utils/convertTimestamp';
 
 export const filtrBlockData = (block) => {
   return Object.entries({
     Hash: block.level,
     'Block time': `${block.blockTime} sec`,
-    'Created at': timeFormatHandler(block.timestamp),
+    'Created at': convertTimestamp(block.timestamp),
     'Block fitness': block.fitness,
     Baker: block.bakerName,
     'Gas used': block.consumedGas,
-    'Backer.s fee': inTezosHandler(block.fees),
+    'Backer.s fee': convertTezos(block.fees),
     'Protocol version': block.protocol,
     'Backer.s priority': block.priority,
     'Cycle:': block.metaCycle,
-    'Transactions volume': inTezosHandler(block.volume),
+    'Transactions volume': convertTezos(block.volume),
     'Cycle position': block.metaCyclePosition,
   });
 };

@@ -1,11 +1,13 @@
-/* eslint-disable no-console */
-/* eslint-disable no-nested-ternary */
-/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/prop-types */
 import React, { useMemo } from 'react';
-import { useTable, useSortBy } from 'react-table';
 import { BlocksPagination } from '../../components/BlocksPagination/BlocksPagination';
+import { CellLinkIcon } from '../../components/Cell/Cell';
 import { Crumbs } from '../../components/Crumbs';
+import { Table } from '../../components/Table/Table';
 import { useBlocksContext } from '../../context/blocksContext';
+import { convertTezos } from '../../utils/convertTezos';
+import { convertTimestamp } from '../../utils/convertTimestamp';
 import styles from './Blocks.module.scss';
 
 export const Blocks = () => {
@@ -16,14 +18,26 @@ export const Blocks = () => {
       {
         Header: 'Block ID',
         accessor: 'level',
+        Cell: ({ value }) => <span style={{ color: 'blue' }}>{value}</span>,
       },
       {
         Header: 'Created',
         accessor: 'timestamp',
+        // eslint-disable-next-line react/prop-types
+        Cell: ({ value }) => (
+          <span className={styles.blue}>{convertTimestamp(value)}</span>
+        ),
       },
       {
         Header: 'Baker',
         accessor: 'bakerName',
+        Cell: (value) => (
+          <CellLinkIcon
+            src={value.row.original.baker}
+            name={value.row.original.bakerName}
+            href={value.row.original.level}
+          />
+        ),
       },
       {
         Header: 'Priority',
@@ -39,6 +53,13 @@ export const Blocks = () => {
         Header: 'Volume',
         accessor: 'volume',
         disableSortBy: true,
+        Cell: ({ value }) => convertTezos(value),
+      },
+      {
+        Header: 'Fee',
+        accessor: 'fees',
+        disableSortBy: true,
+        Cell: ({ value }) => convertTezos(value),
       },
       {
         Header: '# of endorsements',
@@ -50,72 +71,13 @@ export const Blocks = () => {
   );
   const data = useMemo(() => blocks, [blocks]);
 
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable(
-      {
-        columns,
-        data,
-      },
-      useSortBy,
-    );
-
   return (
     <>
       <Crumbs />
       <h2 className={styles.title}>Blocks</h2>
       <div className={styles.list}>
         <div className={styles.table}>
-          <table {...getTableProps()} className={styles.table}>
-            <thead>
-              {headerGroups.map((headerGroup) => (
-                <tr {...headerGroup.getHeaderGroupProps()}>
-                  {headerGroup.headers.map((column) => {
-                    if (!column.canSort) {
-                      return (
-                        <th {...column.getHeaderProps()}>
-                          {column.render('Header')}
-                        </th>
-                      );
-                    }
-                    const className = column.isSorted
-                      ? column.isSortedDesc
-                        ? `${styles.active} ${styles.down}`
-                        : `${styles.active} ${styles.up}`
-                      : ` ${styles.dormant} ${styles.up}`;
-                    return (
-                      <th
-                        {...column.getHeaderProps()}
-                        onClick={() =>
-                          column.toggleSortBy(!column.isSortedDesc)
-                        }
-                      >
-                        <div className={styles.container}>
-                          <span className={styles.blue}>
-                            {column.render('Header')}
-                          </span>
-                          <span className={className} />
-                        </div>
-                      </th>
-                    );
-                  })}
-                </tr>
-              ))}
-            </thead>
-            <tbody {...getTableBodyProps()}>
-              {rows.map((row) => {
-                prepareRow(row);
-                return (
-                  <tr {...row.getRowProps()}>
-                    {row.cells.map((cell) => {
-                      return (
-                        <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
-                      );
-                    })}
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+          <Table columns={columns} data={data} />
         </div>
         <div className={styles.pagination}>
           <BlocksPagination />

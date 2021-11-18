@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/interactive-supports-focus */
 /* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
 import React from 'react';
 import { useHistory } from 'react-router-dom';
@@ -36,8 +37,7 @@ export const CellLinkIcon = ({ src, name, alt, href }) => {
       : icon;
 
   return (
-    <td
-      className={styles.blue}
+    <div
       role='link'
       aria-label='link'
       onClick={() => history.push(`/home/blocks/${href}`)}
@@ -52,9 +52,9 @@ export const CellLinkIcon = ({ src, name, alt, href }) => {
           }}
           alt={alt}
         />
-        <span>{name || 'tezos backer'}</span>
+        <span style={{ color: 'blue' }}>{name || 'tezos backer'}</span>
       </div>
-    </td>
+    </div>
   );
 };
 CellLinkIcon.propTypes = {

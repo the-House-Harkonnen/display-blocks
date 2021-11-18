@@ -20,15 +20,7 @@
 }
 
 .table {
-    width: 100%;
     overflow: scroll;
-    td{
-        padding: 5px;
-    }
-    th{
-        padding: 5px;
-        text-align: left;
-    }
 }
 
 
@@ -48,30 +40,3 @@
     color: #D9DF;
 }
 
-.up{
-    position: relative;
-    &::after{
-      content: '';
-      position: absolute;
-      display: block;
-      border: 7px solid transparent; border-top: 7px solid currentColor;
-      transform: translateY(-20%);
-      left: 8px;
-      top: 0;
-    }
-
-}
-
-.down{
-    position: relative;
-&::after{
-  content: '';
-  position: absolute;
-  display: block;
-  border: 7px solid transparent; border-bottom: 7px solid currentColor;
-  transform: translateY(-80%);
-  left: 8px;
-  top: 0;
-}
-
-}

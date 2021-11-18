@@ -1,4 +1,4 @@
 import dayjs from 'dayjs';
 
-export const timeFormatHandler = (num) =>
+export const convertTimestamp = (num) =>
   dayjs.unix(num).format('YYYY.MM.DD  HH:mm:ss');
