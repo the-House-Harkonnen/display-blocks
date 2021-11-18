@@ -1,11 +1,12 @@
 @import './../../styles/index.scss';
 
-.container{
+.container {
   display: grid;
   font-family: $f-family;
 
 }
-.head{
+
+.head {
   margin-bottom: 62px;
   display: grid;
   justify-content: center;
@@ -16,7 +17,7 @@
   text-align: center;
 }
 
-.btn{
+.btn {
   background-color: transparent;
   font-size: 40px;
   font-weight: 700;
@@ -26,33 +27,30 @@
   border: none;
   cursor: pointer;
 }
-h2{
+
+h2 {
   width: fit-content;
   font-size: 32px;
-  line-height: 39,01px;
+  line-height: 39, 01px;
 }
 
-.table{
+.table {
   border-radius: 30px;
   background-color: #fff;
   padding: 48px 25px;
   display: grid;
   border: 5px solid #D9DFF8;
-  grid-template-columns: repeat(2, minmax(436px, 1fr));
-    @include media(992px) {
-    grid-template-columns: minmax(min-content, 547px);
-    justify-content: start;
-    grid-gap: 0;  
-  }
 }
-.row{
-  display: grid;
-  grid-template-columns: 180px 1fr;
-  word-break: break-all;
-  line-height: 32px;
-  div:nth-child(2){
-    font-weight: 600;
+
+
+.loader {
+  @include media(1600px) {
+    display: grid;
+    width: 100%;
   }
 
+  @include media(992px) {
+    grid-column: 1/2;
+  }
 
 }

@@ -5,13 +5,14 @@ import { BlocksPagination } from '../../components/BlocksPagination/BlocksPagina
 import { CellLinkIcon } from '../../components/Cell/Cell';
 import { Crumbs } from '../../components/Crumbs';
 import { Table } from '../../components/Table/Table';
+import { Spinner } from '../../components/Spinner';
 import { useBlocksContext } from '../../context/blocksContext';
 import { convertTezos } from '../../utils/convertTezos';
 import { convertTimestamp } from '../../utils/convertTimestamp';
 import styles from './Blocks.module.scss';
 
 export const Blocks = () => {
-  const { blocks } = useBlocksContext();
+  const { blocks, isFetching } = useBlocksContext();
 
   const columns = useMemo(
     () => [
@@ -76,9 +77,13 @@ export const Blocks = () => {
       <Crumbs />
       <h2 className={styles.title}>Blocks</h2>
       <div className={styles.list}>
-        <div className={styles.table}>
-          <Table columns={columns} data={data} />
-        </div>
+        {isFetching ? (
+          <Spinner />
+        ) : (
+          <div className={styles.table}>
+            <Table columns={columns} data={data} />
+          </div>
+        )}
         <div className={styles.pagination}>
           <BlocksPagination />
         </div>

@@ -4,6 +4,6 @@ import styles from './Spinner.module.scss';
 
 export const Spinner = () => (
   <div className={styles.loader}>
-    <Loader type='Puff' color='#ffff' height={100} width={100} />
+    <Loader type='TailSpin' color='#00BFFF' height={100} width={100} />
   </div>
 );
