@@ -1,0 +1,25 @@
+@import './../../styles/index.scss';
+.row{
+    grid-column: 1/3;
+    display: grid;
+    row-gap: 11px;
+    grid-template-columns: repeat(2, minmax(436px, 1fr));
+  
+    @include media(992px) {
+      grid-template-columns: minmax(min-content, 1fr);
+      justify-content: start;
+      grid-gap: 0;
+    }
+  }
+  
+  
+  .tr {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    line-height: 32px;
+  }
+  
+  .td {
+    font-weight: 600;
+    word-break: break-all;
+  }

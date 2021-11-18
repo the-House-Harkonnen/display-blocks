@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
-import { useMemo } from 'react/cjs/react.development';
 import styles from './Block.module.scss';
 import { CellIcon } from '../../components/Cell';
 import { Crumbs } from '../../components/Crumbs/Crumbs';
 import { useSingleBlockContext } from '../../context/singleBlockContext';
 import { Spinner } from '../../components/Spinner';
+import { BlockTable } from '../../components/BlockTable';
 
 export const Block = () => {
   const initialLocation = useLocation().pathname.split('/').pop(-1);
@@ -45,8 +45,6 @@ export const Block = () => {
           header: 'Transactions volume:',
           process: (data) => <div>{data.volume}</div>,
         },
-      ],
-      [
         {
           header: 'Block time:',
           process: (data) => <div>{data.blockTime}</div>,
@@ -101,21 +99,7 @@ export const Block = () => {
             <Spinner />
           </div>
         ) : (
-          columnGroups.map((group, i) => {
-            const key = `group-key-${i}`;
-            return (
-              <div key={key} className={styles.row}>
-                {group.map((column) => {
-                  return (
-                    <tr className={styles.tr} key={column.header}>
-                      <div className={styles.th}>{column.header}</div>
-                      <div className={styles.td}>{column.process(block)}</div>
-                    </tr>
-                  );
-                })}
-              </div>
-            );
-          })
+          <BlockTable cols={columnGroups} data={block} />
         )}
       </div>
     </div>

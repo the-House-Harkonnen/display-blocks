@@ -40,43 +40,8 @@ h2 {
   padding: 48px 25px;
   display: grid;
   border: 5px solid #D9DFF8;
-
-  grid-template-columns: repeat(2, minmax(436px, 1fr));
-
-  @include media(992px) {
-    grid-template-columns: minmax(min-content, 1fr);
-    justify-content: start;
-    grid-gap: 0;
-  }
 }
 
-.row {
-  display: grid;
-  grid-template-rows: repeat(6, auto);
-  column-gap: 53px;
-
-  @include media(1600px) {
-    grid-template-rows: 1fr 1fr 1fr 2fr 1fr 1fr;
-  }
-
-  @include media(992px) {
-    grid-template-rows: repeat(6, auto);
-    max-width: 535px;
-
-  }
-
-}
-
-.tr {
-  display: grid;
-  grid-template-columns: 220px 1fr;
-  line-height: 32px;
-}
-
-.td {
-  font-weight: 600;
-  word-break: break-all;
-}
 
 .loader {
   @include media(1600px) {
