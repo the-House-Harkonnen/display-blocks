@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useMemo } from 'react/cjs/react.development';
 import styles from './Block.module.scss';
 import { CellIcon } from '../../components/Cell';
 import { Crumbs } from '../../components/Crumbs/Crumbs';
-import { filtrBlockData } from './BlockUtils/filterBlockData';
-import { Spinner } from '../../components/Spinner';
 import { useSingleBlockContext } from '../../context/singleBlockContext';
+import { Spinner } from '../../components/Spinner';
 
 export const Block = () => {
   const initialLocation = useLocation().pathname.split('/').pop(-1);
@@ -16,8 +16,65 @@ export const Block = () => {
     setBlock(location);
   }, [location]);
 
-  if (isFetching) return <Spinner />;
-  const filtredBlock = filtrBlockData(block);
+  const columnGroups = useMemo(
+    () => [
+      [
+        {
+          header: 'Hash:',
+          process: (data) => <div>{data.level}</div>,
+        },
+        {
+          header: 'Created at:',
+          process: (data) => <div>{data.timestamp}</div>,
+        },
+        {
+          header: 'Baker:',
+          process: (data) => (
+            <CellIcon src={data.baker} name={data.bakerName} alt='Baker' />
+          ),
+        },
+        {
+          header: 'Baker`s fee:',
+          process: (data) => <div>{data.fees}</div>,
+        },
+        {
+          header: 'Baker`s priority:',
+          process: (data) => <div>{data.priority}</div>,
+        },
+        {
+          header: 'Transactions volume:',
+          process: (data) => <div>{data.volume}</div>,
+        },
+      ],
+      [
+        {
+          header: 'Block time:',
+          process: (data) => <div>{data.blockTime}</div>,
+        },
+        {
+          header: 'Block fitness:',
+          process: (data) => <div>{data.fitness}</div>,
+        },
+        {
+          header: 'Gas used:',
+          process: (data) => <div>{data.consumedGas}</div>,
+        },
+        {
+          header: 'Protocol version:',
+          process: (data) => <span>{data.protocol}</span>,
+        },
+        {
+          header: 'Cycle:',
+          process: (data) => <div>{data.metaCycle}</div>,
+        },
+        {
+          header: 'Cycle position:',
+          process: (data) => <div>{data.metaCyclePosition}</div>,
+        },
+      ],
+    ],
+    [block],
+  );
 
   return (
     <div className={styles.container}>
@@ -39,19 +96,27 @@ export const Block = () => {
         >{`>`}</button>
       </div>
       <div className={styles.table}>
-        {filtredBlock.map((row, i) => {
-          const blockRowKey = `blockRowKey-${i}`;
-          return (
-            <div className={styles.row} key={blockRowKey}>
-              <div className={styles.th}>{row[0]}</div>
-              {row[0] === 'Baker' ? (
-                <CellIcon src={block.baker} name={row[1]} alt={row[1]} />
-              ) : (
-                <div className={styles.td}>{row[1]}</div>
-              )}
-            </div>
-          );
-        })}
+        {isFetching ? (
+          <div className={styles.loader}>
+            <Spinner />
+          </div>
+        ) : (
+          columnGroups.map((group, i) => {
+            const key = `group-key-${i}`;
+            return (
+              <div key={key} className={styles.row}>
+                {group.map((column) => {
+                  return (
+                    <tr className={styles.tr} key={column.header}>
+                      <div className={styles.th}>{column.header}</div>
+                      <div className={styles.td}>{column.process(block)}</div>
+                    </tr>
+                  );
+                })}
+              </div>
+            );
+          })
+        )}
       </div>
     </div>
   );
