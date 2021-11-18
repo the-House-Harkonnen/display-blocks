@@ -23,7 +23,7 @@ const Main = () => {
         </Route>
         <Route exact path='/home/blocks' component={Blocks} />
         <Route exact path='/home/blocks/:blockId' component={Block} />
-        <Route exact path='/not-found' component={NotResponding} />
+        <Route exact path='*' component={NotResponding} />
       </Switch>
     </div>
   );
