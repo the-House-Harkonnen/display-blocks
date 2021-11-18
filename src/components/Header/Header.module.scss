@@ -3,8 +3,6 @@
 .header {
   padding: 20px 30px;
   background-color: $c-head-foot-l;
-  // display: grid;
-  // grid-template-columns: 72px 1fr;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -13,13 +11,14 @@
   top: 0;
   width: 100%;
   z-index: 3;
-  // gap: 20px;
-
-  // @media screen and (max-width: 1200px) {
-    // grid-column-gap: 104px;
-  // }
 
   &__nav {
     margin-left: auto;
+  }
+
+  &__btn {
+    @media screen and (min-width: 1200px) {
+    margin-left: 116px;
+    }
   }
 }
