@@ -6,7 +6,7 @@ import { CellLinkIcon } from '../../components/Cell/Cell';
 import { Crumbs } from '../../components/Crumbs';
 import { Table } from '../../components/Table/Table';
 import { Spinner } from '../../components/Spinner';
-import { useBlocksContext } from '../../context/blocksContext';
+import { useBlocksContext } from '../../contexts/blocksContext';
 import { convertTezos } from '../../utils/convertTezos';
 import { convertTimestamp } from '../../utils/convertTimestamp';
 import styles from './Blocks.module.scss';
