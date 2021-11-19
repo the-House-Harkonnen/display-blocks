@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, {
   createContext,
   useCallback,
@@ -22,12 +23,17 @@ export const BlocksProvider = ({ children }) => {
 
   const handleLimit = useCallback(
     (val) => {
-      setLimit(val);
+      setLimit(Number(val));
       setOffset(0);
     },
     [setLimit, setOffset],
   );
-  const handleOffset = useCallback((val) => setOffset(val), [setOffset]);
+  const handleOffset = useCallback(
+    (val) => {
+      setOffset(val);
+    },
+    [setOffset],
+  );
 
   const blocksContextValue = useMemo(
     () => ({
