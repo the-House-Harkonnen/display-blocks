@@ -3,7 +3,7 @@ import { useLocation, useHistory } from 'react-router-dom';
 import styles from './Block.module.scss';
 import { CellIcon } from '../../components/Cell';
 import { Crumbs } from '../../components/Crumbs/Crumbs';
-import { useSingleBlockContext } from '../../context/singleBlockContext';
+import { useSingleBlockContext } from '../../contexts/singleBlockContext';
 import { Spinner } from '../../components/Spinner';
 import { BlockTable } from '../../components/BlockTable';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { HashRouter as Router } from 'react-router-dom';
-import { BlocksProvider } from '../../context/blocksContext';
-import { SingleBlocksProvider } from '../../context/singleBlockContext';
+import { BlocksProvider } from '../../contexts/blocksContext';
+import { SingleBlocksProvider } from '../../contexts/singleBlockContext';
 import Footer from '../Footer';
 import Header from '../Header/Header';
 import Main from '../Main';
