@@ -1,9 +1,7 @@
-/* eslint-disable no-console */
 import React from 'react';
 import styles from './BlockTable.module.scss';
 
 export const BlockTable = ({ cols, data }) => {
-  console.log(data);
   return cols.map((group, i) => {
     const key = `group-key-${i}`;
     return (

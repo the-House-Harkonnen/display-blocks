@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useMemo } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useEffect, useMemo } from 'react';
+import { useLocation, useHistory } from 'react-router-dom';
 import styles from './Block.module.scss';
 import { CellIcon } from '../../components/Cell';
 import { Crumbs } from '../../components/Crumbs/Crumbs';
@@ -8,12 +8,14 @@ import { Spinner } from '../../components/Spinner';
 import { BlockTable } from '../../components/BlockTable';
 
 export const Block = () => {
-  const initialLocation = useLocation().pathname.split('/').pop(-1);
-  const [location, setLocation] = useState(initialLocation);
+  const location = useLocation().pathname;
+  const currentBlockNumber = location.split('/').pop(-1);
   const { block, isFetching, setBlock } = useSingleBlockContext();
+  const history = useHistory();
+  const handlePage = (val) => history.push(location.replace(/[^\\/]*$/, val));
 
   useEffect(() => {
-    setBlock(location);
+    setBlock(currentBlockNumber);
   }, [location]);
 
   const columnGroups = useMemo(
@@ -81,16 +83,16 @@ export const Block = () => {
         <button
           className={styles.btn}
           type='button'
-          onClick={() => setLocation((prev) => Number(prev) - 1)}
+          onClick={() => handlePage(currentBlockNumber - 1)}
         >{`<`}</button>
         <hgroup>
-          <h2 className={styles.title}>Block: {location} </h2>
+          <h2 className={styles.title}>Block: {currentBlockNumber} </h2>
           <span className={styles.subtitle}>block information</span>
         </hgroup>
         <button
           type='button'
           className={styles.btn}
-          onClick={() => setLocation((prev) => Number(prev) + 1)}
+          onClick={() => handlePage(Number(currentBlockNumber) + 1)}
         >{`>`}</button>
       </div>
       <div className={styles.table}>
