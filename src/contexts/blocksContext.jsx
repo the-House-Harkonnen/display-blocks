@@ -1,25 +1,26 @@
-/* eslint-disable no-console */
 import React, {
   createContext,
   useCallback,
   useContext,
-  useEffect,
   useMemo,
   useState,
 } from 'react';
 import PropTypes from 'prop-types';
 import { getBlocks } from '../api';
+import { useRequest } from '../hooks/useRequest';
 
 const BlocksContext = createContext();
 export const useBlocksContext = () => useContext(BlocksContext);
 
 export const BlocksProvider = ({ children }) => {
   const [limit, setLimit] = useState(10);
-  const [blocks, setBlocks] = useState([]);
   const [offset, setOffset] = useState(0);
-  const [totalCount, setTotalCount] = useState(0);
-  const [isFetching, setIsFetching] = useState(true);
-  const [isError, setIsError] = useState(false);
+
+  const [data, loading, error] = useRequest(
+    getBlocks,
+    [offset, limit],
+    [offset, limit],
+  );
 
   const handleLimit = useCallback(
     (val) => {
@@ -37,34 +38,17 @@ export const BlocksProvider = ({ children }) => {
 
   const blocksContextValue = useMemo(
     () => ({
-      blocks,
+      blocks: data?.blocks,
       limit,
       offset,
-      totalCount,
-      isFetching,
-      isError,
+      totalCount: data?.totalCount,
+      isFetching: loading,
+      isError: error,
       handleLimit,
       handleOffset,
     }),
-    [blocks, isError, limit, offset, isFetching],
+    [data, error, limit, offset, loading],
   );
-
-  useEffect(() => {
-    const setData = async () => {
-      setIsFetching(true);
-      setIsError(false);
-      try {
-        const data = await getBlocks(offset, limit);
-        setBlocks(data.blocks);
-        setTotalCount(data.totalCount);
-      } catch (error) {
-        setIsError(true);
-      } finally {
-        setIsFetching(false);
-      }
-    };
-    setData();
-  }, [limit, offset]);
 
   return (
     <>

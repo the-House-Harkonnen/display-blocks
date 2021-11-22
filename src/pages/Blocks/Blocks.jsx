@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
 import React, { useMemo } from 'react';
@@ -13,7 +14,6 @@ import styles from './Blocks.module.scss';
 
 export const Blocks = () => {
   const { blocks, isFetching } = useBlocksContext();
-
   const columns = useMemo(
     () => [
       {
