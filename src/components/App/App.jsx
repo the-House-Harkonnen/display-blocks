@@ -1,4 +1,7 @@
 import React from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import { HashRouter as Router } from 'react-router-dom';
 import { BlocksProvider } from '../../contexts/blocksContext';
 import { SingleBlocksProvider } from '../../contexts/singleBlockContext';
@@ -17,6 +20,7 @@ export const App = () => (
           <Footer />
         </SingleBlocksProvider>
       </BlocksProvider>
+      <ToastContainer />
     </Router>
   </div>
 );

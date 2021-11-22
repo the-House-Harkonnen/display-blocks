@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
 import React, { useMemo } from 'react';
