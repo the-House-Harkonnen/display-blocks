@@ -18,5 +18,5 @@ export const getBlocks = async (offset = 0, limit = 10) => {
 
 export const getBlock = async (hash) => {
   const response = await instance.get(`/${NETWORK}/blocks/${hash}`);
-  return response.data;
+  return response.data.block;
 };
