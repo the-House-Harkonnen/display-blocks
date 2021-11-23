@@ -1,12 +1,17 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import Logo from '../Logo';
+import { useThemeContext } from '../../contexts/themeContext';
 import styles from './Footer.module.scss';
 
 // eslint-disable-next-line arrow-body-style
 const Footer = () => {
+  const [{ theme }] = useThemeContext();
   return (
-    <div className={styles.footer}>
+    <div
+      className={styles.footer}
+      style={{ backgroundColor: theme.backgroundColor }}
+    >
       <div className={styles.footer__links}>
         <div className={styles.footer__group}>
           <a className={styles.footer__item} href='#'>

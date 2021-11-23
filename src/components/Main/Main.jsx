@@ -1,19 +1,29 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { Block } from '../../pages/Block';
-
 import { Blocks } from '../../pages/Blocks';
 import NotResponding from '../../pages/NotResponding';
+import { useThemeContext } from '../../contexts/themeContext';
 
 import styles from './Main.module.scss';
-import background from '../../imgs/background.png';
 
 const Main = () => {
-  const style = {
-    backgroundImage: `url(${background})`,
-  };
+  const [{ theme, isDark }, toggleTheme] = useThemeContext();
   return (
-    <div className={styles.main} style={style}>
+    <div
+      className={styles.main}
+      style={{ backgroundColor: theme.mainBackground }}
+    >
+      <div className={styles.toggle}>
+        <button
+          className={styles.toggle__btn}
+          style={{ backgroundColor: theme.toggleBtn }}
+          type='button'
+          onClick={toggleTheme}
+        >
+          {isDark ? '🌞' : '🌜'}
+        </button>
+      </div>
       <Switch>
         <Route exact path='/'>
           <Redirect to='/home/blocks' />

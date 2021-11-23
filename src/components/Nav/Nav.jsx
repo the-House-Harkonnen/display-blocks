@@ -10,7 +10,6 @@ import {
   UserIcon,
   BurgerIcon,
 } from '../Icons/Icons';
-// import LoginBtn from '../LoginBtn';
 import styles from './Nav.module.scss';
 
 const Nav = () => {
@@ -103,7 +102,6 @@ const Nav = () => {
             </p>
           </div>
         </nav>
-        {/* <LoginBtn /> */}
       </div>
     </>
   );

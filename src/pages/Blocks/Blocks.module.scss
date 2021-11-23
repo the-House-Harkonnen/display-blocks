@@ -8,13 +8,10 @@
     line-height: 39px;
     letter-spacing: 0em;
     text-align: left;
-
 }
 
 .list {
-    background-color: white;
     border-radius: 30px;
-    border: 5px solid #D9DFF8;
     display: grid;
     padding: 25px;
     // make the element as relative for loader component
@@ -34,13 +31,19 @@
 .container {
     display: flex;
     align-items: center;
-    color: #536DFB;
+    // color: #536DFB;
+  }
+.active{
+   color:  #536DFB;
+}
+// .dormant{
+//     color: #D9DF;
+// }
+
+.blue {
+    color:  #536DFB;
 }
 
-.active {
-    color: #536DFB;
-}
-
-.dormant {
-    color: #D9DF;
+.red {
+    color: red;
 }

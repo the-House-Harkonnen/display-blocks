@@ -5,22 +5,31 @@ import 'react-toastify/dist/ReactToastify.css';
 import { HashRouter as Router } from 'react-router-dom';
 import { BlocksProvider } from '../../contexts/blocksContext';
 import { SingleBlocksProvider } from '../../contexts/singleBlockContext';
+import { ThemeProvider } from '../../contexts/themeContext';
 import Footer from '../Footer';
 import Header from '../Header/Header';
 import Main from '../Main';
 import styles from './App.module.scss';
 
-export const App = () => (
-  <div className={styles.app}>
-    <Router>
-      <BlocksProvider>
-        <SingleBlocksProvider>
-          <Header />
-          <Main />
-          <Footer />
-        </SingleBlocksProvider>
-      </BlocksProvider>
-      <ToastContainer />
-    </Router>
-  </div>
-);
+export const App = () => {
+  // const { theme } = useThemeContext();
+  return (
+    <div
+      className={styles.app}
+      // style={{ backgroundColor: theme.backgroundColor }}
+    >
+      <Router>
+        <ThemeProvider>
+          <BlocksProvider>
+            <SingleBlocksProvider>
+              <Header />
+              <Main />
+              <Footer />
+            </SingleBlocksProvider>
+          </BlocksProvider>
+          <ToastContainer />
+        </ThemeProvider>
+      </Router>
+    </div>
+  );
+};

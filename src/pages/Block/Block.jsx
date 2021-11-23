@@ -6,11 +6,13 @@ import { Crumbs } from '../../components/Crumbs/Crumbs';
 import { useSingleBlockContext } from '../../contexts/singleBlockContext';
 import { BlockTable } from '../../components/BlockTable';
 import { Loader } from '../../components/Loader';
+import { useThemeContext } from '../../contexts/themeContext';
 
 export const Block = () => {
   const location = useLocation().pathname;
   const currentBlockNumber = location.split('/').pop(-1);
   const { block, isFetching, setBlock } = useSingleBlockContext();
+  const [{ theme }] = useThemeContext();
   const history = useHistory();
   const handlePage = (val) => history.push(location.replace(/[^\\/]*$/, val));
 
@@ -82,20 +84,46 @@ export const Block = () => {
       <div className={styles.head}>
         <button
           className={styles.btn}
+          style={{
+            color: theme.color,
+          }}
           type='button'
           onClick={() => handlePage(currentBlockNumber - 1)}
         >{`<`}</button>
         <hgroup>
-          <h2 className={styles.title}>Block: {currentBlockNumber} </h2>
-          <span className={styles.subtitle}>block information</span>
+          <h2
+            className={styles.title}
+            style={{
+              color: theme.color,
+            }}
+          >
+            Block: {currentBlockNumber}{' '}
+          </h2>
+          <span
+            className={styles.subtitle}
+            style={{
+              color: theme.color,
+            }}
+          >
+            block information
+          </span>
         </hgroup>
         <button
           type='button'
           className={styles.btn}
+          style={{
+            color: theme.color,
+          }}
           onClick={() => handlePage(Number(currentBlockNumber) + 1)}
         >{`>`}</button>
       </div>
-      <div className={styles.table}>
+      <div
+        className={styles.table}
+        style={{
+          backgroundColor: theme.tableBackground,
+          border: theme.tableBorder,
+        }}
+      >
         {isFetching && <Loader />}
         {block && <BlockTable cols={columnGroups} data={block} />}
       </div>
