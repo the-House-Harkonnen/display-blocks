@@ -1,0 +1,55 @@
+.row {
+    display: grid;
+    grid-auto-flow: row;
+    grid-row-gap: 14px;
+}
+
+.border {
+    padding: 20px 24px;
+    border: solid 1px #D9DFF8;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    border-radius: 10px;
+}
+
+.input {
+    width: 100%;
+    border: none;
+
+    font-family: Montserrat;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+.icon{
+    border: none;
+    background-color: transparent;
+}
+
+.bottom {
+    padding-top: 4px;
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: space-between;
+}
+
+.error {
+    color: #FF3B30;
+}
+
+.help {
+    background-color: transparent;
+    border: none;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #2D3B5999;
+
+}
