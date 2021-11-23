@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
 import React, { useMemo } from 'react';
@@ -10,6 +12,8 @@ import { useBlocksContext } from '../../contexts/blocksContext';
 import { convertTezos } from '../../utils/convertTezos';
 import { convertTimestamp } from '../../utils/convertTimestamp';
 import styles from './Blocks.module.scss';
+import loaderIcon from '../../imgs/loaderIcon.svg';
+import { Loader } from '../../components/Loader';
 
 export const Blocks = () => {
   const { blocks, isFetching } = useBlocksContext();
@@ -70,15 +74,14 @@ export const Blocks = () => {
     [blocks],
   );
   const data = useMemo(() => blocks, [blocks]);
-
+  console.log(blocks);
   return (
     <>
       <Crumbs />
       <h2 className={styles.title}>Blocks</h2>
       <div className={styles.list}>
-        {isFetching ? (
-          <Spinner />
-        ) : (
+        {isFetching && <Loader />}
+        {blocks && (
           <div className={styles.table}>
             <Table columns={columns} data={data} />
           </div>

@@ -3,7 +3,6 @@
 .container {
   display: grid;
   font-family: $f-family;
-
 }
 
 .head {
@@ -40,8 +39,9 @@ h2 {
   padding: 48px 25px;
   display: grid;
   border: 5px solid #D9DFF8;
+  // add relative position for loader
+  position: relative;
 }
-
 
 .loader {
   @include media(1600px) {
