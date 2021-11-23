@@ -25,11 +25,13 @@ export const Block = () => {
       [
         {
           header: 'Hash:',
-          process: (data) => <div>{data.level}</div>,
+          process: (data) => <div className={styles.item}>{data.level}</div>,
         },
         {
           header: 'Created at:',
-          process: (data) => <div>{data.timestamp}</div>,
+          process: (data) => (
+            <div className={styles.item}>{data.timestamp}</div>
+          ),
         },
         {
           header: 'Baker:',
@@ -39,39 +41,49 @@ export const Block = () => {
         },
         {
           header: 'Baker`s fee:',
-          process: (data) => <div>{data.fees}</div>,
+          process: (data) => <div className={styles.item}>{data.fees}</div>,
         },
         {
           header: 'Baker`s priority:',
-          process: (data) => <div>{data.priority}</div>,
+          process: (data) => <div className={styles.item}>{data.priority}</div>,
         },
         {
           header: 'Transactions volume:',
-          process: (data) => <div>{data.volume}</div>,
+          process: (data) => <div className={styles.item}>{data.volume}</div>,
         },
         {
           header: 'Block time:',
-          process: (data) => <div>{data.blockTime}</div>,
+          process: (data) => (
+            <div className={styles.item}>{data.blockTime}</div>
+          ),
         },
         {
           header: 'Block fitness:',
-          process: (data) => <div>{data.fitness}</div>,
+          process: (data) => <div className={styles.item}>{data.fitness}</div>,
         },
         {
           header: 'Gas used:',
-          process: (data) => <div>{data.consumedGas}</div>,
+          process: (data) => (
+            <div className={styles.item}>{data.consumedGas}</div>
+          ),
         },
         {
           header: 'Protocol version:',
-          process: (data) => <span>{data.protocol}</span>,
+          process: (data) => (
+            <span className={styles.item}>{data.protocol}</span>
+          ),
         },
         {
           header: 'Cycle:',
-          process: (data) => <div>{data.metaCycle}</div>,
+          process: (data) => (
+            <div className={styles.item}>{data.metaCycle}</div>
+          ),
         },
         {
           header: 'Cycle position:',
-          process: (data) => <div>{data.metaCyclePosition}</div>,
+          process: (data) => (
+            <div className={styles.item}>{data.metaCyclePosition}</div>
+          ),
         },
       ],
     ],

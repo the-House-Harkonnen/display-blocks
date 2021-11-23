@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
 import React, { useMemo } from 'react';
 import { BlocksPagination } from '../../components/BlocksPagination/BlocksPagination';
@@ -26,14 +27,7 @@ export const Blocks = () => {
         accessor: 'timestamp',
         // eslint-disable-next-line react/prop-types
         Cell: ({ value }) => (
-          <span
-            // style={{
-            //   color: theme.color,
-            // }}
-            className={styles.red}
-          >
-            {convertTimestamp(value)}
-          </span>
+          <span className={styles.span}>{convertTimestamp(value)}</span>
         ),
       },
       {

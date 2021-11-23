@@ -19,7 +19,14 @@ export const BlockTable = ({ cols, data }) => {
               >
                 {column.header}
               </div>
-              <div className={styles.td}>{column.process(data)}</div>
+              <div
+                className={styles.td}
+                style={{
+                  color: theme.color,
+                }}
+              >
+                {column.process(data)}
+              </div>
             </div>
           );
         })}
