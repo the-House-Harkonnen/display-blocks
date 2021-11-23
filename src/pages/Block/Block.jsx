@@ -7,6 +7,7 @@ import { useSingleBlockContext } from '../../contexts/singleBlockContext';
 import { BlockTable } from '../../components/BlockTable';
 import { Loader } from '../../components/Loader';
 import { useThemeContext } from '../../contexts/themeContext';
+import { convertTimestamp } from '../../utils/convertTimestamp';
 
 export const Block = () => {
   const location = useLocation().pathname;
@@ -25,74 +26,67 @@ export const Block = () => {
       [
         {
           header: 'Hash:',
+          accessor: 'operationsHash',
           process: (data) => (
-            <div
-              className={styles.item}
-              // style={{
-              //   color: theme.color,
-              // }}
-            >
-              {data.level}
-            </div>
+            <div className={styles.item}>{data.operationsHash}</div>
           ),
         },
         {
           header: 'Created at:',
+          accessor: 'timestamp',
           process: (data) => (
-            <div className={styles.item}>{data.timestamp}</div>
+            <div className={styles.item}>
+              {convertTimestamp(data.timestamp)}
+            </div>
           ),
         },
         {
           header: 'Baker:',
+          accessor: 'bakerName',
           process: (data) => (
             <CellIcon src={data.baker} name={data.bakerName} alt='Baker' />
           ),
         },
         {
           header: 'Baker`s fee:',
-          process: (data) => <div className={styles.item}>{data.fees}</div>,
+          accessor: 'fees',
+          process: (data) => <div>{data.fees}</div>,
         },
         {
           header: 'Baker`s priority:',
-          process: (data) => <div className={styles.item}>{data.priority}</div>,
+          accessor: 'priority',
         },
         {
           header: 'Transactions volume:',
-          process: (data) => <div className={styles.item}>{data.volume}</div>,
+          accessor: 'volume',
         },
         {
           header: 'Block time:',
-          process: (data) => (
-            <div className={styles.item}>{data.blockTime}</div>
-          ),
+          accessor: 'blockTime',
+          process: (data) => <div>{data.blockTime} sec</div>,
         },
         {
           header: 'Block fitness:',
-          process: (data) => <div className={styles.item}>{data.fitness}</div>,
+          accessor: 'fitness',
         },
         {
           header: 'Gas used:',
+          accessor: 'consumedGas',
           process: (data) => (
             <div className={styles.item}>{data.consumedGas}</div>
           ),
         },
         {
           header: 'Protocol version:',
-          process: (data) => (
-            <span className={styles.item}>{data.protocol}</span>
-          ),
+          accessor: 'protocol',
         },
         {
           header: 'Cycle:',
-          process: (data) => (
-            <div className={styles.item}>{data.metaCycle}</div>
-          ),
+          accessor: 'metaCycle',
         },
         {
           header: 'Cycle position:',
-          process: (data) => (
-            <div className={styles.item}>{data.metaCyclePosition}</div>
-          ),
+          accessor: 'metaCyclePosition',
         },
       ],
     ],
