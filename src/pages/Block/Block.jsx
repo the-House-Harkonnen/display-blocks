@@ -4,8 +4,8 @@ import styles from './Block.module.scss';
 import { CellIcon } from '../../components/Cell';
 import { Crumbs } from '../../components/Crumbs/Crumbs';
 import { useSingleBlockContext } from '../../contexts/singleBlockContext';
-import { Spinner } from '../../components/Spinner';
 import { BlockTable } from '../../components/BlockTable';
+import { Loader } from '../../components/Loader';
 
 export const Block = () => {
   const location = useLocation().pathname;
@@ -96,13 +96,8 @@ export const Block = () => {
         >{`>`}</button>
       </div>
       <div className={styles.table}>
-        {isFetching ? (
-          <div className={styles.loader}>
-            <Spinner />
-          </div>
-        ) : (
-          <BlockTable cols={columnGroups} data={block} />
-        )}
+        {isFetching && <Loader />}
+        {block && <BlockTable cols={columnGroups} data={block} />}
       </div>
     </div>
   );

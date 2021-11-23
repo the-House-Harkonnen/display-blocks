@@ -17,6 +17,8 @@
     border: 5px solid #D9DFF8;
     display: grid;
     padding: 25px;
+    // make the element as relative for loader component
+    position: relative;
 }
 
 .table {
@@ -28,15 +30,17 @@
     justify-self: flex-end;
     width: 100%;
 }
-.container{
+
+.container {
     display: flex;
     align-items: center;
     color: #536DFB;
-  }
-.active{
-   color:  #536DFB;
-}
-.dormant{
-    color: #D9DF;
 }
 
+.active {
+    color: #536DFB;
+}
+
+.dormant {
+    color: #D9DF;
+}
