@@ -1,8 +1,9 @@
 @import '../../styles/variable.scss';
 
 .header {
+  transition: background 0.2s linear;
   padding: 20px 30px;
-  background-color: $c-head-foot-l;
+  // background-color: $c-head-foot-l;
   display: flex;
   justify-content: space-between;
   align-items: center;

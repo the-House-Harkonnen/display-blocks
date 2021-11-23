@@ -6,7 +6,8 @@
   padding: 30px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  background-color: $c-head-foot-l;
+  // background-color: $c-head-foot-l;
+  transition: background 0.2s linear;
   color: #fff;
   grid-row-gap: 20px;
 

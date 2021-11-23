@@ -6,11 +6,13 @@ import { Crumbs } from '../../components/Crumbs/Crumbs';
 import { useSingleBlockContext } from '../../contexts/singleBlockContext';
 import { BlockTable } from '../../components/BlockTable';
 import { Loader } from '../../components/Loader';
+import { useThemeContext } from '../../contexts/themeContext';
 
 export const Block = () => {
   const location = useLocation().pathname;
   const currentBlockNumber = location.split('/').pop(-1);
   const { block, isFetching, setBlock } = useSingleBlockContext();
+  const [{ theme }] = useThemeContext();
   const history = useHistory();
   const handlePage = (val) => history.push(location.replace(/[^\\/]*$/, val));
 
@@ -23,11 +25,22 @@ export const Block = () => {
       [
         {
           header: 'Hash:',
-          process: (data) => <div>{data.level}</div>,
+          process: (data) => (
+            <div
+              className={styles.item}
+              // style={{
+              //   color: theme.color,
+              // }}
+            >
+              {data.level}
+            </div>
+          ),
         },
         {
           header: 'Created at:',
-          process: (data) => <div>{data.timestamp}</div>,
+          process: (data) => (
+            <div className={styles.item}>{data.timestamp}</div>
+          ),
         },
         {
           header: 'Baker:',
@@ -37,39 +50,49 @@ export const Block = () => {
         },
         {
           header: 'Baker`s fee:',
-          process: (data) => <div>{data.fees}</div>,
+          process: (data) => <div className={styles.item}>{data.fees}</div>,
         },
         {
           header: 'Baker`s priority:',
-          process: (data) => <div>{data.priority}</div>,
+          process: (data) => <div className={styles.item}>{data.priority}</div>,
         },
         {
           header: 'Transactions volume:',
-          process: (data) => <div>{data.volume}</div>,
+          process: (data) => <div className={styles.item}>{data.volume}</div>,
         },
         {
           header: 'Block time:',
-          process: (data) => <div>{data.blockTime}</div>,
+          process: (data) => (
+            <div className={styles.item}>{data.blockTime}</div>
+          ),
         },
         {
           header: 'Block fitness:',
-          process: (data) => <div>{data.fitness}</div>,
+          process: (data) => <div className={styles.item}>{data.fitness}</div>,
         },
         {
           header: 'Gas used:',
-          process: (data) => <div>{data.consumedGas}</div>,
+          process: (data) => (
+            <div className={styles.item}>{data.consumedGas}</div>
+          ),
         },
         {
           header: 'Protocol version:',
-          process: (data) => <span>{data.protocol}</span>,
+          process: (data) => (
+            <span className={styles.item}>{data.protocol}</span>
+          ),
         },
         {
           header: 'Cycle:',
-          process: (data) => <div>{data.metaCycle}</div>,
+          process: (data) => (
+            <div className={styles.item}>{data.metaCycle}</div>
+          ),
         },
         {
           header: 'Cycle position:',
-          process: (data) => <div>{data.metaCyclePosition}</div>,
+          process: (data) => (
+            <div className={styles.item}>{data.metaCyclePosition}</div>
+          ),
         },
       ],
     ],
@@ -82,20 +105,46 @@ export const Block = () => {
       <div className={styles.head}>
         <button
           className={styles.btn}
+          style={{
+            color: theme.color,
+          }}
           type='button'
           onClick={() => handlePage(currentBlockNumber - 1)}
         >{`<`}</button>
         <hgroup>
-          <h2 className={styles.title}>Block: {currentBlockNumber} </h2>
-          <span className={styles.subtitle}>block information</span>
+          <h2
+            className={styles.title}
+            style={{
+              color: theme.color,
+            }}
+          >
+            Block: {currentBlockNumber}{' '}
+          </h2>
+          <span
+            className={styles.subtitle}
+            style={{
+              color: theme.color,
+            }}
+          >
+            block information
+          </span>
         </hgroup>
         <button
           type='button'
           className={styles.btn}
+          style={{
+            color: theme.color,
+          }}
           onClick={() => handlePage(Number(currentBlockNumber) + 1)}
         >{`>`}</button>
       </div>
-      <div className={styles.table}>
+      <div
+        className={styles.table}
+        style={{
+          backgroundColor: theme.tableBackground,
+          border: theme.tableBorder,
+        }}
+      >
         {isFetching && <Loader />}
         {block && <BlockTable cols={columnGroups} data={block} />}
       </div>

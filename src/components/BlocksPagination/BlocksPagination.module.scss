@@ -11,7 +11,7 @@
   text-align: left;
   align-items: flex-end;
   justify-content: flex-end;
-  color: #536DFB;
+  // color: #536DFB;
   @media screen and (max-width:992px) {
   justify-content: space-between;
   width: 100%;
@@ -23,40 +23,31 @@
 
   button {
     height: 18px;
-    background-color: #fff;
+    background-color: transparent;
     border: none;
     outline: none;
-    color: #536DFB;
-  }
-
-  .limit {
-    color: #536DFB;
   }
 
   .offset {
     display: grid;
     grid-auto-flow: column;
     column-gap: 8px;
-    color: #536DFB;
   }
 
-  select {
+  .select {
     -moz-appearance: none;
     /* Firefox */
     -webkit-appearance: none;
     /* Safari and Chrome */
     appearance: none;
-    background-color: #fff;
+    background-color: transparent;
     border: none;
     outline: none;
     padding-right: 10px;
     margin-left: 8px;
     z-index: 0;
-    color: white;
+    color: transparent;
     cursor: pointer;
-    option{
-      color: blue;
-    }
   }
 
   label {
@@ -67,7 +58,7 @@
       position: absolute;
       display: block;
       border: 7px solid transparent;
-      border-top: 7px solid #536DFB;
+      border-top: 7px solid;
       transform: translateY(40%);
       left: 12px;
       top: 0;

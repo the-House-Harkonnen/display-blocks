@@ -3,10 +3,11 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
+// import { useThemeContext } from '../../contexts/themeContext';
 import icon from '../../imgs/icon.png';
 import styles from './Cell.module.scss';
 
-export const CellTh = ({ str }) => <th className={styles.blue}>{str}</th>;
+export const CellTh = ({ str }) => <th>{str}</th>;
 CellTh.propTypes = {
   str: PropTypes.string.isRequired,
 };
@@ -15,7 +16,6 @@ export const CellLinkOption = ({ cell }) => {
   const history = useHistory();
   return (
     <td
-      className={styles.blue}
       role='link'
       aria-label='link'
       onClick={() => history.push(`/home/blocks/${cell}`)}
@@ -52,7 +52,7 @@ export const CellLinkIcon = ({ src, name, alt, href }) => {
           }}
           alt={alt}
         />
-        <span style={{ color: 'blue' }}>{name || 'tezos backer'}</span>
+        <span className={styles.blue}>{name || 'tezos backer'}</span>
       </div>
     </div>
   );
@@ -71,6 +71,7 @@ CellLinkIcon.defaultProps = {
 };
 
 export const CellIcon = ({ src, name, alt }) => {
+  // const [{ theme }] = useThemeContext();
   const url = src
     ? `https://teztracker.com/static/validators-logo/${src}.png`
     : icon;
@@ -112,7 +113,7 @@ export const CellSortOption = ({ str, sort, callBack }) => {
   return (
     <th onClick={() => callBack(action)} className={styles.cell}>
       <div className={styles.container}>
-        <span className={styles.blue}>{str}</span>
+        <span>{str}</span>
         <span className={className} />
       </div>
     </th>

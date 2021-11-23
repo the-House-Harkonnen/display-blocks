@@ -4,9 +4,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useSortBy, useTable } from 'react-table';
+import { useThemeContext } from '../../contexts/themeContext';
 import styles from './Table.module.scss';
 
 export const Table = ({ columns, data }) => {
+  const [{ theme }] = useThemeContext();
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable(
       {
@@ -24,7 +26,13 @@ export const Table = ({ columns, data }) => {
             {headerGroup.headers.map((column) => {
               if (!column.canSort) {
                 return (
-                  <th {...column.getHeaderProps()}>
+                  <th
+                    {...column.getHeaderProps()}
+                    className={styles.headers}
+                    style={{
+                      color: theme.tableHeaders,
+                    }}
+                  >
                     {column.render('Header')}
                   </th>
                 );
@@ -40,10 +48,19 @@ export const Table = ({ columns, data }) => {
                   onClick={() => column.toggleSortBy(!column.isSortedDesc)}
                 >
                   <div className={styles.container}>
-                    <span className={styles.blue}>
+                    <span
+                      style={{
+                        color: theme.tableHeaders,
+                      }}
+                    >
                       {column.render('Header')}
                     </span>
-                    <span className={className} />
+                    <span
+                      className={className}
+                      style={{
+                        color: theme.pagination,
+                      }}
+                    />
                   </div>
                 </th>
               );
@@ -57,7 +74,16 @@ export const Table = ({ columns, data }) => {
           return (
             <tr {...row.getRowProps()}>
               {row.cells.map((cell) => {
-                return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>;
+                return (
+                  <td
+                    {...cell.getCellProps()}
+                    style={{
+                      color: theme.color,
+                    }}
+                  >
+                    {cell.render('Cell')}
+                  </td>
+                );
               })}
             </tr>
           );

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
 import React, { useMemo } from 'react';
 import { BlocksPagination } from '../../components/BlocksPagination/BlocksPagination';
@@ -7,25 +8,26 @@ import { Table } from '../../components/Table/Table';
 import { useBlocksContext } from '../../contexts/blocksContext';
 import { convertTezos } from '../../utils/convertTezos';
 import { convertTimestamp } from '../../utils/convertTimestamp';
+import { useThemeContext } from '../../contexts/themeContext';
 import styles from './Blocks.module.scss';
 import { Loader } from '../../components/Loader';
 
 export const Blocks = () => {
+  const [{ theme }] = useThemeContext();
   const { blocks, isFetching } = useBlocksContext();
   const columns = useMemo(
     () => [
       {
         Header: 'Block ID',
         accessor: 'level',
-        // eslint-disable-next-line react/prop-types
-        Cell: ({ value }) => <span style={{ color: 'blue' }}>{value}</span>,
+        Cell: ({ value }) => <span className={styles.blue}>{value}</span>,
       },
       {
         Header: 'Created',
         accessor: 'timestamp',
         // eslint-disable-next-line react/prop-types
         Cell: ({ value }) => (
-          <span className={styles.blue}>{convertTimestamp(value)}</span>
+          <span className={styles.span}>{convertTimestamp(value)}</span>
         ),
       },
       {
@@ -73,8 +75,16 @@ export const Blocks = () => {
   return (
     <>
       <Crumbs />
-      <h2 className={styles.title}>Blocks</h2>
-      <div className={styles.list}>
+      <h2 className={styles.title} style={{ color: theme.color }}>
+        Blocks
+      </h2>
+      <div
+        className={styles.list}
+        style={{
+          backgroundColor: theme.tableBackground,
+          border: theme.tableBorder,
+        }}
+      >
         {isFetching && <Loader />}
         {blocks && (
           <div className={styles.table}>

@@ -1,16 +1,27 @@
 .main {
   padding: 50px 32px; 
-  background-color: #ECF0F9;
+  transition: background 0.2s linear;
+  background-image: url(../../imgs/background.png);
+  background-repeat: no-repeat;
+  background-size: cover;
   @media screen and (max-width:768px) {
     padding: 50px 15px;
   }
-  &__table {
-    // width: 1380px;
-    margin: 60px auto 110px;
-    display: none;
-  }
-  &__route {
-    margin-top: 50px;
-    margin-bottom: 80px;
+}
+
+.toggle {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+
+  &__btn {
+    width: 28px;
+    height: 29px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 18px;
+    border: 1px solid #F0F2F4;
+    cursor: pointer;
   }
 }

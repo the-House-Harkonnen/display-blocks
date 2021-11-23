@@ -35,10 +35,13 @@ h2 {
 
 .table {
   border-radius: 30px;
-  background-color: #fff;
   padding: 48px 25px;
   display: grid;
   border: 5px solid #D9DFF8;
   // add relative position for loader
   position: relative;
+}
+
+.item {
+  color: inherit;
 }
