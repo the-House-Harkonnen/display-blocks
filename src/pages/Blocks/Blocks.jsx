@@ -33,13 +33,14 @@ export const Blocks = () => {
       {
         Header: 'Baker',
         accessor: 'bakerName',
-        Cell: (value) => (
-          <CellLinkIcon
-            src={value.row.original.baker}
-            name={value.row.original.bakerName}
-            href={value.row.original.level}
-          />
-        ),
+        Cell: (value) => {
+          const {
+            row: {
+              original: { baker, bakerName, level },
+            },
+          } = value;
+          return <CellLinkIcon src={baker} name={bakerName} href={level} />;
+        },
       },
       {
         Header: 'Priority',

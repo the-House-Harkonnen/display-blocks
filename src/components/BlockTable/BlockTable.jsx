@@ -25,7 +25,7 @@ export const BlockTable = ({ cols, data }) => {
                   color: theme.color,
                 }}
               >
-                {column.process(data)}
+                {column.process ? column.process(data) : data[column.accessor]}
               </div>
             </div>
           );
