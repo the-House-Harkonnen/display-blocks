@@ -110,7 +110,12 @@ const Nav = () => {
               >
                 Blocks
               </a>
-              <div className={styles.links__arrow} />
+              <div
+                className={styles.links__arrow}
+                style={{
+                  color: theme.color,
+                }}
+              />
             </li>
             <li className={styles.links__item}>
               <div className={styles.links__icon}>
@@ -125,7 +130,12 @@ const Nav = () => {
               >
                 Bakers
               </a>
-              <div className={styles.links__arr} />
+              <div
+                className={styles.links__arrow}
+                style={{
+                  color: theme.color,
+                }}
+              />
             </li>
             <li className={styles.links__item}>
               <div className={styles.links__icon}>
@@ -154,7 +164,12 @@ const Nav = () => {
               >
                 Ecosystem
               </a>
-              <div className={styles.links__arrow} />
+              <div
+                className={styles.links__arrow}
+                style={{
+                  color: theme.color,
+                }}
+              />
             </li>
           </ul>
           <div

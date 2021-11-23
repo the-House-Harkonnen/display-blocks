@@ -90,12 +90,8 @@
   }
 
   &__icon {
-    // display: none;
-
-    // @media screen and (max-width: 768px) {
       display: flex;
       margin-right: 10px;
-    // }
   }
 
   &__arrow {
@@ -108,7 +104,8 @@
         position: absolute;
         display: block;
         border: 7px solid transparent;
-        border-top: 7px solid #2D3B59;
+        border-top: 7px solid;
+        color: inherit;
         transform: translateY(-20%);
         left: 8px;
         top: 0;

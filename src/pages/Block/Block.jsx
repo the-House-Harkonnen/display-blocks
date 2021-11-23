@@ -25,7 +25,16 @@ export const Block = () => {
       [
         {
           header: 'Hash:',
-          process: (data) => <div className={styles.item}>{data.level}</div>,
+          process: (data) => (
+            <div
+              className={styles.item}
+              // style={{
+              //   color: theme.color,
+              // }}
+            >
+              {data.level}
+            </div>
+          ),
         },
         {
           header: 'Created at:',
