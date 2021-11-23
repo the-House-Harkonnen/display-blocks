@@ -42,15 +42,3 @@ h2 {
   // add relative position for loader
   position: relative;
 }
-
-.loader {
-  @include media(1600px) {
-    display: grid;
-    width: 100%;
-  }
-
-  @include media(992px) {
-    grid-column: 1/2;
-  }
-
-}

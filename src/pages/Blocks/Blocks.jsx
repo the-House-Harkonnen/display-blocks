@@ -1,18 +1,13 @@
-/* eslint-disable no-console */
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/prop-types */
 import React, { useMemo } from 'react';
 import { BlocksPagination } from '../../components/BlocksPagination/BlocksPagination';
 import { CellLinkIcon } from '../../components/Cell/Cell';
 import { Crumbs } from '../../components/Crumbs';
 import { Table } from '../../components/Table/Table';
-import { Spinner } from '../../components/Spinner';
 import { useBlocksContext } from '../../contexts/blocksContext';
 import { convertTezos } from '../../utils/convertTezos';
 import { convertTimestamp } from '../../utils/convertTimestamp';
 import styles from './Blocks.module.scss';
-import loaderIcon from '../../imgs/loaderIcon.svg';
 import { Loader } from '../../components/Loader';
 
 export const Blocks = () => {
@@ -22,6 +17,7 @@ export const Blocks = () => {
       {
         Header: 'Block ID',
         accessor: 'level',
+        // eslint-disable-next-line react/prop-types
         Cell: ({ value }) => <span style={{ color: 'blue' }}>{value}</span>,
       },
       {
@@ -74,7 +70,6 @@ export const Blocks = () => {
     [blocks],
   );
   const data = useMemo(() => blocks, [blocks]);
-  console.log(blocks);
   return (
     <>
       <Crumbs />
