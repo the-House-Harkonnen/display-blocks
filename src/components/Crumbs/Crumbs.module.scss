@@ -12,13 +12,11 @@
   }
 }
 
-
 .link {
   font-size: 18px;
   font-weight: 400;
   cursor: pointer;
   color: currentColor;
-
   &:first-letter{
     text-transform: uppercase;
   }
@@ -36,7 +34,6 @@
   font-weight: 600;
   cursor: pointer;
   color: currentColor;
-
   &:first-letter  {
     text-transform: uppercase;
   }
