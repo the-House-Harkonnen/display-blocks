@@ -11,8 +11,8 @@ const Main = () => {
   const [{ theme, isDark }, toggleTheme] = useThemeContext();
   return (
     <div
-      className={styles.main}
-      style={{ backgroundColor: theme.mainBackground }}
+      className={styles.container}
+      style={{ backgroundColor: theme.mainBackground, color: theme.color }}
     >
       <div className={styles.toggle}>
         <button

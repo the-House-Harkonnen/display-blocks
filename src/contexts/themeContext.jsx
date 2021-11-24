@@ -13,6 +13,7 @@ const themes = {
     tableBackground: '#25233D',
     tableBorder: '5px solid #2D3B59',
     tableHeaders: '#FFFFFF',
+    // tableRowHover: '#2E2B4D',
     pagination: '#FFFFFF',
   },
   light: {
@@ -26,6 +27,7 @@ const themes = {
     tableBackground: '#FFFFFF',
     tableBorder: '5px solid #D9DFF8',
     tableHeaders: '#536DFB',
+    // tableRowHover: '#ECF0F9BF',
     pagination: '#536DFB',
   },
 };

@@ -46,7 +46,13 @@ const Nav = () => {
         </button>
       </div>
       <div className={classNav} ref={navRef}>
-        <nav className={styles.links}>
+        <nav
+          className={styles.links}
+          style={{
+            // backgroundColor: theme.burgerBackground,
+            color: theme.color,
+          }}
+        >
           <ul className={styles.links__list}>
             <li className={styles.links__item}>
               <a className={styles.links__link} href='#'>
@@ -87,13 +93,7 @@ const Nav = () => {
               <div className={styles.links__icon}>
                 <HomeIcon />
               </div>
-              <a
-                className={styles.links__link}
-                style={{
-                  color: theme.color,
-                }}
-                href='#'
-              >
+              <a className={styles.links__link} href='#'>
                 Home
               </a>
             </li>
@@ -101,53 +101,25 @@ const Nav = () => {
               <div className={styles.links__icon}>
                 <BlocksIcon />
               </div>
-              <a
-                className={styles.links__link}
-                style={{
-                  color: theme.color,
-                }}
-                href='#'
-              >
+              <a className={styles.links__link} href='#'>
                 Blocks
               </a>
-              <div
-                className={styles.links__arrow}
-                style={{
-                  color: theme.color,
-                }}
-              />
+              <div className={styles.links__arrow} />
             </li>
             <li className={styles.links__item}>
               <div className={styles.links__icon}>
                 <BakersIcon />
               </div>
-              <a
-                className={styles.links__link}
-                style={{
-                  color: theme.color,
-                }}
-                href='#'
-              >
+              <a className={styles.links__link} href='#'>
                 Bakers
               </a>
-              <div
-                className={styles.links__arrow}
-                style={{
-                  color: theme.color,
-                }}
-              />
+              <div className={styles.links__arrow} />
             </li>
             <li className={styles.links__item}>
               <div className={styles.links__icon}>
                 <ChartsIcon />
               </div>
-              <a
-                className={styles.links__link}
-                style={{
-                  color: theme.color,
-                }}
-                href='#'
-              >
+              <a className={styles.links__link} href='#'>
                 Charts
               </a>
             </li>
@@ -155,21 +127,10 @@ const Nav = () => {
               <div className={styles.links__icon}>
                 <EcosystemIcon />
               </div>
-              <a
-                className={styles.links__link}
-                style={{
-                  color: theme.color,
-                }}
-                href='#'
-              >
+              <a className={styles.links__link} href='#'>
                 Ecosystem
               </a>
-              <div
-                className={styles.links__arrow}
-                style={{
-                  color: theme.color,
-                }}
-              />
+              <div className={styles.links__arrow} />
             </li>
           </ul>
           <div
@@ -184,57 +145,24 @@ const Nav = () => {
               backgroundColor: theme.burgerBackground,
             }}
           >
-            <p
-              className={styles.settings__item}
-              style={{
-                color: theme.color,
-              }}
-            >
-              Settings
-            </p>
-            <p
-              className={styles.settings__item}
-              style={{
-                color: theme.color,
-              }}
-            >
-              Blog
-            </p>
-            <p
-              className={styles.settings__item}
-              style={{
-                color: theme.color,
-              }}
-            >
-              Privacy
-            </p>
-            <p
-              className={styles.settings__item}
-              style={{
-                color: theme.color,
-              }}
-            >
-              Help
-            </p>
+            <p className={styles.settings__item}>Settings</p>
+            <p className={styles.settings__item}>Blog</p>
+            <p className={styles.settings__item}>Privacy</p>
+            <p className={styles.settings__item}>Help</p>
           </div>
+          <div
+            className={styles.line}
+            style={{
+              backgroundColor: theme.burgerMenuLine,
+            }}
+          />
           <div
             className={styles.copyrights}
             style={{
               backgroundColor: theme.burgerBackground,
             }}
           >
-            <div
-              className={styles.line}
-              style={{
-                backgroundColor: theme.burgerMenuLine,
-              }}
-            />
-            <p
-              className={styles.copyrights__item}
-              style={{
-                color: theme.color,
-              }}
-            >
+            <p className={styles.copyrights__item}>
               @ Copyright. Company name. 2021
             </p>
           </div>

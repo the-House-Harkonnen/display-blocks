@@ -1,46 +1,43 @@
 @import './../../styles/index.scss';
 
 .title {
-    margin-bottom: 60px;
-    font-size: 32px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 39px;
-    letter-spacing: 0em;
-    text-align: left;
+  margin-bottom: 60px;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 39px;
+  text-align: left;
 }
 
 .list {
-    border-radius: 30px;
-    display: grid;
-    padding: 25px;
-    // make the element as relative for loader component
-    position: relative;
+  border-radius: 30px;
+  display: grid;
+  padding: 25px;
+  // make the element as relative for loader component
+  position: relative;
 }
 
 .table {
-    overflow: scroll;
+  overflow: scroll;
 }
 
-
 .pagination {
-    justify-self: flex-end;
-    width: 100%;
+  justify-self: flex-end;
+  width: 100%;
 }
 
 .container {
-    display: flex;
-    align-items: center;
-    // color: #536DFB;
-  }
+  display: flex;
+  align-items: center;
+}
+
 .active{
-   color:  #536DFB;
+  color:  #536DFB;
 }
 
 .blue {
-    color:  #536DFB;
+  color:  #536DFB;
 }
 
 .span {
-    color: inherit;
+  color: inherit;
 }

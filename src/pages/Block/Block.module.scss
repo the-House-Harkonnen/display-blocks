@@ -3,6 +3,7 @@
 .container {
   display: grid;
   font-family: $f-family;
+  color: currentColor;
 }
 
 .head {
@@ -14,30 +15,40 @@
   justify-self: center;
   column-gap: 32px;
   text-align: center;
-}
+  color: currentColor;
 
-.btn {
-  background-color: transparent;
-  font-size: 40px;
-  font-weight: 700;
-  line-height: 30px;
-  padding: 5px;
-  outline: none;
-  border: none;
-  cursor: pointer;
-}
+  &__btn {
+    background-color: transparent;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 30px;
+    padding: 5px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    color: currentColor;
+  }
 
-h2 {
-  width: fit-content;
-  font-size: 32px;
-  line-height: 39, 01px;
+  &__hgroup {
+    color: currentColor;
+  }
+
+  &__title {
+    width: fit-content;
+    font-size: 32px;
+    line-height: 39, 01px;
+    color: currentColor;
+  }
+
+  &__subtitle {
+    color: currentColor;
+  }
 }
 
 .table {
   border-radius: 30px;
   padding: 48px 25px;
   display: grid;
-  border: 5px solid #D9DFF8;
   // add relative position for loader
   position: relative;
 }

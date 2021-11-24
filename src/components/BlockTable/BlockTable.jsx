@@ -1,30 +1,16 @@
 import React from 'react';
 import styles from './BlockTable.module.scss';
-import { useThemeContext } from '../../contexts/themeContext';
 
 export const BlockTable = ({ cols, data }) => {
-  const [{ theme }] = useThemeContext();
   return cols.map((group, i) => {
     const key = `group-key-${i}`;
     return (
       <div key={key} className={styles.row}>
         {group.map((column) => {
           return (
-            <div className={styles.tr} key={column.header}>
-              <div
-                className={styles.th}
-                style={{
-                  color: theme.color,
-                }}
-              >
-                {column.header}
-              </div>
-              <div
-                className={styles.td}
-                style={{
-                  color: theme.color,
-                }}
-              >
+            <div className={styles.row__tr} key={column.header}>
+              <div className={styles.row__th}>{column.header}</div>
+              <div className={styles.row__td}>
                 {column.process ? column.process(data) : data[column.accessor]}
               </div>
             </div>

@@ -100,37 +100,17 @@ export const Block = () => {
       <Crumbs />
       <div className={styles.head}>
         <button
-          className={styles.btn}
-          style={{
-            color: theme.color,
-          }}
+          className={styles.head__btn}
           type='button'
           onClick={() => handlePage(currentBlockNumber - 1)}
         >{`<`}</button>
-        <hgroup>
-          <h2
-            className={styles.title}
-            style={{
-              color: theme.color,
-            }}
-          >
-            Block: {currentBlockNumber}{' '}
-          </h2>
-          <span
-            className={styles.subtitle}
-            style={{
-              color: theme.color,
-            }}
-          >
-            block information
-          </span>
+        <hgroup className={styles.head__hgroup}>
+          <h2 className={styles.head__title}>Block: {currentBlockNumber} </h2>
+          <span className={styles.head__subtitle}>block information</span>
         </hgroup>
         <button
           type='button'
-          className={styles.btn}
-          style={{
-            color: theme.color,
-          }}
+          className={styles.head__btn}
           onClick={() => handlePage(Number(currentBlockNumber) + 1)}
         >{`>`}</button>
       </div>
@@ -139,6 +119,7 @@ export const Block = () => {
         style={{
           backgroundColor: theme.tableBackground,
           border: theme.tableBorder,
+          color: theme.color,
         }}
       >
         {isFetching && <Loader />}

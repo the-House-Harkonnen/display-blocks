@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable react/no-this-in-sfc */
 /* eslint-disable no-console */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable no-nested-ternary */
@@ -20,18 +22,23 @@ export const Table = ({ columns, data }) => {
 
   return (
     <table {...getTableProps()} className={styles.table}>
-      <thead>
+      <thead
+        className={styles.head}
+        style={{
+          color: theme.tableHeaders,
+        }}
+      >
         {headerGroups.map((headerGroup) => (
-          <tr {...headerGroup.getHeaderGroupProps()}>
+          <tr
+            className={styles.head__tr}
+            {...headerGroup.getHeaderGroupProps()}
+          >
             {headerGroup.headers.map((column) => {
               if (!column.canSort) {
                 return (
                   <th
                     {...column.getHeaderProps()}
-                    className={styles.headers}
-                    style={{
-                      color: theme.tableHeaders,
-                    }}
+                    className={styles.head__headers}
                   >
                     {column.render('Header')}
                   </th>
@@ -44,23 +51,15 @@ export const Table = ({ columns, data }) => {
                 : ` ${styles.dormant} ${styles.up}`;
               return (
                 <th
+                  className={styles.head__th}
                   {...column.getHeaderProps()}
                   onClick={() => column.toggleSortBy(!column.isSortedDesc)}
                 >
-                  <div className={styles.container}>
-                    <span
-                      style={{
-                        color: theme.tableHeaders,
-                      }}
-                    >
+                  <div className={styles.head__container}>
+                    <span className={styles.head__header}>
                       {column.render('Header')}
                     </span>
-                    <span
-                      className={className}
-                      style={{
-                        color: theme.pagination,
-                      }}
-                    />
+                    <span className={className} />
                   </div>
                 </th>
               );
@@ -68,19 +67,20 @@ export const Table = ({ columns, data }) => {
           </tr>
         ))}
       </thead>
-      <tbody {...getTableBodyProps()}>
+      <tbody
+        {...getTableBodyProps()}
+        className={styles.body}
+        style={{
+          color: theme.color,
+        }}
+      >
         {rows.map((row) => {
           prepareRow(row);
           return (
-            <tr {...row.getRowProps()}>
+            <tr {...row.getRowProps()} className={styles.body__row}>
               {row.cells.map((cell) => {
                 return (
-                  <td
-                    {...cell.getCellProps()}
-                    style={{
-                      color: theme.color,
-                    }}
-                  >
+                  <td {...cell.getCellProps()} className={styles.body__td}>
                     {cell.render('Cell')}
                   </td>
                 );
