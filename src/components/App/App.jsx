@@ -12,12 +12,8 @@ import Main from '../Main';
 import styles from './App.module.scss';
 
 export const App = () => {
-  // const { theme } = useThemeContext();
   return (
-    <div
-      className={styles.app}
-      // style={{ backgroundColor: theme.backgroundColor }}
-    >
+    <div className={styles.app}>
       <Router>
         <ThemeProvider>
           <BlocksProvider>

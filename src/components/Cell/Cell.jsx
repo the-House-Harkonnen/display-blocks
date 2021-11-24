@@ -3,7 +3,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
-// import { useThemeContext } from '../../contexts/themeContext';
 import icon from '../../imgs/icon.png';
 import styles from './Cell.module.scss';
 
@@ -71,7 +70,6 @@ CellLinkIcon.defaultProps = {
 };
 
 export const CellIcon = ({ src, name, alt }) => {
-  // const [{ theme }] = useThemeContext();
   const url = src
     ? `https://teztracker.com/static/validators-logo/${src}.png`
     : icon;

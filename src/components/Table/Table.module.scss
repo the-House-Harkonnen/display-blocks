@@ -57,14 +57,17 @@ tbody{
 }
 .active{
  color:  #536DFB;
+ cursor: pointer;
 }
 
 .up{
-    border: 7px solid transparent; border-top: 7px solid currentColor;
-    transform: translate(10px, 3px);
+  border: 7px solid transparent; border-top: 7px solid currentColor;
+  transform: translate(10px, 3px);
+  cursor: pointer;
 }
 
 .down{
-border: 7px solid transparent; border-bottom: 7px solid currentColor;
-transform: translate(10px, -3px);
+  border: 7px solid transparent; border-bottom: 7px solid currentColor;
+  transform: translate(10px, -3px);
+  cursor: pointer;
 }
