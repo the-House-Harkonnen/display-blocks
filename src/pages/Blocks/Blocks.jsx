@@ -23,10 +23,10 @@ export const Blocks = () => {
         Cell: (value) => {
           const {
             row: {
-              original: { baker, bakerName, level },
+              original: { level },
             },
           } = value;
-          return <CellLinkIcon src={baker} name={bakerName} href={level} />;
+          return <CellLinkIcon src={level} name={level} href={level} />;
         },
       },
       {
