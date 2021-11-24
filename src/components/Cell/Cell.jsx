@@ -3,6 +3,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { convertBlockId } from '../../utils/convertBlockId';
 import icon from '../../imgs/icon.png';
 import styles from './Cell.module.scss';
 
@@ -51,7 +52,9 @@ export const CellLinkIcon = ({ src, name, alt, href }) => {
           }}
           alt={alt}
         />
-        <span className={styles.blue}>{name || 'tezos backer'}</span>
+        <span className={styles.blue}>
+          {convertBlockId(name) || 'tezos backer'}
+        </span>
       </div>
     </div>
   );
