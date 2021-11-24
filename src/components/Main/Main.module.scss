@@ -1,4 +1,4 @@
-.main {
+.container {
   padding: 50px 32px; 
   transition: background 0.2s linear;
   background-image: url(../../imgs/background.png);
@@ -17,7 +17,7 @@
   &__btn {
     width: 28px;
     height: 29px;
-    border: none;
+    padding-left: 3px;
     border-radius: 10px;
     font-weight: 500;
     font-size: 18px;

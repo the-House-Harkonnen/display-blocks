@@ -13,26 +13,19 @@ export const BlocksPagination = () => {
 
   const currentPage = offset / limit + 1;
   return (
-    <div className={styles.container}>
-      <div
-        className={styles.limit}
-        style={{
-          color: theme.pagination,
-        }}
-        id='handler'
-      >
-        Rows per page: {limit}
-        <label
-          htmlFor='select'
-          className={styles.arrow}
-          style={{
-            color: theme.pagination,
-          }}
-        >
+    <div
+      className={styles.pagination}
+      style={{
+        color: theme.pagination,
+      }}
+    >
+      <div id='handler' className={styles.pagination__handler}>
+        Rows per page:
+        <label htmlFor='select' className={styles.pagination__arrow}>
           <select
             name='select'
             id='select'
-            className={styles.select}
+            className={styles.pagination__select}
             onChange={(e) => handleLimit(e.target.value)}
             value={limit}
           >
@@ -45,44 +38,32 @@ export const BlocksPagination = () => {
         </label>
       </div>
 
-      <div className={styles.offset}>
+      <div className={styles.pagination__offset}>
         <button
+          className={styles.pagination__button}
           type='button'
-          style={{
-            color: theme.pagination,
-          }}
           disabled={!offset}
           onClick={() => handleOffset(0)}
         >{`<<`}</button>
         <button
           disabled={!offset}
           type='button'
-          style={{
-            color: theme.pagination,
-          }}
+          className={styles.pagination__button}
           onClick={() => handleOffset(offset - limit)}
         >{`<`}</button>
-        <span
-          style={{
-            color: theme.pagination,
-          }}
-        >
+        <span className={styles.pagination__pages}>
           {currentPage} of {totalPage}
         </span>
         <button
           type='button'
-          style={{
-            color: theme.pagination,
-          }}
+          className={styles.pagination__button}
           disabled={lastPage === offset}
           onClick={() => handleOffset(offset + limit)}
         >{`>`}</button>
         <button
           disabled={lastPage === offset}
-          style={{
-            color: theme.pagination,
-          }}
           type='button'
+          className={styles.pagination__button}
           onClick={() => handleOffset(lastPage)}
         >{`>>`}</button>
       </div>

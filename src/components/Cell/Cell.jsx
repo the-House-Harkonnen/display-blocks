@@ -42,9 +42,11 @@ export const CellLinkIcon = ({ src, name, alt, href }) => {
       aria-label='link'
       onClick={() => history.push(`/home/blocks/${href}`)}
       onKeyPress={() => history.push(`/home/blocks/${href}`)}
+      className={styles.icon}
     >
       <div className={styles.icon__cell}>
         <img
+          className={styles.icon__img}
           src={url}
           onError={(e) => {
             e.target.onerror = null;
@@ -52,9 +54,7 @@ export const CellLinkIcon = ({ src, name, alt, href }) => {
           }}
           alt={alt}
         />
-        <span className={styles.blue}>
-          {convertBlockId(name) || 'tezos backer'}
-        </span>
+        <span className={styles.icon__span}>{name || 'tezos backer'}</span>
       </div>
     </div>
   );
@@ -81,6 +81,7 @@ export const CellIcon = ({ src, name, alt }) => {
     <>
       <div className={styles.icon__cell}>
         <img
+          className={styles.icon__img}
           src={url}
           onError={(e) => {
             e.target.onerror = null;
@@ -88,7 +89,7 @@ export const CellIcon = ({ src, name, alt }) => {
           }}
           alt={alt}
         />
-        <span className={styles.blue}>{name || 'tezos baker'}</span>
+        <span className={styles.icon__span}>{name || 'tezos baker'}</span>
       </div>
     </>
   );
@@ -112,8 +113,8 @@ export const CellSortOption = ({ str, sort, callBack }) => {
     key: str,
   };
   return (
-    <th onClick={() => callBack(action)} className={styles.cell}>
-      <div className={styles.container}>
+    <th onClick={() => callBack(action)}>
+      <div className={styles.sort}>
         <span>{str}</span>
         <span className={className} />
       </div>

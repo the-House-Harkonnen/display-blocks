@@ -11,6 +11,7 @@ import { convertTimestamp } from '../../utils/convertTimestamp';
 import { useThemeContext } from '../../contexts/themeContext';
 import styles from './Blocks.module.scss';
 import { Loader } from '../../components/Loader';
+import { convertBlockId } from '../../utils/convertBlockId';
 
 export const Blocks = () => {
   const [{ theme }] = useThemeContext();
@@ -26,7 +27,13 @@ export const Blocks = () => {
               original: { level },
             },
           } = value;
-          return <CellLinkIcon src={level} name={level} href={level} />;
+          return (
+            <CellLinkIcon
+              // src={level}
+              name={convertBlockId(level)}
+              href={level}
+            />
+          );
         },
       },
       {

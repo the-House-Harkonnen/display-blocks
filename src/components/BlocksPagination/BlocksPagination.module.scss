@@ -1,17 +1,14 @@
-.container {
+.pagination {
   padding: 3px;
   height: 53px;
   display: grid;
   grid-template-columns: auto auto;
   font-size: 14px;
-  font-style: normal;
   font-weight: 400;
-  line-height: 17px;
-  letter-spacing: 0em;
   text-align: left;
   align-items: flex-end;
   justify-content: flex-end;
-  // color: #536DFB;
+
   @media screen and (max-width:992px) {
   justify-content: space-between;
   width: 100%;
@@ -21,50 +18,57 @@
     column-gap: 5px;
   }
 
-  button {
-    height: 18px;
-    background-color: transparent;
-    border: none;
-    outline: none;
-  }
+    &__handler,
+    &__pages {
+      color: currentColor;
+    }
 
-  .offset {
-    display: grid;
-    grid-auto-flow: column;
-    column-gap: 8px;
-  }
+    &__arrow
+     {
+      color: currentColor;
+      position: relative;
+      &::after {
+        content: '';
+        position: absolute;
+        display: block;
+        border: 7px solid transparent;
+        border-top: 7px solid;
+        transform: translateY(40%);
+        left: 25px;
+        top: 0;
+        z-index: 2;
+        pointer-events: none;
+      }
+    }
 
-  .select {
-    -moz-appearance: none;
-    /* Firefox */
-    -webkit-appearance: none;
-    /* Safari and Chrome */
-    appearance: none;
-    background-color: transparent;
-    border: none;
-    outline: none;
-    padding-right: 10px;
-    margin-left: 8px;
-    z-index: 0;
-    color: transparent;
-    cursor: pointer;
-  }
+    &__select {
+      -moz-appearance: none;
+      /* Firefox */
+      -webkit-appearance: none;
+      /* Safari and Chrome */
+      appearance: none;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      padding-right: 20px;
+      margin-left: 6px;
+      z-index: 0;
+      cursor: pointer;
+      color: currentColor;
+    }
 
-  label {
-    position: relative;
+    &__offset {
+      display: grid;
+      grid-auto-flow: column;
+      column-gap: 8px;
+      color: currentColor;
+    }
 
-    &::after {
-      content: '';
-      position: absolute;
-      display: block;
-      border: 7px solid transparent;
-      border-top: 7px solid;
-      transform: translateY(40%);
-      left: 12px;
-      top: 0;
-      z-index: 2;
-      pointer-events: none;
+    &__button {
+      height: 18px;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      color: currentColor;
     }
   }
-
-}
