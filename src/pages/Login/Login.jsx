@@ -19,11 +19,13 @@ export const Login = () => {
             <Input />
           </fieldset>
           <input className={styles.form__btn} type='submit' value='Submit' />
-          <div className={styles.form__bottom}>
-            <span className={styles.form__bottom_text}>
+          <div className={styles.login__bottom}>
+            <span className={styles.login__bottom_text}>
               Already have an Account?
             </span>
-            <span className={styles.form__bottom_link}> Sing up Now?</span>
+            <button type='button' className={styles.login__link}>
+              Sing up Now?
+            </button>
           </div>
         </form>
       </div>
