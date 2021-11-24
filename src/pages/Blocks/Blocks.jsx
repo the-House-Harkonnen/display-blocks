@@ -20,7 +20,14 @@ export const Blocks = () => {
       {
         Header: 'Block ID',
         accessor: 'level',
-        Cell: ({ value }) => <span className={styles.blue}>{value}</span>,
+        Cell: (value) => {
+          const {
+            row: {
+              original: { baker, bakerName, level },
+            },
+          } = value;
+          return <CellLinkIcon src={baker} name={bakerName} href={level} />;
+        },
       },
       {
         Header: 'Created',

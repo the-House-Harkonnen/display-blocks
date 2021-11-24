@@ -50,7 +50,7 @@ export const Block = () => {
         {
           header: 'Baker`s fee:',
           accessor: 'fees',
-          process: (data) => <div>{data.fees}</div>,
+          process: (data) => <div className={styles.item}>{data.fees}</div>,
         },
         {
           header: 'Baker`s priority:',
@@ -63,7 +63,9 @@ export const Block = () => {
         {
           header: 'Block time:',
           accessor: 'blockTime',
-          process: (data) => <div>{data.blockTime} sec</div>,
+          process: (data) => (
+            <div className={styles.item}>{data.blockTime} sec</div>
+          ),
         },
         {
           header: 'Block fitness:',
