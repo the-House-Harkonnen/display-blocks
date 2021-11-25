@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
@@ -33,6 +34,7 @@ export const Input = ({
       </button>
     ) : null;
 
+  console.log(meta);
   const border =
     meta.touched && meta.error
       ? `${styles.border} ${styles.error}`
@@ -40,13 +42,14 @@ export const Input = ({
       ? `${styles.border} ${styles.touched}`
       : `${styles.border} ${styles.normal}`;
 
-  const promtError = meta.error ? (
-    <span className={styles.error}>
-      <ErrorMessage name={field.name} />
-    </span>
-  ) : promptMessage ? (
-    <span className={styles.prompt}>{promptMessage}</span>
-  ) : null;
+  const promtError =
+    ( meta.error && meta.value ) ? (
+      <span className={styles.error}>
+        <ErrorMessage name={field.name} />
+      </span>
+    ) : promptMessage ? (
+      <span className={styles.prompt}>{promptMessage}</span>
+    ) : null;
 
   return (
     <div className={styles.row}>

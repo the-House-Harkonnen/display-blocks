@@ -25,7 +25,7 @@ export const Signup = () => {
       .string()
       .required('Required')
       .min(
-        4,
+        8,
         'Password should contain both letter and number, with minimum length of 8 characters',
       ),
     confirm: yup
@@ -74,23 +74,24 @@ export const Signup = () => {
                 type='password'
                 promptMessage={passwordPrompt}
               />
-              <Input name='confirm' label='Confirm password' type='password' />
+              <Input name='confirm' label='Confirm password' type='password'>
+                <div className={styles.signup__agree}>
+                  <Field
+                    className={styles.checkbox}
+                    type='checkbox'
+                    id='agree'
+                    name='agree'
+                  />
+                  <label className={styles.signup__checkbox} htmlFor='agree' />
+                  <span className={styles.signup__terms}>
+                    By creating an account, you agree to Tezos Explorer{' '}
+                    <span className={styles.signup_blue}>
+                      Terms of Service & Privacy Policy.
+                    </span>
+                  </span>
+                </div>
+              </Input>
             </fieldset>
-            <div className={styles.signup__agree}>
-              <Field
-                className={styles.checkbox}
-                type='checkbox'
-                id='agree'
-                name='agree'
-              />
-              <label className={styles.signup__checkbox} htmlFor='agree' />
-              <span className={styles.signup__terms}>
-                By creating an account, you agree to Tezos Explorer{' '}
-                <span className={styles.signup_blue}>
-                  Terms of Service & Privacy Policy.
-                </span>
-              </span>
-            </div>
             <input className={styles.form__btn} type='submit' value='Submit' />
             <div className={styles.signup__bottom}>
               <span> Already have an Account?</span>
