@@ -11,11 +11,6 @@ import styles from './Table.module.scss';
 export const Table = ({ columns, data }) => {
   const [{ theme }] = useThemeContext();
 
-  // const [hover, setHover] = useState(false);
-  // const hoverStyle = {
-  //   background: hover ? color : theme.tableRowHover,
-  // };
-
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable(
       {
@@ -35,6 +30,9 @@ export const Table = ({ columns, data }) => {
       >
         {headerGroups.map((headerGroup) => (
           <tr
+            // style={{
+            //   color: theme.tableLine,
+            // }}
             className={styles.head__tr}
             {...headerGroup.getHeaderGroupProps()}
           >
@@ -82,22 +80,17 @@ export const Table = ({ columns, data }) => {
         {rows.map((row) => {
           prepareRow(row);
           return (
-            <tr
-              {...row.getRowProps()}
-              // style={hoverStyle}
-              // of='group'
-              // onMouseEnter={() => setHover(true)}
-              // onMouseLeave={() => setHover(false)}
-              className={styles.body__row}
-            >
-              {row.cells.map((cell) => {
-                return (
-                  <td {...cell.getCellProps()} className={styles.body__td}>
-                    {cell.render('Cell')}
-                  </td>
-                );
-              })}
-            </tr>
+            <>
+              <tr {...row.getRowProps()} className={styles.body__row}>
+                {row.cells.map((cell) => {
+                  return (
+                    <td {...cell.getCellProps()} className={styles.body__td}>
+                      {cell.render('Cell')}
+                    </td>
+                  );
+                })}
+              </tr>
+            </>
           );
         })}
       </tbody>

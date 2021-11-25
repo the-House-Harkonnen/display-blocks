@@ -61,7 +61,12 @@ export const Login = () => {
           onSubmit={handleSubmit}
           validationSchema={validationSchema}
         >
-          <Form className={styles.form}>
+          <Form
+            className={styles.form}
+            style={{
+              border: theme.tableBorder,
+            }}
+          >
             <fieldset className={styles.form__group}>
               <Input name='address' label='Email address' type='text' />
               <Input name='password' label='Password' type='password' />

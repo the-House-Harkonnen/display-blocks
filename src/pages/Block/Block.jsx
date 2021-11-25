@@ -32,6 +32,13 @@ export const Block = () => {
           ),
         },
         {
+          header: 'Block time:',
+          accessor: 'blockTime',
+          process: (data) => (
+            <div className={styles.item}>{data.blockTime} sec</div>
+          ),
+        },
+        {
           header: 'Created at:',
           accessor: 'timestamp',
           process: (data) => (
@@ -41,35 +48,15 @@ export const Block = () => {
           ),
         },
         {
+          header: 'Block fitness:',
+          accessor: 'fitness',
+        },
+        {
           header: 'Baker:',
           accessor: 'bakerName',
           process: (data) => (
             <CellIcon src={data.baker} name={data.bakerName} alt='Baker' />
           ),
-        },
-        {
-          header: 'Baker`s fee:',
-          accessor: 'fees',
-          process: (data) => <div className={styles.item}>{data.fees}</div>,
-        },
-        {
-          header: 'Baker`s priority:',
-          accessor: 'priority',
-        },
-        {
-          header: 'Transactions volume:',
-          accessor: 'volume',
-        },
-        {
-          header: 'Block time:',
-          accessor: 'blockTime',
-          process: (data) => (
-            <div className={styles.item}>{data.blockTime} sec</div>
-          ),
-        },
-        {
-          header: 'Block fitness:',
-          accessor: 'fitness',
         },
         {
           header: 'Gas used:',
@@ -79,12 +66,25 @@ export const Block = () => {
           ),
         },
         {
+          header: 'Baker`s fee:',
+          accessor: 'fees',
+          process: (data) => <div className={styles.item}>{data.fees}</div>,
+        },
+        {
           header: 'Protocol version:',
           accessor: 'protocol',
         },
         {
+          header: 'Baker`s priority:',
+          accessor: 'priority',
+        },
+        {
           header: 'Cycle:',
           accessor: 'metaCycle',
+        },
+        {
+          header: 'Transactions volume:',
+          accessor: 'volume',
         },
         {
           header: 'Cycle position:',
