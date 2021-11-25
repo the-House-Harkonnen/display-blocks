@@ -34,7 +34,6 @@ export const Input = ({
       </button>
     ) : null;
 
-  console.log(meta);
   const border =
     meta.touched && meta.error
       ? `${styles.border} ${styles.error}`

@@ -17,6 +17,7 @@ const themes = {
     pagination: '#FFFFFF',
     homeBtn: '#F0F2F4',
     homeBtnColor: '#2D3B59',
+    formBtn: '#1E1C37E5',
   },
   light: {
     backgroundColor: '#274673',
@@ -33,6 +34,7 @@ const themes = {
     pagination: '#536DFB',
     homeBtn: '#274673',
     homeBtnColor: '#F0F2F4',
+    formBtn: '#274673E5',
   },
 };
 

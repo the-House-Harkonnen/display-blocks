@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable func-names */
 /* eslint-disable react/no-this-in-sfc */
@@ -8,9 +9,11 @@ import * as yup from 'yup';
 import { useHistory } from 'react-router-dom';
 import styles from './Signup.module.scss';
 import { Input } from '../../components/Input';
+import { useThemeContext } from '../../contexts/themeContext';
 
 export const Signup = () => {
   const history = useHistory();
+  const [{ theme }] = useThemeContext();
   const passwordPrompt =
     'Password should contain both letter and number, with minimum length of 8 characters';
 
@@ -52,7 +55,12 @@ export const Signup = () => {
   };
 
   return (
-    <div className={styles.signup}>
+    <div
+      className={styles.signup}
+      style={{
+        color: theme.color,
+      }}
+    >
       <hgroup className={styles.signup__info}>
         <h2 className={styles.signup__title}>Signup</h2>
         <span className={styles.signup__subtitle}>
@@ -85,16 +93,30 @@ export const Signup = () => {
                   <label className={styles.signup__checkbox} htmlFor='agree' />
                   <span className={styles.signup__terms}>
                     By creating an account, you agree to Tezos Explorer{' '}
-                    <span className={styles.signup_blue}>
-                      Terms of Service & Privacy Policy.
-                    </span>
+                    <a href='#' className={styles.signup__policy}>
+                      Terms of Service{' '}
+                    </a>
+                    <span>&</span>{' '}
+                    <a href='#' className={styles.signup__policy}>
+                      Privacy Policy.
+                    </a>
                   </span>
                 </div>
               </Input>
             </fieldset>
-            <input className={styles.form__btn} type='submit' value='Submit' />
+            <input
+              className={styles.form__btn}
+              style={{
+                backgroundColor: theme.formBtn,
+              }}
+              type='submit'
+              value='Submit'
+            />
             <div className={styles.signup__bottom}>
-              <span> Already have an Account?</span>
+              <span className={styles.signup__question}>
+                {' '}
+                Already have an Account?
+              </span>
               <button
                 type='button'
                 className={styles.signup__link}
