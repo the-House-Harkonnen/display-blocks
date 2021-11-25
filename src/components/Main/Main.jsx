@@ -7,6 +7,7 @@ import { useThemeContext } from '../../contexts/themeContext';
 
 import styles from './Main.module.scss';
 import { Login } from '../../pages/Login';
+import { Signup } from '../../pages/Signup';
 
 const Main = () => {
   const [{ theme, isDark }, toggleTheme] = useThemeContext();
@@ -35,6 +36,7 @@ const Main = () => {
         <Route exact path='/home/blocks' component={Blocks} />
         <Route exact path='/home/blocks/:blockId' component={Block} />
         <Route exact path='/home/login' component={Login} />
+        <Route exact path='/home/signup' component={Signup} />
         <Route exact path='*' component={NotResponding} />
       </Switch>
     </div>

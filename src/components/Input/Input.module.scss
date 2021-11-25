@@ -1,21 +1,25 @@
 .row {
     display: grid;
     grid-auto-flow: row;
-    grid-row-gap: 14px;
+    // grid-row-gap: 14px;
 }
 
 .border {
     padding: 20px 24px;
-    border: solid 1px #D9DFF8;
+    margin-top: 14px;
+    border: solid 1px;
     display: grid;
     grid-template-columns: 1fr auto;
     border-radius: 10px;
+}
+.normal{
+    color: #a5a5a5;
 }
 
 .input {
     width: 100%;
     border: none;
-
+    outline: none;
     font-family: Montserrat;
     font-size: 18px;
     font-style: normal;
@@ -30,7 +34,6 @@
 }
 
 .bottom {
-    padding-top: 4px;
     display: grid;
     grid-auto-flow: column;
     justify-content: space-between;
@@ -38,9 +41,15 @@
 
 .error {
     color: #FF3B30;
+    margin-top: 18px;
+
+}
+.prompt{
+    padding-top: 18px;
 }
 
 .help {
+    margin-top: 18px;
     background-color: transparent;
     border: none;
     font-family: Montserrat;
@@ -52,4 +61,8 @@
     text-align: left;
     color: #2D3B5999;
 
+}
+
+.touched{
+    color: #536DFB;
 }
