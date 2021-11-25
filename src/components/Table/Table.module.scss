@@ -56,6 +56,10 @@
   &__row {
     height: 63px;
     color: currentColor;
+    &:hover {
+      background-color: rgba(255,255,255,.6);
+      backdrop-filter: blur(5px);
+    }
   }
 
   &__td {
@@ -85,3 +89,7 @@
   cursor: pointer;
   color: currentColor;
 }
+
+// .hovered {
+//   background-color: #ECF0F9BF;
+// }

@@ -2,7 +2,7 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { useMemo } from 'react';
 import { BlocksPagination } from '../../components/BlocksPagination/BlocksPagination';
-import { CellLinkIcon } from '../../components/Cell/Cell';
+import { CellLinkIcon, CellLinkOption } from '../../components/Cell/Cell';
 import { Crumbs } from '../../components/Crumbs';
 import { Table } from '../../components/Table/Table';
 import { useBlocksContext } from '../../contexts/blocksContext';
@@ -27,19 +27,12 @@ export const Blocks = () => {
               original: { level },
             },
           } = value;
-          return (
-            <CellLinkIcon
-              // src={level}
-              name={convertBlockId(level)}
-              href={level}
-            />
-          );
+          return <CellLinkOption cell={convertBlockId(level)} />;
         },
       },
       {
         Header: 'Created',
         accessor: 'timestamp',
-        // eslint-disable-next-line react/prop-types
         Cell: ({ value }) => (
           <span className={styles.span}>{convertTimestamp(value)}</span>
         ),

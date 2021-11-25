@@ -16,6 +16,7 @@ export const CellLinkOption = ({ cell }) => {
   const history = useHistory();
   return (
     <td
+      className={styles.icon__span}
       role='link'
       aria-label='link'
       onClick={() => history.push(`/home/blocks/${cell}`)}

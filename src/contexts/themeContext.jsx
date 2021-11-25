@@ -15,6 +15,8 @@ const themes = {
     tableHeaders: '#FFFFFF',
     // tableRowHover: '#2E2B4D',
     pagination: '#FFFFFF',
+    homeBtn: '#F0F2F4',
+    homeBtnColor: '#2D3B59',
   },
   light: {
     backgroundColor: '#274673',
@@ -29,6 +31,8 @@ const themes = {
     tableHeaders: '#536DFB',
     // tableRowHover: '#ECF0F9BF',
     pagination: '#536DFB',
+    homeBtn: '#274673',
+    homeBtnColor: '#F0F2F4',
   },
 };
 

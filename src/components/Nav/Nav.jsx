@@ -49,7 +49,6 @@ const Nav = () => {
         <nav
           className={styles.links}
           style={{
-            // backgroundColor: theme.burgerBackground,
             color: theme.color,
           }}
         >
@@ -75,12 +74,6 @@ const Nav = () => {
               <a className={styles.links__link} href='#'>
                 Charts
               </a>
-            </li>
-            <li className={styles.links__item}>
-              <a className={styles.links__link} href='#'>
-                Ecosystem
-              </a>
-              <div className={styles.links__arrow} />
             </li>
           </ul>
           <ul
