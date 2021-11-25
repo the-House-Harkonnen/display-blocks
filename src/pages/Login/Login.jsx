@@ -7,9 +7,11 @@ import * as yup from 'yup';
 import { useHistory } from 'react-router-dom';
 import styles from './Login.module.scss';
 import { Input } from '../../components/Input';
+import { useThemeContext } from '../../contexts/themeContext';
 
 export const Login = () => {
   const history = useHistory();
+  const [{ theme }] = useThemeContext();
   const validationSchema = yup.object({
     address: yup
       .string()
@@ -20,11 +22,11 @@ export const Login = () => {
     password: yup
       .string()
       .required('Required')
-      .min(4, 'Too short - should be 4 chars minimum.'),
+      .min(8, 'Too short - should be 8 chars minimum.'),
     confirm: yup
       .string()
       .required('Required')
-      .min(4, 'Too short - should be 4 chars minimum.')
+      .min(8, 'Too short - should be 8 chars minimum.')
       .test('passwords-match', 'Passwords must match', function (value) {
         return this.parent.password === value;
       }),
@@ -41,7 +43,12 @@ export const Login = () => {
   };
 
   return (
-    <div className={styles.login}>
+    <div
+      className={styles.login}
+      style={{
+        color: theme.color,
+      }}
+    >
       <hgroup className={styles.login__info}>
         <h2 className={styles.login__title}>Login</h2>
         <span className={styles.login__subtitle}>
@@ -54,7 +61,12 @@ export const Login = () => {
           onSubmit={handleSubmit}
           validationSchema={validationSchema}
         >
-          <Form className={styles.form}>
+          <Form
+            className={styles.form}
+            style={{
+              border: theme.tableBorder,
+            }}
+          >
             <fieldset className={styles.form__group}>
               <Input name='address' label='Email address' type='text' />
               <Input name='password' label='Password' type='password' />
@@ -64,13 +76,23 @@ export const Login = () => {
                 </button>
               </Input>
             </fieldset>
-            <input className={styles.form__btn} type='submit' value='Submit' />
+            <input
+              className={styles.form__btn}
+              style={{
+                backgroundColor: theme.formBtn,
+              }}
+              type='submit'
+              value='Submit'
+            />
             <div className={styles.login__bottom}>
-              <span> Don’t have a Tezos Explorer Account?</span>
+              <span className={styles.login__question}>
+                {' '}
+                Don’t have a Tezos Explorer Account?
+              </span>
               <button
                 type='button'
                 className={styles.login__link}
-                onClick={() => history.push('/home/login')}
+                onClick={() => history.push('/home/signup')}
               >
                 Sing up Now?
               </button>

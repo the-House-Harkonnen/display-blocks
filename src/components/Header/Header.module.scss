@@ -3,7 +3,6 @@
 .header {
   transition: background 0.2s linear;
   padding: 20px 30px;
-  // background-color: $c-head-foot-l;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -15,11 +14,12 @@
 
   &__nav {
     margin-left: auto;
-  }
-
-  &__btn {
-    @media screen and (min-width: 1200px) {
-    margin-left: 116px;
+    margin-right: 116.5px;
+    @media screen and (max-width: 1200px) {
+      margin-right: 29px;
+    }
+    @media screen and (max-width: 768px) {
+      margin-right: 0;
     }
   }
 }

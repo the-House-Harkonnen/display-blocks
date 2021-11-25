@@ -12,9 +12,13 @@ const themes = {
     toggleBtn: '#FFFFFF',
     tableBackground: '#25233D',
     tableBorder: '5px solid #2D3B59',
+    tableLine: '#274673CC',
     tableHeaders: '#FFFFFF',
     // tableRowHover: '#2E2B4D',
     pagination: '#FFFFFF',
+    homeBtn: '#F0F2F4',
+    homeBtnColor: '#2D3B59',
+    formBtn: '#1E1C37E5',
   },
   light: {
     backgroundColor: '#274673',
@@ -26,9 +30,13 @@ const themes = {
     toggleBtn: '#274673',
     tableBackground: '#FFFFFF',
     tableBorder: '5px solid #D9DFF8',
+    tableLine: '#D9DFF8',
     tableHeaders: '#536DFB',
     // tableRowHover: '#ECF0F9BF',
     pagination: '#536DFB',
+    homeBtn: '#274673',
+    homeBtnColor: '#F0F2F4',
+    formBtn: '#274673E5',
   },
 };
 

@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/no-this-in-sfc */
-/* eslint-disable no-console */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable no-nested-ternary */
 import React from 'react';
@@ -11,6 +10,7 @@ import styles from './Table.module.scss';
 
 export const Table = ({ columns, data }) => {
   const [{ theme }] = useThemeContext();
+
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable(
       {
@@ -30,6 +30,9 @@ export const Table = ({ columns, data }) => {
       >
         {headerGroups.map((headerGroup) => (
           <tr
+            // style={{
+            //   color: theme.tableLine,
+            // }}
             className={styles.head__tr}
             {...headerGroup.getHeaderGroupProps()}
           >
@@ -77,15 +80,17 @@ export const Table = ({ columns, data }) => {
         {rows.map((row) => {
           prepareRow(row);
           return (
-            <tr {...row.getRowProps()} className={styles.body__row}>
-              {row.cells.map((cell) => {
-                return (
-                  <td {...cell.getCellProps()} className={styles.body__td}>
-                    {cell.render('Cell')}
-                  </td>
-                );
-              })}
-            </tr>
+            <>
+              <tr {...row.getRowProps()} className={styles.body__row}>
+                {row.cells.map((cell) => {
+                  return (
+                    <td {...cell.getCellProps()} className={styles.body__td}>
+                      {cell.render('Cell')}
+                    </td>
+                  );
+                })}
+              </tr>
+            </>
           );
         })}
       </tbody>

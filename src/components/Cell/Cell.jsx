@@ -4,7 +4,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { convertBlockId } from '../../utils/convertBlockId';
 import icon from '../../imgs/icon.png';
 import styles from './Cell.module.scss';
 
@@ -17,6 +16,7 @@ export const CellLinkOption = ({ cell }) => {
   const history = useHistory();
   return (
     <td
+      className={styles.icon__span}
       role='link'
       aria-label='link'
       onClick={() => history.push(`/home/blocks/${cell}`)}
