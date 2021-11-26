@@ -1,6 +1,6 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { Form } from 'formik';
+import PropTypes from 'prop-types';
 import styles from './FormComponent.module.scss';
 import { useThemeContext } from '../../contexts/themeContext';
 
@@ -25,4 +25,13 @@ export const FormComponent = ({ fields, bottom }) => {
       {bottom}
     </Form>
   );
+};
+
+FormComponent.propTypes = {
+  fields: PropTypes.node.isRequired,
+  bottom: PropTypes.node,
+};
+
+FormComponent.defaultProps = {
+  bottom: '',
 };

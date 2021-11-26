@@ -1,8 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable func-names */
 /* eslint-disable react/no-this-in-sfc */
-/* eslint-disable no-console */
+
 import React from 'react';
 import { Formik } from 'formik';
 import * as yup from 'yup';
@@ -40,6 +39,7 @@ export const Signup = () => {
         8,
         'Password should contain both letter and number, with minimum length of 8 characters',
       )
+      // eslint-disable-next-line func-names
       .test('passwords-match', 'Passwords must match', function (value) {
         return this.parent.password === value;
       }),
@@ -53,6 +53,7 @@ export const Signup = () => {
   };
 
   const handleSubmit = (values) => {
+    // eslint-disable-next-line no-console
     console.log(values);
   };
 
