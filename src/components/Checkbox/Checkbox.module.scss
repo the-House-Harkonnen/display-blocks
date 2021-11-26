@@ -1,0 +1,33 @@
+
+.checkbox__input{
+    display: none;
+}
+
+input[type='checkbox'] {
+    + label{
+        display: block;
+        &::before{
+            display: block;
+            width: 24px;
+            height: 24px;
+            content: '\2714';
+            content: url('./../../imgs/coolicon.svg');
+            font-size: 26px;
+            line-height: 26px;
+            margin-right: 16px;
+            border: 02px solid;
+            padding: 3px;
+            border-radius: 0.2em;
+        }
+        
+    }
+} 
+
+input[type='checkbox']:checked {
+    + label{
+        display: block;
+        &::before{
+            background-color: black;
+        }        
+    }
+} 

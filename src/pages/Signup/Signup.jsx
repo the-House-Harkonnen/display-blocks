@@ -4,12 +4,13 @@
 /* eslint-disable react/no-this-in-sfc */
 /* eslint-disable no-console */
 import React from 'react';
-import { Form, Formik, Field } from 'formik';
+import { Form, Formik } from 'formik';
 import * as yup from 'yup';
 import { useHistory } from 'react-router-dom';
 import styles from './Signup.module.scss';
 import { Input } from '../../components/Input';
 import { useThemeContext } from '../../contexts/themeContext';
+import { Checkbox } from '../../components/Checkbox/Checkbox';
 
 export const Signup = () => {
   const history = useHistory();
@@ -89,13 +90,7 @@ export const Signup = () => {
               />
               <Input name='confirm' label='Confirm password' type='password'>
                 <div className={styles.signup__agree}>
-                  <Field
-                    className={styles.checkbox}
-                    type='checkbox'
-                    id='agree'
-                    name='agree'
-                  />
-                  <label className={styles.signup__checkbox} htmlFor='agree' />
+                  <Checkbox name='agree' />
                   <span className={styles.signup__terms}>
                     By creating an account, you agree to Tezos Explorer{' '}
                     <a href='#' className={styles.signup__policy}>
