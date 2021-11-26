@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect, createRef } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useCallback } from 'react/cjs/react.development';
 import {
   HomeIcon,
@@ -14,6 +15,7 @@ import { useThemeContext } from '../../contexts/themeContext';
 import styles from './Nav.module.scss';
 
 const Nav = () => {
+  const history = useHistory();
   const [{ theme }] = useThemeContext();
   const [showNav, setShowNav] = useState(false);
   const classNav = showNav
@@ -38,7 +40,7 @@ const Nav = () => {
   return (
     <>
       <div className={styles.burger}>
-        <button type='button'>
+        <button type='button' onClick={() => history.push('/home/login')}>
           <UserIcon />
         </button>
         <button type='button' onClick={() => setShowNav(!showNav)}>
@@ -49,7 +51,6 @@ const Nav = () => {
         <nav
           className={styles.links}
           style={{
-            // backgroundColor: theme.burgerBackground,
             color: theme.color,
           }}
         >
@@ -75,12 +76,6 @@ const Nav = () => {
               <a className={styles.links__link} href='#'>
                 Charts
               </a>
-            </li>
-            <li className={styles.links__item}>
-              <a className={styles.links__link} href='#'>
-                Ecosystem
-              </a>
-              <div className={styles.links__arrow} />
             </li>
           </ul>
           <ul

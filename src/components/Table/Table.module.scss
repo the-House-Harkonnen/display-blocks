@@ -3,6 +3,7 @@
 .table {
   text-align: start;
   width: 100%;
+  border-collapse: collapse; 
 
   &::-webkit-scrollbar {
     height: 5px;
@@ -56,6 +57,10 @@
   &__row {
     height: 63px;
     color: currentColor;
+    &:hover {
+      // background-color: #2E2B4D;
+      background-color: #ECF0F9BF;
+    }
   }
 
   &__td {
@@ -84,4 +89,8 @@
   transform: translate(10px, -3px);
   cursor: pointer;
   color: currentColor;
+}
+
+tr { 
+  border-bottom: 1px solid #D9DFF8;
 }
