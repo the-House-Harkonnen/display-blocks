@@ -2,13 +2,12 @@
 /* eslint-disable react/no-this-in-sfc */
 /* eslint-disable no-console */
 import React from 'react';
-import { Formik } from 'formik';
+import { Form, Formik } from 'formik';
 import * as yup from 'yup';
 import { useHistory } from 'react-router-dom';
 import styles from './Login.module.scss';
 import { Input } from '../../components/Input';
 import { useThemeContext } from '../../contexts/themeContext';
-import { FormComponent } from '../../components/FormComponent';
 
 export const Login = () => {
   const history = useHistory();
@@ -43,34 +42,6 @@ export const Login = () => {
     console.log(values);
   };
 
-  const bottom = (
-    <div className={styles.login__bottom}>
-      <span className={styles.login__question}>
-        {' '}
-        Don’t have a Tezos Explorer Account?
-      </span>
-      <button
-        type='button'
-        className={styles.login__link}
-        onClick={() => history.push('/home/signup')}
-      >
-        Sing up Now?
-      </button>
-    </div>
-  );
-
-  const fields = (
-    <>
-      <Input name='address' label='Email address' type='text' />
-      <Input name='password' label='Password' type='password' />
-      <Input name='confirm' label='Confirm password' type='password'>
-        <button type='button' className={styles.login__help}>
-          Forgot password?
-        </button>
-      </Input>
-    </>
-  );
-
   return (
     <div
       className={styles.login}
@@ -90,7 +61,43 @@ export const Login = () => {
           onSubmit={handleSubmit}
           validationSchema={validationSchema}
         >
-          <FormComponent fields={fields} bottom={bottom} />
+          <Form
+            className={styles.form}
+            style={{
+              border: theme.tableBorder,
+            }}
+          >
+            <fieldset className={styles.form__group}>
+              <Input name='address' label='Email address' type='text' />
+              <Input name='password' label='Password' type='password' />
+              <Input name='confirm' label='Confirm password' type='password'>
+                <button type='button' className={styles.login__help}>
+                  Forgot password?
+                </button>
+              </Input>
+            </fieldset>
+            <input
+              className={styles.form__btn}
+              style={{
+                backgroundColor: theme.formBtn,
+              }}
+              type='submit'
+              value='Submit'
+            />
+            <div className={styles.login__bottom}>
+              <span className={styles.login__question}>
+                {' '}
+                Don’t have a Tezos Explorer Account?
+              </span>
+              <button
+                type='button'
+                className={styles.login__link}
+                onClick={() => history.push('/home/signup')}
+              >
+                Sing up Now?
+              </button>
+            </div>
+          </Form>
         </Formik>
       </div>
     </div>

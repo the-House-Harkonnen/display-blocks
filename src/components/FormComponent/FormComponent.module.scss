@@ -1,0 +1,22 @@
+.form{
+    background-color: #fff;
+    display: grid;
+    grid-row-gap: 36px;
+    padding: 48px;
+    border-radius: 30px;
+
+    &__group {
+        display: grid;
+        grid-row-gap: 36px;
+        border: none;
+      }
+      &__btn {
+        height: 64px;
+        border: none;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 18px;
+        color: #F0F2F4;
+      }
+
+}
