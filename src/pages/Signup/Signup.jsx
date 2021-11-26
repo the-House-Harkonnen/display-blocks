@@ -1,16 +1,16 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable func-names */
 /* eslint-disable react/no-this-in-sfc */
-/* eslint-disable no-console */
+
 import React from 'react';
-import { Form, Formik } from 'formik';
+import { Formik } from 'formik';
 import * as yup from 'yup';
 import { useHistory } from 'react-router-dom';
 import styles from './Signup.module.scss';
 import { Input } from '../../components/Input';
 import { useThemeContext } from '../../contexts/themeContext';
 import { Checkbox } from '../../components/Checkbox/Checkbox';
+import { FormComponent } from '../../components/FormComponent';
 
 export const Signup = () => {
   const history = useHistory();
@@ -39,6 +39,7 @@ export const Signup = () => {
         8,
         'Password should contain both letter and number, with minimum length of 8 characters',
       )
+      // eslint-disable-next-line func-names
       .test('passwords-match', 'Passwords must match', function (value) {
         return this.parent.password === value;
       }),
@@ -52,8 +53,48 @@ export const Signup = () => {
   };
 
   const handleSubmit = (values) => {
+    // eslint-disable-next-line no-console
     console.log(values);
   };
+
+  const fields = (
+    <>
+      <Input name='address' label='Email address' type='text' />
+      <Input
+        name='password'
+        label='Password'
+        type='password'
+        promptMessage={passwordPrompt}
+      />
+      <Input name='confirm' label='Confirm password' type='password'>
+        <div className={styles.signup__agree}>
+          <Checkbox name='agree' />
+          <span className={styles.signup__terms}>
+            By creating an account, you agree to Tezos Explorer{' '}
+            <a href='#' className={styles.signup__policy}>
+              Terms of Service{' '}
+            </a>
+            <span>&</span>{' '}
+            <a href='#' className={styles.signup__policy}>
+              Privacy Policy.
+            </a>
+          </span>
+        </div>
+      </Input>
+    </>
+  );
+  const bottom = (
+    <div className={styles.signup__bottom}>
+      <span className={styles.signup__question}> Already have an Account?</span>
+      <button
+        type='button'
+        className={styles.signup__link}
+        onClick={() => history.push('/home/login')}
+      >
+        Log In
+      </button>
+    </div>
+  );
 
   return (
     <div
@@ -74,58 +115,7 @@ export const Signup = () => {
           onSubmit={handleSubmit}
           validationSchema={validationSchema}
         >
-          <Form
-            className={styles.form}
-            style={{
-              border: theme.tableBorder,
-            }}
-          >
-            <fieldset className={styles.form__group}>
-              <Input name='address' label='Email address' type='text' />
-              <Input
-                name='password'
-                label='Password'
-                type='password'
-                promptMessage={passwordPrompt}
-              />
-              <Input name='confirm' label='Confirm password' type='password'>
-                <div className={styles.signup__agree}>
-                  <Checkbox name='agree' />
-                  <span className={styles.signup__terms}>
-                    By creating an account, you agree to Tezos Explorer{' '}
-                    <a href='#' className={styles.signup__policy}>
-                      Terms of Service{' '}
-                    </a>
-                    <span>&</span>{' '}
-                    <a href='#' className={styles.signup__policy}>
-                      Privacy Policy.
-                    </a>
-                  </span>
-                </div>
-              </Input>
-            </fieldset>
-            <input
-              className={styles.form__btn}
-              style={{
-                backgroundColor: theme.formBtn,
-              }}
-              type='submit'
-              value='Submit'
-            />
-            <div className={styles.signup__bottom}>
-              <span className={styles.signup__question}>
-                {' '}
-                Already have an Account?
-              </span>
-              <button
-                type='button'
-                className={styles.signup__link}
-                onClick={() => history.push('/home/login')}
-              >
-                Log In
-              </button>
-            </div>
-          </Form>
+          <FormComponent fields={fields} bottom={bottom} />
         </Formik>
       </div>
     </div>
