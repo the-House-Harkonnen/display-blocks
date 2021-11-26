@@ -1,17 +1,16 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
 import React, { useMemo } from 'react';
-import { BlocksPagination } from '../../components/BlocksPagination/BlocksPagination';
-import { CellLinkIcon, CellLinkOption } from '../../components/Cell/Cell';
+import { BlocksPagination } from '../../components/BlocksPagination';
+import { CellLinkIcon, CellLinkOption } from '../../components/Cell';
 import { Crumbs } from '../../components/Crumbs';
-import { Table } from '../../components/Table/Table';
+import { Table } from '../../components/Table';
 import { useBlocksContext } from '../../contexts/blocksContext';
 import { convertTezos } from '../../utils/convertTezos';
 import { convertTimestamp } from '../../utils/convertTimestamp';
 import { useThemeContext } from '../../contexts/themeContext';
 import styles from './Blocks.module.scss';
 import { Loader } from '../../components/Loader';
-import { convertBlockId } from '../../utils/convertBlockId';
 
 export const Blocks = () => {
   const [{ theme }] = useThemeContext();
@@ -27,7 +26,7 @@ export const Blocks = () => {
               original: { level },
             },
           } = value;
-          return <CellLinkOption cell={convertBlockId(level)} />;
+          return <CellLinkOption cell={level} />;
         },
       },
       {
