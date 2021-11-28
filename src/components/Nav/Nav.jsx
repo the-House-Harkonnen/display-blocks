@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect, createRef } from 'react';
 import { useHistory } from 'react-router-dom';
@@ -13,8 +14,11 @@ import {
 } from '../Icons/Icons';
 import { useThemeContext } from '../../contexts/themeContext';
 import styles from './Nav.module.scss';
+import { useNetworkContext } from '../../contexts/networkContext';
+import { DropDown } from '../DropDown/DropDown';
 
 const Nav = () => {
+  const { network, handleNetwork, networkOptions } = useNetworkContext();
   const history = useHistory();
   const [{ theme }] = useThemeContext();
   const [showNav, setShowNav] = useState(false);
@@ -67,10 +71,11 @@ const Nav = () => {
               <div className={styles.links__arrow} />
             </li>
             <li className={styles.links__item}>
-              <a className={styles.links__link} href='#'>
-                Bakers
-              </a>
-              <div className={styles.links__arr} />
+              <DropDown
+                name={network}
+                options={networkOptions}
+                callBack={handleNetwork}
+              />
             </li>
             <li className={styles.links__item}>
               <a className={styles.links__link} href='#'>

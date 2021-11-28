@@ -1,25 +1,31 @@
+/* eslint-disable no-console */
 import React, {
   createContext,
   useCallback,
   useContext,
+  // eslint-disable-next-line no-unused-vars
+  useEffect,
   useMemo,
   useState,
 } from 'react';
 import PropTypes from 'prop-types';
 import { getBlocks } from '../api';
 import { useRequest } from '../hooks/useRequest';
+import { useNetworkContext } from './networkContext';
 
 const BlocksContext = createContext();
 export const useBlocksContext = () => useContext(BlocksContext);
 
 export const BlocksProvider = ({ children }) => {
+  const { network } = useNetworkContext();
+  console.log(network);
   const [limit, setLimit] = useState(10);
   const [offset, setOffset] = useState(0);
 
   const [data, loading, error] = useRequest(
     getBlocks,
-    [offset, limit],
-    [offset, limit],
+    [offset, limit, network],
+    [offset, limit, network],
   );
 
   const handleLimit = useCallback(
