@@ -4,8 +4,12 @@ import { useThemeContext } from '../../contexts/themeContext';
 import styles from './DropDown.module.scss';
 
 export const DropDown = ({ name, options, callBack }) => {
-  const [showBody, setShowBody] = useState(false);
+  const [showBody, setShowBody] = useState(true);
   const [{ theme }] = useThemeContext();
+  const onclick = (value) => {
+    callBack(value);
+    setShowBody(!showBody);
+  };
 
   return (
     <div className={styles.dropdown}>
@@ -26,7 +30,7 @@ export const DropDown = ({ name, options, callBack }) => {
               <button
                 className={styles.dropdown__btn}
                 type='button'
-                onClick={() => callBack(option)}
+                onClick={() => onclick(option)}
               >
                 {option}
               </button>

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable react/prop-types */
 import React, { createContext, useContext, useMemo, useState } from 'react';
 
@@ -7,6 +8,8 @@ export const useNetworkContext = () => useContext(NetworkContext);
 const networkOptions = ['mainnet', 'otherOption'];
 export const NetworkProvider = ({ children }) => {
   const [network, setNetwork] = useState(networkOptions[0]);
+
+  sessionStorage.setItem('network', network);
 
   const value = useMemo(() => ({
     networkOptions,
