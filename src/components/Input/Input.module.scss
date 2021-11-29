@@ -1,7 +1,6 @@
 .row {
     display: grid;
     grid-auto-flow: row;
-    grid-row-gap: 14px;
 }
 
 .label {
@@ -49,12 +48,9 @@
 
 .error {
     color: #FF3B30;
-
-
+    grid-column: 1/2;
+    margin-top: 14px;
 }
-// .prompt{
-
-// }
 
 .help {
 

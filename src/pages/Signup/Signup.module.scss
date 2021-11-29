@@ -50,6 +50,7 @@
     grid-template-columns: 34px auto;
     grid-auto-flow: column;
     column-gap: 16px;
+    grid-column: 1/2;
   }
 
   &__policy {
