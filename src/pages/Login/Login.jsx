@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable func-names */
 /* eslint-disable react/no-this-in-sfc */
 /* eslint-disable no-console */
@@ -6,7 +7,7 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 import { useHistory } from 'react-router-dom';
 import styles from './Login.module.scss';
-import { Input } from '../../components/Input';
+import { Input, InputPassword } from '../../components/Input';
 import { useThemeContext } from '../../contexts/themeContext';
 import { FormComponent } from '../../components/FormComponent';
 
@@ -62,12 +63,12 @@ export const Login = () => {
   const fields = (
     <>
       <Input name='address' label='Email address' type='text' />
-      <Input name='password' label='Password' type='password' />
-      <Input name='confirm' label='Confirm password' type='password'>
+      <InputPassword name='password' label='Password' />
+      <InputPassword name='confirm' label='Confirm password'>
         <button type='button' className={styles.login__help}>
           Forgot password?
         </button>
-      </Input>
+      </InputPassword>
     </>
   );
 

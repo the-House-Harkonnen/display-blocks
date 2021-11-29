@@ -15,8 +15,6 @@ import { FormComponent } from '../../components/FormComponent';
 export const Signup = () => {
   const history = useHistory();
   const [{ theme }] = useThemeContext();
-  const passwordPrompt =
-    'Password should contain both letter and number, with minimum length of 8 characters';
 
   const validationSchema = yup.object({
     address: yup
@@ -60,12 +58,7 @@ export const Signup = () => {
   const fields = (
     <>
       <Input name='address' label='Email address' type='text' />
-      <Input
-        name='password'
-        label='Password'
-        type='password'
-        promptMessage={passwordPrompt}
-      />
+      <Input name='password' label='Password' type='password' />
       <Input name='confirm' label='Confirm password' type='password'>
         <div className={styles.signup__agree}>
           <Checkbox name='agree' />
