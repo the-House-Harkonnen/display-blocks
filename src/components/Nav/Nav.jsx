@@ -132,6 +132,16 @@ const Nav = () => {
               </a>
               <div className={styles.links__arrow} />
             </li>
+            <li className={styles.links__item}>
+              <div className={styles.links__icon}>
+                <EcosystemIcon />
+              </div>
+              <DropDown
+                name={network}
+                options={networkOptions}
+                callBack={handleNetwork}
+              />
+            </li>
           </ul>
           <div
             className={styles.line}

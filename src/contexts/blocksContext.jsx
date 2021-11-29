@@ -3,8 +3,6 @@ import React, {
   createContext,
   useCallback,
   useContext,
-  // eslint-disable-next-line no-unused-vars
-  useEffect,
   useMemo,
   useState,
 } from 'react';
@@ -18,7 +16,6 @@ export const useBlocksContext = () => useContext(BlocksContext);
 
 export const BlocksProvider = ({ children }) => {
   const { network } = useNetworkContext();
-  console.log(network);
   const [limit, setLimit] = useState(10);
   const [offset, setOffset] = useState(0);
 
