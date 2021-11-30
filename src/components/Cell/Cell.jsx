@@ -16,7 +16,7 @@ CellTh.propTypes = {
 export const CellLinkOption = ({ cell }) => {
   const history = useHistory();
   return (
-    <td
+    <span
       className={styles.icon__span}
       role='link'
       aria-label='link'
@@ -24,7 +24,7 @@ export const CellLinkOption = ({ cell }) => {
       onKeyPress={() => history.push(`/home/blocks/${cell}`)}
     >
       {convertBlockId(cell)}
-    </td>
+    </span>
   );
 };
 CellLinkOption.propTypes = {
@@ -56,7 +56,7 @@ export const CellLinkIcon = ({ src, name, alt, href }) => {
           }}
           alt={alt}
         />
-        <span className={styles.icon__span}>{name || 'tezos backer'}</span>
+        <span className={styles.icon__baker}>{name || 'tezos baker'}</span>
       </div>
     </div>
   );
@@ -91,7 +91,7 @@ export const CellIcon = ({ src, name, alt }) => {
           }}
           alt={alt}
         />
-        <span className={styles.icon__span}>{name || 'tezos baker'}</span>
+        <span className={styles.icon__baker}>{name || 'tezos baker'}</span>
       </div>
     </>
   );

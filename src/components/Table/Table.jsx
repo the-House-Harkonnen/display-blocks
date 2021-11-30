@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/no-this-in-sfc */
 /* eslint-disable react/jsx-props-no-spreading */
@@ -9,7 +10,9 @@ import { useThemeContext } from '../../contexts/themeContext';
 import styles from './Table.module.scss';
 
 export const Table = ({ columns, data }) => {
-  const [{ theme }] = useThemeContext();
+  const [{ theme, isDark }] = useThemeContext();
+
+  const hoverRow = isDark === false ? `${styles.dark}` : `${styles.light}`;
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable(
@@ -28,63 +31,79 @@ export const Table = ({ columns, data }) => {
           color: theme.tableHeaders,
         }}
       >
-        {headerGroups.map((headerGroup) => (
-          <tr
-            // style={{
-            //   color: theme.tableLine,
-            // }}
-            className={styles.head__tr}
-            {...headerGroup.getHeaderGroupProps()}
-          >
-            {headerGroup.headers.map((column) => {
-              if (!column.canSort) {
+        {/* https://github.com/tannerlinsley/react-table/discussions/2647 */}
+        {headerGroups.map((headerGroup) => {
+          // const { key, ...restHeaderGroupProps } =
+          headerGroup.getHeaderGroupProps();
+          return (
+            <tr
+              // key={key}
+              className={styles.head__tr}
+              {...headerGroup.getHeaderGroupProps()}
+              // {...restHeaderGroupProps}
+            >
+              {headerGroup.headers.map((column) => {
+                // const { key, ...restColumn } = column.getHeaderProps();
+                if (!column.canSort) {
+                  return (
+                    <th
+                      // key={key}
+                      // {...restColumn}
+                      {...column.getHeaderProps()}
+                      className={styles.head__headers}
+                    >
+                      {column.render('Header')}
+                    </th>
+                  );
+                }
+                const className = column.isSorted
+                  ? column.isSortedDesc
+                    ? `${styles.active} ${styles.down}`
+                    : `${styles.active} ${styles.up}`
+                  : ` ${styles.dormant} ${styles.up}`;
                 return (
                   <th
+                    className={styles.head__th}
                     {...column.getHeaderProps()}
-                    className={styles.head__headers}
+                    onClick={() => column.toggleSortBy(!column.isSortedDesc)}
                   >
-                    {column.render('Header')}
+                    <div className={styles.head__container}>
+                      <span className={styles.head__header}>
+                        {column.render('Header')}
+                      </span>
+                      <span className={className} />
+                    </div>
                   </th>
                 );
-              }
-              const className = column.isSorted
-                ? column.isSortedDesc
-                  ? `${styles.active} ${styles.down}`
-                  : `${styles.active} ${styles.up}`
-                : ` ${styles.dormant} ${styles.up}`;
-              return (
-                <th
-                  className={styles.head__th}
-                  {...column.getHeaderProps()}
-                  onClick={() => column.toggleSortBy(!column.isSortedDesc)}
-                >
-                  <div className={styles.head__container}>
-                    <span className={styles.head__header}>
-                      {column.render('Header')}
-                    </span>
-                    <span className={className} />
-                  </div>
-                </th>
-              );
-            })}
-          </tr>
-        ))}
+              })}
+            </tr>
+          );
+        })}
       </thead>
-      <tbody
-        {...getTableBodyProps()}
-        className={styles.body}
-        style={{
-          color: theme.color,
-        }}
-      >
+      <tbody {...getTableBodyProps()} className={styles.body}>
         {rows.map((row) => {
           prepareRow(row);
           return (
             <>
-              <tr {...row.getRowProps()} className={styles.body__row}>
+              <tr
+                {...row.getRowProps()}
+                className={hoverRow}
+                style={{
+                  color: theme.tableLine,
+                }}
+              >
                 {row.cells.map((cell) => {
+                  // const { key, ...restCellProps } = cell.getCellProps();
                   return (
-                    <td {...cell.getCellProps()} className={styles.body__td}>
+                    <td
+                      // key={key}
+                      // {...restCellProps}
+                      {...cell.getCellProps()}
+                      className={styles.body__td}
+                      style={{
+                        color: theme.color,
+                      }}
+                    >
                       {cell.render('Cell')}
                     </td>
                   );

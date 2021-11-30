@@ -36,7 +36,7 @@ export const Input = ({ name, label, type, children, switcher, ...props }) => {
         {switcher}
       </div>
       <div className={styles.bottom}>
-        <span className={styles.error}>
+        <span className={styles.condition}>
           <ErrorMessage name={field.name} />
         </span>
         {children}

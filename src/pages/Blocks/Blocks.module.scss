@@ -14,10 +14,11 @@
   padding: 25px;
   // make the element as relative for loader component
   position: relative;
+  z-index: 1;
 }
 
 .table {
-  overflow: scroll;
+  overflow: auto;
 }
 
 .pagination {
@@ -40,4 +41,5 @@
 
 .span {
   color: inherit;
+  cursor: default;
 }

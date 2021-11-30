@@ -6,7 +6,6 @@
   justify-content: start;
   grid-gap: 15px;
   color: currentColor;
-
   @include media(678px) {
     margin-bottom: 40px;  
   }
@@ -17,6 +16,7 @@
   font-weight: 400;
   cursor: pointer;
   color: currentColor;
+  z-index: 1;
   &:first-letter{
     text-transform: uppercase;
   }
@@ -27,6 +27,7 @@
   line-height: 24px;
   font-weight: 500;
   color: currentColor;
+  z-index: 1;
 }
 
 .current{
@@ -34,6 +35,7 @@
   font-weight: 600;
   cursor: pointer;
   color: currentColor;
+  z-index: 1;
   &:first-letter  {
     text-transform: uppercase;
   }

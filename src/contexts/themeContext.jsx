@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const themes = {
   dark: {
     backgroundColor: '#1E1C37',
-    mainBackground: '#1E1C37',
+    mainBackground: '#1a1833',
     burgerBackground: '#1E1C37',
     burgerMenuLine: 'rgba(39, 70, 115, 0.65)',
     color: '#F0F2F4',
@@ -22,7 +22,7 @@ const themes = {
   },
   light: {
     backgroundColor: '#274673',
-    mainBackground: '#F0F2F4',
+    mainBackground: '#ecf0f9',
     burgerBackground: '#FFFFFF',
     burgerMenuLine: 'rgba(217, 223, 248, 0.65)',
     color: '#2D3B59',

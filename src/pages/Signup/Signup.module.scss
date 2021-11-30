@@ -26,6 +26,7 @@
 
   &__form {
     grid-column: 2/3;
+    z-index: 1;
   }
 
   &__bottom {
@@ -44,10 +45,10 @@
   }
 
   &__agree {
-    max-width: 412px;
+    max-width: 462px;
     margin: 18px 0px 36px;
     display: grid;
-    grid-template-columns: 34px auto;
+    grid-template-columns: 24px auto;
     grid-auto-flow: column;
     column-gap: 16px;
     grid-column: 1/2;
