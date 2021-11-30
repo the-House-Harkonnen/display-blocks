@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable no-console */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
 import React, { useMemo } from 'react';
@@ -45,10 +44,10 @@ export const Blocks = () => {
         Cell: (value) => {
           const {
             row: {
-              original: { baker, bakerName, level },
+              original: { bakerName },
             },
           } = value;
-          return <CellLinkIcon src={baker} name={bakerName} href={level} />;
+          return <CellLinkIcon name={bakerName} />;
         },
       },
       {

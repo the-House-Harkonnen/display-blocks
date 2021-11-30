@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { Block } from '../../pages/Block';

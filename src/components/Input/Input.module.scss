@@ -8,7 +8,7 @@
     font-size: 18px;
     @media screen and (max-width: 768px) {
         font-size: 14px;
-      }
+    }
 }
 
 .border {
@@ -17,8 +17,9 @@
     border: solid 1px;
     display: grid;
     grid-template-columns: 1fr auto;
-    border-radius: 10px;
+    border-radius: 10px
 }
+
 .normal{
     color: #a5a5a5;
 }
@@ -27,14 +28,11 @@
     width: 100%;
     border: none;
     outline: none;
-    font-family: Montserrat;
     font-size: 18px;
-    font-style: normal;
     font-weight: 500;
-    line-height: 22px;
-    letter-spacing: 0em;
     text-align: left;
 }
+
 .icon{
     border: none;
     background-color: transparent;
@@ -49,24 +47,26 @@
 .error {
     color: #FF3B30;
     grid-column: 1/2;
-    margin-top: 14px;
+    box-shadow: 0px 4px 4px rgba(255, 59, 48, 0.08);
+}
+
+.condition {
+    color: #FF3B30;
+    margin-top: 18px;
+    font-size: 14px;
+    font-weight: 400;
 }
 
 .help {
-
     background-color: transparent;
     border: none;
-    // font-family: Montserrat;
     font-size: 16px;
-    // font-style: normal;
     font-weight: 500;
     line-height: 20px;
-    // letter-spacing: 0em;
-    // text-align: left;
     color: #2D3B5999;
-
 }
 
 .touched{
     color: #536DFB;
+    box-shadow: 0px 4px 10px rgba(83, 109, 251, 0.15);
 }

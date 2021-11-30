@@ -24,12 +24,15 @@ export const Login = () => {
     password: yup
       .string()
       .required('Required')
-      .min(8, 'Too short - should be 8 chars minimum.'),
+      .min(
+        8,
+        'Password should contain both letter and number, with minimum length of 8 characters',
+      ),
     confirm: yup
       .string()
       .required('Required')
-      .min(8, 'Too short - should be 8 chars minimum.')
-      .test('passwords-match', 'Passwords must match', function (value) {
+      .min(8, 'Passwords do not match')
+      .test('passwords-match', 'Passwords do not match', function (value) {
         return this.parent.password === value;
       }),
   });
@@ -62,9 +65,22 @@ export const Login = () => {
 
   const fields = (
     <>
-      <Input name='address' label='Email address' type='text' />
-      <InputPassword name='password' label='Password' />
-      <InputPassword name='confirm' label='Confirm password'>
+      <Input
+        placeholder='Enter your email address...'
+        name='address'
+        label='Email address'
+        type='text'
+      />
+      <InputPassword
+        placeholder='Enter your password...'
+        name='password'
+        label='Password'
+      />
+      <InputPassword
+        placeholder='Confirm password...'
+        name='confirm'
+        label='Confirm password'
+      >
         <button type='button' className={styles.login__help}>
           Forgot password?
         </button>

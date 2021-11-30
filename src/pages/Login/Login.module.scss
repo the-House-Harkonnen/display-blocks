@@ -27,6 +27,7 @@
 
   &__form {
     grid-column: 2/3;
+    z-index: 1;
   }
 
   &__bottom {
@@ -64,9 +65,9 @@
     color: #2D3B5999;
     justify-self: flex-end;
     grid-column: 2/3;
+    margin-top: 18px;
     @media screen and (max-width: 768px) {
       font-size: 12px;
     }
   }
 }
-

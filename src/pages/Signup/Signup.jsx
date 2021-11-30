@@ -9,7 +9,7 @@ import { useHistory } from 'react-router-dom';
 import styles from './Signup.module.scss';
 import { Input } from '../../components/Input';
 import { useThemeContext } from '../../contexts/themeContext';
-import { Checkbox } from '../../components/Checkbox/Checkbox';
+import { Checkbox } from '../../components/Checkbox';
 import { FormComponent } from '../../components/FormComponent';
 
 export const Signup = () => {
@@ -33,12 +33,9 @@ export const Signup = () => {
     confirm: yup
       .string()
       .required('Required')
-      .min(
-        8,
-        'Password should contain both letter and number, with minimum length of 8 characters',
-      )
+      .min(8, 'Passwords do not match')
       // eslint-disable-next-line func-names
-      .test('passwords-match', 'Passwords must match', function (value) {
+      .test('passwords-match', 'Passwords do not match', function (value) {
         return this.parent.password === value;
       }),
   });
@@ -57,9 +54,24 @@ export const Signup = () => {
 
   const fields = (
     <>
-      <Input name='address' label='Email address' type='text' />
-      <Input name='password' label='Password' type='password' />
-      <Input name='confirm' label='Confirm password' type='password'>
+      <Input
+        placeholder='Enter your email address...'
+        name='address'
+        label='Email address'
+        type='text'
+      />
+      <Input
+        placeholder='Enter your password...'
+        name='password'
+        label='Password'
+        type='password'
+      />
+      <Input
+        placeholder='Confirm password...'
+        name='confirm'
+        label='Confirm password'
+        type='password'
+      >
         <div className={styles.signup__agree}>
           <Checkbox name='agree' />
           <span className={styles.signup__terms}>
