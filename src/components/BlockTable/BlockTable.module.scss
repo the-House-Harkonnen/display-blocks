@@ -15,7 +15,9 @@
     font-weight: 400;
     font-size: 16px;
     color: currentColor;
+
   }
+
 
   &__td {
     font-weight: 600;
@@ -32,5 +34,10 @@
     grid-template-columns: minmax(min-content, 1fr);
     justify-content: start;
     grid-gap: 0;
+
+
+    > :nth-child(even){
+      order: 1; 
+    }
     }
   }
