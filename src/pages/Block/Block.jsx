@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { useEffect, useMemo } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import styles from './Block.module.scss';
@@ -73,6 +74,12 @@ export const Block = () => {
         {
           header: 'Protocol version:',
           accessor: 'protocol',
+          process: ({ protocol }) => (
+            <div className={styles.item}>{`${protocol.slice(
+              0,
+              8,
+            )}...${protocol.slice(-5)}`}</div>
+          ),
         },
         {
           header: 'Baker`s priority:',
