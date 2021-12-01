@@ -1,31 +1,30 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable no-unused-vars */
+/* eslint-disable func-names */
 /* eslint-disable react/no-this-in-sfc */
-
+/* eslint-disable no-console */
 import React from 'react';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { useHistory } from 'react-router-dom';
-import styles from './Signup.module.scss';
+import styles from './Login.module.scss';
 import { Input, InputPassword } from '../../components/Input';
 import { useThemeContext } from '../../contexts/themeContext';
-import { Checkbox } from '../../components/Checkbox';
 import { FormComponent } from '../../components/FormComponent';
 
-export const Signup = () => {
+export const Login = () => {
   const history = useHistory();
   const [{ theme }] = useThemeContext();
-
   const validationSchema = yup.object({
     address: yup
       .string()
       .required('Required')
       .min(4, 'Too short - should be 4 chars minimum.')
       .matches('@', 'Email address must contain the @ character')
+      .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.')
       .email(),
     password: yup
       .string()
-      .required('Required')
+      .required('Please Enter your password')
       .matches(
         /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
         'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character',
@@ -34,7 +33,6 @@ export const Signup = () => {
       .string()
       .required('Required')
       .min(8, 'Passwords do not match')
-      // eslint-disable-next-line func-names
       .test('passwords-match', 'Passwords do not match', function (value) {
         return this.parent.password === value;
       }),
@@ -44,13 +42,27 @@ export const Signup = () => {
     address: '',
     password: '',
     confirm: '',
-    agree: false,
   };
 
   const handleSubmit = (values) => {
-    // eslint-disable-next-line no-console
     console.log(values);
   };
+
+  const bottom = (
+    <div className={styles.login__bottom}>
+      <span className={styles.login__question}>
+        {' '}
+        Don’t have a Tezos Explorer Account?
+      </span>
+      <button
+        type='button'
+        className={styles.login__link}
+        onClick={() => history.push('/home/signup')}
+      >
+        Sing up Now?
+      </button>
+    </div>
+  );
 
   const fields = (
     <>
@@ -69,51 +81,28 @@ export const Signup = () => {
         placeholder='Confirm password...'
         name='confirm'
         label='Confirm password'
-        type='password'
       >
-        <div className={styles.signup__agree}>
-          <Checkbox name='agree' />
-          <span className={styles.signup__terms}>
-            By creating an account, you agree to Tezos Explorer{' '}
-            <a href='#' className={styles.signup__policy}>
-              Terms of Service{' '}
-            </a>
-            <span>&</span>{' '}
-            <a href='#' className={styles.signup__policy}>
-              Privacy Policy.
-            </a>
-          </span>
-        </div>
+        <button type='button' className={styles.login__help}>
+          Forgot password?
+        </button>
       </InputPassword>
     </>
-  );
-  const bottom = (
-    <div className={styles.signup__bottom}>
-      <span className={styles.signup__question}> Already have an Account?</span>
-      <button
-        type='button'
-        className={styles.signup__link}
-        onClick={() => history.push('/home/login')}
-      >
-        Log In
-      </button>
-    </div>
   );
 
   return (
     <div
-      className={styles.signup}
+      className={styles.login}
       style={{
         color: theme.color,
       }}
     >
-      <hgroup className={styles.signup__info}>
-        <h2 className={styles.signup__title}>Signup</h2>
-        <span className={styles.signup__subtitle}>
-          Get Started by Signing Up Now
+      <hgroup className={styles.login__info}>
+        <h2 className={styles.login__title}>Login</h2>
+        <span className={styles.login__subtitle}>
+          Welcome back! Log In with your Email
         </span>
       </hgroup>
-      <div className={styles.signup__form}>
+      <div className={styles.login__form}>
         <Formik
           initialValues={initialValues}
           onSubmit={handleSubmit}

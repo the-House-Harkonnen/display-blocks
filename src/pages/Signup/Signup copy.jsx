@@ -7,7 +7,7 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 import { useHistory } from 'react-router-dom';
 import styles from './Signup.module.scss';
-import { Input, InputPassword } from '../../components/Input';
+import { Input } from '../../components/Input';
 import { useThemeContext } from '../../contexts/themeContext';
 import { Checkbox } from '../../components/Checkbox';
 import { FormComponent } from '../../components/FormComponent';
@@ -60,12 +60,13 @@ export const Signup = () => {
         label='Email address'
         type='text'
       />
-      <InputPassword
+      <Input
         placeholder='Enter your password...'
         name='password'
         label='Password'
+        type='password'
       />
-      <InputPassword
+      <Input
         placeholder='Confirm password...'
         name='confirm'
         label='Confirm password'
@@ -84,7 +85,7 @@ export const Signup = () => {
             </a>
           </span>
         </div>
-      </InputPassword>
+      </Input>
     </>
   );
   const bottom = (
