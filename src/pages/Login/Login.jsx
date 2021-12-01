@@ -20,13 +20,14 @@ export const Login = () => {
       .required('Required')
       .min(4, 'Too short - should be 4 chars minimum.')
       .matches('@', 'Email address must contain the @ character')
+      .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.')
       .email(),
     password: yup
       .string()
-      .required('Required')
-      .min(
-        8,
-        'Password should contain both letter and number, with minimum length of 8 characters',
+      .required('Please Enter your password')
+      .matches(
+        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+        'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character',
       ),
     confirm: yup
       .string()

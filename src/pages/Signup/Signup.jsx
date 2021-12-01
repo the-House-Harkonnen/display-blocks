@@ -26,9 +26,9 @@ export const Signup = () => {
     password: yup
       .string()
       .required('Required')
-      .min(
-        8,
-        'Password should contain both letter and number, with minimum length of 8 characters',
+      .matches(
+        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+        'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character',
       ),
     confirm: yup
       .string()

@@ -9,8 +9,6 @@ import PropTypes from 'prop-types';
 import styles from './Input.module.scss';
 
 export const Input = ({ name, label, type, children, switcher, ...props }) => {
-  console.log(name, switcher);
-
   const [field, meta] = useField(name);
 
   const border =
