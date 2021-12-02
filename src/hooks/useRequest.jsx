@@ -12,16 +12,22 @@ export const useRequest = (request, options, memo) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  useEffect(() => {
+  useEffect(async () => {
     setLoading(true);
     setError(false);
-    request(...options)
-      .then((res) => setData(res))
-      .catch((e)=>{
-        setError(true);
-        errorHandler(e);
-      })
-      .finally(() => setLoading(false));
+
+    try {
+      const res = await request(...options);
+      setData(res)
+      
+    } catch (e) {
+      setError(true);
+      errorHandler(e)
+      
+    }finally{
+      setLoading(false)
+    }
+
   }, [...memo]);
   return [data, loading, error];
 };

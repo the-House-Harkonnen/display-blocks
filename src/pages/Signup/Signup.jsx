@@ -58,7 +58,6 @@ export const Signup = () => {
         placeholder='Enter your email address...'
         name='address'
         label='Email address'
-        type='text'
       />
       <InputPassword
         placeholder='Enter your password...'
@@ -69,7 +68,6 @@ export const Signup = () => {
         placeholder='Confirm password...'
         name='confirm'
         label='Confirm password'
-        type='password'
       >
         <div className={styles.signup__agree}>
           <Checkbox name='agree' />
