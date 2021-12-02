@@ -1,9 +1,13 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable no-console */
 /* eslint-disable no-shadow */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/no-this-in-sfc */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable no-nested-ternary */
-import React from 'react';
+// eslint-disable-next-line no-unused-vars
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useSortBy, useTable } from 'react-table';
 import { useThemeContext } from '../../contexts/themeContext';
@@ -22,7 +26,6 @@ export const Table = ({ columns, data }) => {
       },
       useSortBy,
     );
-
   return (
     <table {...getTableProps()} className={styles.table}>
       <thead
@@ -31,24 +34,16 @@ export const Table = ({ columns, data }) => {
           color: theme.tableHeaders,
         }}
       >
-        {/* https://github.com/tannerlinsley/react-table/discussions/2647 */}
         {headerGroups.map((headerGroup) => {
-          // const { key, ...restHeaderGroupProps } =
-          headerGroup.getHeaderGroupProps();
           return (
             <tr
-              // key={key}
               className={styles.head__tr}
               {...headerGroup.getHeaderGroupProps()}
-              // {...restHeaderGroupProps}
             >
               {headerGroup.headers.map((column) => {
-                // const { key, ...restColumn } = column.getHeaderProps();
                 if (!column.canSort) {
                   return (
                     <th
-                      // key={key}
-                      // {...restColumn}
                       {...column.getHeaderProps()}
                       className={styles.head__headers}
                     >
@@ -81,35 +76,31 @@ export const Table = ({ columns, data }) => {
         })}
       </thead>
       <tbody {...getTableBodyProps()} className={styles.body}>
-        {rows.map((row) => {
+        {rows.map((row, i) => {
           prepareRow(row);
           return (
-            <>
-              <tr
-                {...row.getRowProps()}
-                className={hoverRow}
-                style={{
-                  color: theme.tableLine,
-                }}
-              >
-                {row.cells.map((cell) => {
-                  // const { key, ...restCellProps } = cell.getCellProps();
-                  return (
-                    <td
-                      // key={key}
-                      // {...restCellProps}
-                      {...cell.getCellProps()}
-                      className={styles.body__td}
-                      style={{
-                        color: theme.color,
-                      }}
-                    >
-                      {cell.render('Cell')}
-                    </td>
-                  );
-                })}
-              </tr>
-            </>
+            <tr
+              {...row.getRowProps()}
+              key={i}
+              className={hoverRow}
+              style={{
+                color: theme.tableLine,
+              }}
+            >
+              {row.cells.map((cell) => {
+                return (
+                  <td
+                    {...cell.getCellProps()}
+                    className={styles.body__td}
+                    style={{
+                      color: theme.color,
+                    }}
+                  >
+                    {cell.render('Cell')}
+                  </td>
+                );
+              })}
+            </tr>
           );
         })}
       </tbody>
