@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-no-undef */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable jsx-a11y/label-has-associated-control */
@@ -8,7 +7,9 @@ import { Field } from 'formik';
 import PropTypes from 'prop-types';
 import styles from './Input.module.scss';
 
-export const Input = ({ name, label, type, children, switcher, ...props }) => {
+export const Input = ({ name, label, ...props }) => {
+  const { children, switcher, ...inputProps } = props;
+
   return (
     <Field name={name} className={styles.row}>
       {({ field, meta }) => {
@@ -27,9 +28,9 @@ export const Input = ({ name, label, type, children, switcher, ...props }) => {
               <input
                 className={styles.input}
                 autoComplete='off'
-                type={type}
+                type='text'
                 {...field}
-                {...props}
+                {...inputProps}
               />
               {switcher}
             </div>
@@ -49,7 +50,6 @@ export const Input = ({ name, label, type, children, switcher, ...props }) => {
 Input.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
   children: PropTypes.node,
   switcher: PropTypes.node,
   props: PropTypes.node,
