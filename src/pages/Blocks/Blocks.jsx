@@ -4,7 +4,7 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { useMemo } from 'react';
 import { BlocksPagination } from '../../components/BlocksPagination';
-import { CellLinkIcon, CellLinkOption } from '../../components/Cell';
+import { CellIcon, CellLinkOption } from '../../components/Cell';
 import { Crumbs } from '../../components/Crumbs';
 import { Table } from '../../components/Table';
 import { useBlocksContext } from '../../contexts/blocksContext';
@@ -44,10 +44,10 @@ export const Blocks = () => {
         Cell: (value) => {
           const {
             row: {
-              original: { bakerName },
+              original: { bakerName, baker },
             },
           } = value;
-          return <CellLinkIcon name={bakerName} />;
+          return <CellIcon name={bakerName} src={baker} />;
         },
       },
       {
