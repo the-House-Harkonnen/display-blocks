@@ -1,7 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable func-names */
-/* eslint-disable react/no-this-in-sfc */
-/* eslint-disable no-console */
 import React from 'react';
 import { Formik } from 'formik';
 import * as yup from 'yup';
@@ -33,7 +29,9 @@ export const Login = () => {
       .string()
       .required('Required')
       .min(8, 'Passwords do not match')
+      // eslint-disable-next-line func-names
       .test('passwords-match', 'Passwords do not match', function (value) {
+        // eslint-disable-next-line react/no-this-in-sfc
         return this.parent.password === value;
       }),
   });

@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable react/no-this-in-sfc */
 
 import React from 'react';
 import { Formik } from 'formik';
@@ -36,6 +35,7 @@ export const Signup = () => {
       .min(8, 'Passwords do not match')
       // eslint-disable-next-line func-names
       .test('passwords-match', 'Passwords do not match', function (value) {
+        // eslint-disable-next-line react/no-this-in-sfc
         return this.parent.password === value;
       }),
   });
