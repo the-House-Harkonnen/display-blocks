@@ -1,7 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable func-names */
-/* eslint-disable react/no-this-in-sfc */
-/* eslint-disable no-console */
 import React from 'react';
 import { Formik } from 'formik';
 import * as yup from 'yup';
@@ -20,16 +16,22 @@ export const Login = () => {
       .required('Required')
       .min(4, 'Too short - should be 4 chars minimum.')
       .matches('@', 'Email address must contain the @ character')
+      .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.')
       .email(),
     password: yup
       .string()
-      .required('Required')
-      .min(8, 'Too short - should be 8 chars minimum.'),
+      .required('Please Enter your password')
+      .matches(
+        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+        'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character',
+      ),
     confirm: yup
       .string()
       .required('Required')
-      .min(8, 'Too short - should be 8 chars minimum.')
-      .test('passwords-match', 'Passwords must match', function (value) {
+      .min(8, 'Passwords do not match')
+      // eslint-disable-next-line func-names
+      .test('passwords-match', 'Passwords do not match', function (value) {
+        // eslint-disable-next-line react/no-this-in-sfc
         return this.parent.password === value;
       }),
   });
@@ -62,9 +64,22 @@ export const Login = () => {
 
   const fields = (
     <>
-      <Input name='address' label='Email address' type='text' />
-      <InputPassword name='password' label='Password' />
-      <InputPassword name='confirm' label='Confirm password'>
+      <Input
+        placeholder='Enter your email address...'
+        name='address'
+        label='Email address'
+        type='text'
+      />
+      <InputPassword
+        placeholder='Enter your password...'
+        name='password'
+        label='Password'
+      />
+      <InputPassword
+        placeholder='Confirm password...'
+        name='confirm'
+        label='Confirm password'
+      >
         <button type='button' className={styles.login__help}>
           Forgot password?
         </button>

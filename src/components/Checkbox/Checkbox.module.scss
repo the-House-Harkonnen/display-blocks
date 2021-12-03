@@ -12,12 +12,8 @@ input[type='checkbox'] {
             height: 24px;
             content: '\2714';
             content: url('./../../imgs/coolicon.svg');
-            font-size: 26px;
-            line-height: 26px;
-            margin-right: 16px;
-            border: 02px solid;
-            padding: 3px;
-            border-radius: 0.2em;
+            border: 1px solid #2D3B59;
+            border-radius: 3px;
         }
         
     }
@@ -27,7 +23,9 @@ input[type='checkbox']:checked {
     + label{
         display: block;
         &::before{
-            background-color: black;
+            background-color: #1E1C37;
+            border: 1px solid #fff;
+            box-shadow: 0px 2px 4px rgba(83, 109, 251, 0.18);
         }        
     }
 } 

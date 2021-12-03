@@ -1,15 +1,14 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable react/no-this-in-sfc */
 
 import React from 'react';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { useHistory } from 'react-router-dom';
 import styles from './Signup.module.scss';
-import { Input } from '../../components/Input';
+import { Input, InputPassword } from '../../components/Input';
 import { useThemeContext } from '../../contexts/themeContext';
-import { Checkbox } from '../../components/Checkbox/Checkbox';
+import { Checkbox } from '../../components/Checkbox';
 import { FormComponent } from '../../components/FormComponent';
 
 export const Signup = () => {
@@ -26,19 +25,17 @@ export const Signup = () => {
     password: yup
       .string()
       .required('Required')
-      .min(
-        8,
-        'Password should contain both letter and number, with minimum length of 8 characters',
+      .matches(
+        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+        'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character',
       ),
     confirm: yup
       .string()
       .required('Required')
-      .min(
-        8,
-        'Password should contain both letter and number, with minimum length of 8 characters',
-      )
+      .min(8, 'Passwords do not match')
       // eslint-disable-next-line func-names
-      .test('passwords-match', 'Passwords must match', function (value) {
+      .test('passwords-match', 'Passwords do not match', function (value) {
+        // eslint-disable-next-line react/no-this-in-sfc
         return this.parent.password === value;
       }),
   });
@@ -57,9 +54,21 @@ export const Signup = () => {
 
   const fields = (
     <>
-      <Input name='address' label='Email address' type='text' />
-      <Input name='password' label='Password' type='password' />
-      <Input name='confirm' label='Confirm password' type='password'>
+      <Input
+        placeholder='Enter your email address...'
+        name='address'
+        label='Email address'
+      />
+      <InputPassword
+        placeholder='Enter your password...'
+        name='password'
+        label='Password'
+      />
+      <InputPassword
+        placeholder='Confirm password...'
+        name='confirm'
+        label='Confirm password'
+      >
         <div className={styles.signup__agree}>
           <Checkbox name='agree' />
           <span className={styles.signup__terms}>
@@ -73,7 +82,7 @@ export const Signup = () => {
             </a>
           </span>
         </div>
-      </Input>
+      </InputPassword>
     </>
   );
   const bottom = (
