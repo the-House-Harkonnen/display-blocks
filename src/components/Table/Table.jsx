@@ -1,13 +1,6 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/no-array-index-key */
-/* eslint-disable no-console */
-/* eslint-disable no-shadow */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable react/no-this-in-sfc */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable no-nested-ternary */
-// eslint-disable-next-line no-unused-vars
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { useSortBy, useTable } from 'react-table';
 import { useThemeContext } from '../../contexts/themeContext';
@@ -76,12 +69,11 @@ export const Table = ({ columns, data }) => {
         })}
       </thead>
       <tbody {...getTableBodyProps()} className={styles.body}>
-        {rows.map((row, i) => {
+        {rows.map((row) => {
           prepareRow(row);
           return (
             <tr
               {...row.getRowProps()}
-              key={i}
               className={hoverRow}
               style={{
                 color: theme.tableLine,
