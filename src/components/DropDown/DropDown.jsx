@@ -1,9 +1,12 @@
+/* eslint-disable no-console */
+/* eslint-disable no-debugger */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useThemeContext } from '../../contexts/themeContext';
 import styles from './DropDown.module.scss';
 
 export const DropDown = ({ name, options, callBack }) => {
+  console.log(name);
   const [showBody, setShowBody] = useState(false);
   const [{ theme }] = useThemeContext();
   const onclick = (value) => {
@@ -26,7 +29,7 @@ export const DropDown = ({ name, options, callBack }) => {
           style={{ backgroundColor: theme.backgroundColor }}
         >
           {options.map((option) => (
-            <li className={styles.dropdown__option}>
+            <li className={styles.dropdown__option} key={option}>
               <button
                 className={styles.dropdown__btn}
                 type='button'

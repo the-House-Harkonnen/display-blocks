@@ -14,11 +14,13 @@ import {
 } from '../Icons/Icons';
 import { useThemeContext } from '../../contexts/themeContext';
 import styles from './Nav.module.scss';
-import { useNetworkContext } from '../../contexts/networkContext';
 import { DropDown } from '../DropDown/DropDown';
+import { useApiContext } from '../../contexts/apiContexts';
 
 const Nav = () => {
-  const { network, handleNetwork, networkOptions } = useNetworkContext();
+  const { network, networkList, handleNetwork } = useApiContext();
+  const options = networkList.map((el) => el.value);
+
   const history = useHistory();
   const [{ theme }] = useThemeContext();
   const [showNav, setShowNav] = useState(false);
@@ -73,7 +75,7 @@ const Nav = () => {
             <li className={styles.links__item}>
               <DropDown
                 name={network}
-                options={networkOptions}
+                options={options}
                 callBack={handleNetwork}
               />
             </li>
@@ -138,7 +140,7 @@ const Nav = () => {
               </div>
               <DropDown
                 name={network}
-                options={networkOptions}
+                options={options}
                 callBack={handleNetwork}
               />
             </li>

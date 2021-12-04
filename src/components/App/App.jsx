@@ -11,22 +11,25 @@ import Header from '../Header/Header';
 import Main from '../Main';
 import styles from './App.module.scss';
 import { NetworkProvider } from '../../contexts/networkContext';
+import { APIProvider } from '../../contexts/apiContexts';
 
 export const App = () => {
   return (
     <div className={styles.app}>
       <Router>
         <ThemeProvider>
-          <NetworkProvider>
-            <BlocksProvider>
-              <SingleBlocksProvider>
-                <Header />
-                <Main />
-                <Footer />
-              </SingleBlocksProvider>
-            </BlocksProvider>
-          </NetworkProvider>
-          <ToastContainer />
+          <APIProvider>
+            <NetworkProvider>
+              <BlocksProvider>
+                <SingleBlocksProvider>
+                  <Header />
+                  <Main />
+                  <Footer />
+                </SingleBlocksProvider>
+              </BlocksProvider>
+            </NetworkProvider>
+            <ToastContainer />
+          </APIProvider>
         </ThemeProvider>
       </Router>
     </div>

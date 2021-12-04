@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-console */
 import React, {
   createContext,
   useCallback,
@@ -8,19 +10,19 @@ import React, {
 import PropTypes from 'prop-types';
 import { getBlocks } from '../api';
 import { useRequest } from '../hooks/useRequest';
-import { useNetworkContext } from './networkContext';
+import { useApiContext } from './apiContexts';
 
 const BlocksContext = createContext();
 export const useBlocksContext = () => useContext(BlocksContext);
 
 export const BlocksProvider = ({ children }) => {
-  const { network } = useNetworkContext();
+  const { network, API } = useApiContext();
   const [limit, setLimit] = useState(10);
   const [offset, setOffset] = useState(0);
 
   const [data, loading, error] = useRequest(
-    getBlocks,
-    [offset, limit, network],
+    API.getBlocks,
+    [offset, limit, network.value],
     [offset, limit, network],
   );
 
