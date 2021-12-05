@@ -1,14 +1,24 @@
 import React, { createContext, useContext, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
-import { getBlock } from '../api';
 import { useRequest } from '../hooks/useRequest';
+import { useApiContext } from './apiContexts';
 
 const SingleBlockContext = createContext();
-export const useSingleBlockContext = () => useContext(SingleBlockContext);
+export const useSingleBlockContext = () => {
+  const ctx = useContext(SingleBlockContext);
+  if (!ctx) {
+    throw new Error(
+      'you are not into Provider of the contexts, make sure the component wrapped in the Provider',
+    );
+  }
+
+  return ctx;
+};
 
 export const SingleBlocksProvider = ({ children }) => {
+  const { API } = useApiContext();
   const [id, setId] = useState(119211);
-  const [data, loading, error] = useRequest(getBlock, [id], [id]);
+  const [data, loading, error] = useRequest(API.getBlock, [id], [id]);
   const value = useMemo(
     () => ({
       setBlock: (val) => setId(val),
