@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable no-debugger */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useThemeContext } from '../../contexts/themeContext';
@@ -26,7 +28,7 @@ export const DropDown = ({ name, options, callBack }) => {
           style={{ backgroundColor: theme.backgroundColor }}
         >
           {options.map((option) => (
-            <li className={styles.dropdown__option}>
+            <li className={styles.dropdown__option} key={option}>
               <button
                 className={styles.dropdown__btn}
                 type='button'

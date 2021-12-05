@@ -1,3 +1,6 @@
+/* eslint-disable dot-notation */
+/* eslint-disable no-return-assign */
+/* eslint-disable no-console */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable react/prop-types */
@@ -17,6 +20,7 @@ import { Loader } from '../../components/Loader';
 export const Blocks = () => {
   const [{ theme }] = useThemeContext();
   const { blocks, isFetching } = useBlocksContext();
+
   const columns = useMemo(
     () => [
       {
@@ -80,6 +84,7 @@ export const Blocks = () => {
     ],
     [blocks],
   );
+
   const data = useMemo(() => blocks, [blocks]);
   return (
     <>

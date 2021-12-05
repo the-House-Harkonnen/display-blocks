@@ -43,6 +43,7 @@ export const Login = () => {
   };
 
   const handleSubmit = (values) => {
+    // eslint-disable-next-line no-console
     console.log(values);
   };
 
