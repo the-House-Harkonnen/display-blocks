@@ -6,14 +6,23 @@ import React, {
   useContext,
   useMemo,
   useState,
+  useEffect,
 } from 'react';
 import PropTypes from 'prop-types';
-import { getBlocks } from '../api';
 import { useRequest } from '../hooks/useRequest';
 import { useApiContext } from './apiContexts';
 
 const BlocksContext = createContext();
-export const useBlocksContext = () => useContext(BlocksContext);
+export const useBlocksContext = () => {
+  const ctx = useContext(BlocksContext);
+  if (!ctx) {
+    throw new Error(
+      'you are not into Provider of the contexts, make sure the component wrapped in the Provider',
+    );
+  }
+
+  return ctx;
+};
 
 export const BlocksProvider = ({ children }) => {
   const { network, API } = useApiContext();
@@ -22,7 +31,7 @@ export const BlocksProvider = ({ children }) => {
 
   const [data, loading, error] = useRequest(
     API.getBlocks,
-    [offset, limit, network.value],
+    [offset, limit],
     [offset, limit, network],
   );
 

@@ -10,7 +10,6 @@ import Footer from '../Footer';
 import Header from '../Header/Header';
 import Main from '../Main';
 import styles from './App.module.scss';
-import { NetworkProvider } from '../../contexts/networkContext';
 import { APIProvider } from '../../contexts/apiContexts';
 
 export const App = () => {
@@ -19,15 +18,13 @@ export const App = () => {
       <Router>
         <ThemeProvider>
           <APIProvider>
-            <NetworkProvider>
-              <BlocksProvider>
-                <SingleBlocksProvider>
-                  <Header />
-                  <Main />
-                  <Footer />
-                </SingleBlocksProvider>
-              </BlocksProvider>
-            </NetworkProvider>
+            <BlocksProvider>
+              <SingleBlocksProvider>
+                <Header />
+                <Main />
+                <Footer />
+              </SingleBlocksProvider>
+            </BlocksProvider>
             <ToastContainer />
           </APIProvider>
         </ThemeProvider>

@@ -6,7 +6,6 @@ import { useThemeContext } from '../../contexts/themeContext';
 import styles from './DropDown.module.scss';
 
 export const DropDown = ({ name, options, callBack }) => {
-  console.log(name);
   const [showBody, setShowBody] = useState(false);
   const [{ theme }] = useThemeContext();
   const onclick = (value) => {

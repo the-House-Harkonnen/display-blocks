@@ -4,16 +4,25 @@
 /* eslint-disable react/prop-types */
 import axios from 'axios';
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { networkList } from '../constants';
+import { changeNetwork } from '../utils/changeNetwork';
 
 const APIContext = createContext();
-export const useApiContext = () => useContext(APIContext);
+export const useApiContext = () => {
+  const ctx = useContext(APIContext);
+  if (!ctx) {
+    throw new Error(
+      'you are not into Provider of the contexts, make sure the component wrapped in the Provider',
+    );
+  }
+
+  return ctx;
+};
 
 const APIService = axios.create();
-APIService.interceptors.request.use((config) => {
-  config.baseURL = `https://api.teztracker.com/v2/data/tezos/${localStorage.getItem(
-    'network',
-  )}`;
+APIService.interceptors.request.use(async (config) => {
+  config.baseURL = changeNetwork(localStorage.getItem('network'));
   return config;
 });
 
@@ -40,13 +49,14 @@ export const APIProvider = ({ children }) => {
     localStorage.setItem('network', network);
   }, [network]);
 
+  const history = useHistory();
+
   const value = {
     API,
     network,
     networkList,
     handleNetwork: (option) => {
-      debugger;
-      console.log(option);
+      history.push('/');
       setNetwork(option);
     },
   };
