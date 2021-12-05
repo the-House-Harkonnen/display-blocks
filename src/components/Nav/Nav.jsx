@@ -4,6 +4,7 @@ import { useCallback } from 'react/cjs/react.development';
 import { UserIcon, BurgerIcon } from '../Icons/Icons';
 import { useThemeContext } from '../../contexts/themeContext';
 import styles from './Nav.module.scss';
+import NavLink from '../NavLink/NavLink';
 
 const Nav = () => {
   const history = useHistory();
