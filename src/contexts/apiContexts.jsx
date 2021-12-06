@@ -3,7 +3,13 @@
 /* eslint-disable no-console */
 /* eslint-disable react/prop-types */
 import axios from 'axios';
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useMemo,
+  useState,
+} from 'react';
 import { useHistory } from 'react-router-dom';
 import { networkList } from '../constants';
 import { changeNetwork } from '../utils/changeNetwork';
@@ -20,46 +26,51 @@ export const useApiContext = () => {
   return ctx;
 };
 
-const APIService = axios.create();
-APIService.interceptors.request.use(async (config) => {
-  config.baseURL = changeNetwork(localStorage.getItem('network'));
-  return config;
-});
-
-const API = {
-  getBlocks: async (offset = 0, limit = 10) => {
-    const response = await APIService.get(
-      `/blocks?offset=${offset}&limit=${limit}`,
-    );
-    return {
-      blocks: response.data,
-      totalCount: response.headers['x-total-count'],
-    };
-  },
-  getBlock: async (hash) => {
-    const response = await APIService.get(`/blocks/${hash}`);
-    return response.data.block;
-  },
-};
-
 export const APIProvider = ({ children }) => {
   const [network, setNetwork] = useState(networkList[0].value);
 
-  useEffect(() => {
-    localStorage.setItem('network', network);
-  }, [network]);
+  const APIService = useMemo(
+    () =>
+      axios.create({
+        baseURL: changeNetwork(network),
+      }),
+    [network],
+  );
+
+  const API = {
+    getBlocks: async (offset = 0, limit = 10) => {
+      const response = await APIService.get(
+        `/blocks?offset=${offset}&limit=${limit}`,
+      );
+      return {
+        blocks: response.data,
+        totalCount: response.headers['x-total-count'],
+      };
+    },
+    getBlock: async (hash) => {
+      const response = await APIService.get(`/blocks/${hash}`);
+      return response.data.block;
+    },
+  };
 
   const history = useHistory();
-
-  const value = {
-    API,
-    network,
-    networkList,
-    handleNetwork: (option) => {
+  const handleNetwork = useCallback(
+    (option) => {
       history.push('/');
       setNetwork(option);
     },
-  };
+    [network],
+  );
+
+  const value = useMemo(
+    () => ({
+      API,
+      network,
+      networkList,
+      handleNetwork,
+    }),
+    [network],
+  );
 
   return <APIContext.Provider value={value}>{children}</APIContext.Provider>;
 };
