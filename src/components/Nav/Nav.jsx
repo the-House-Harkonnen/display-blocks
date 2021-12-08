@@ -5,10 +5,13 @@ import { UserIcon, BurgerIcon } from '../Icons/Icons';
 import { useThemeContext } from '../../contexts/themeContext';
 import styles from './Nav.module.scss';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import NavLink from '../NavLink/NavLink';
 
 const Nav = () => {
 =======
+=======
+>>>>>>> style(src): fixed styles according to design
 import { DropDown } from '../DropDown/DropDown';
 import { useApiContext } from '../../contexts/apiContexts';
 
@@ -16,7 +19,15 @@ const Nav = () => {
   const { network, networkList, handleNetwork } = useApiContext();
   const options = networkList.map((el) => el.value);
 
+<<<<<<< HEAD
 >>>>>>> Refactor/api (#82)
+=======
+=======
+import NavLink from '../NavLink/NavLink';
+
+const Nav = () => {
+>>>>>>> style(src): fixed styles according to design
+>>>>>>> style(src): fixed styles according to design
   const history = useHistory();
   const [{ theme }] = useThemeContext();
   const [showNav, setShowNav] = useState(false);
@@ -65,9 +76,12 @@ const Nav = () => {
           }}
         >
 <<<<<<< HEAD
+<<<<<<< HEAD
           <NavLink />
           <span
 =======
+=======
+>>>>>>> style(src): fixed styles according to design
           <ul className={styles.links__list}>
             <li className={styles.links__item}>
               <a className={styles.links__link} href='#'>
@@ -154,7 +168,14 @@ const Nav = () => {
             </li>
           </ul>
           <div
+<<<<<<< HEAD
 >>>>>>> Refactor/api (#82)
+=======
+=======
+          <NavLink />
+          <span
+>>>>>>> style(src): fixed styles according to design
+>>>>>>> style(src): fixed styles according to design
             className={styles.line}
             style={{
               backgroundColor: theme.burgerMenuLine,
