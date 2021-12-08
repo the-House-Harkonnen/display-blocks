@@ -1,5 +1,4 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable prettier/prettier */
 import React from 'react';
 import { useThemeContext } from '../../contexts/themeContext';
 
@@ -8,19 +7,28 @@ import styles from './NotResponding.module.scss';
 const NotResponding = () => {
   const [{ theme }] = useThemeContext();
   return (
-    <div className={styles.container} style={{
-      color: theme.color,
-    }}>
+    <div
+      className={styles.container}
+      style={{
+        color: theme.color,
+      }}
+    >
       <h1 className={styles.title}>404</h1>
       <h2 className={styles.subtitle}>
         Sorry, the page you’re looking for can’t be found
       </h2>
       <div className={styles.btn}>
-        <button type='button' className={styles.btn__home} style={{
-        color: theme.homeBtnColor,
-        backgroundColor: theme.homeBtn,
-      }}>
-          <a href="#" className={styles.btn__link}>Home page</a>
+        <button
+          type='button'
+          className={styles.btn__home}
+          style={{
+            color: theme.homeBtnColor,
+            backgroundColor: theme.homeBtn,
+          }}
+        >
+          <a href='#' className={styles.btn__link}>
+            Home page
+          </a>
         </button>
       </div>
     </div>
