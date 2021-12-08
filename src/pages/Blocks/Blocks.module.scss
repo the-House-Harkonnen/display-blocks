@@ -6,6 +6,11 @@
   font-weight: 600;
   line-height: 39px;
   text-align: left;
+  position: relative;
+  z-index: 1;
+  @media screen and (max-width: 768px) {
+    margin-bottom: 30px;
+  }
 }
 
 .list {

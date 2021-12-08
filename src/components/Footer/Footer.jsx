@@ -4,7 +4,6 @@ import Logo from '../Logo';
 import { useThemeContext } from '../../contexts/themeContext';
 import styles from './Footer.module.scss';
 
-// eslint-disable-next-line arrow-body-style
 const Footer = () => {
   const [{ theme }] = useThemeContext();
   return (

@@ -6,18 +6,18 @@
   padding: 30px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  // background-color: $c-head-foot-l;
   transition: background 0.2s linear;
   color: #fff;
-  grid-row-gap: 20px;
 
   @include media(1200px) {
     height: 259px;
     grid-template-columns: none;
+    grid-row-gap: 25px;
   }
 
   @include media(768px) {
     height: 130px;
+    grid-row-gap: 31px;
   }
 
   &__links {
