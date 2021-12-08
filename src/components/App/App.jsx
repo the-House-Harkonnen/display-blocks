@@ -10,14 +10,14 @@ import Footer from '../Footer';
 import Header from '../Header/Header';
 import Main from '../Main';
 import styles from './App.module.scss';
-import { NetworkProvider } from '../../contexts/networkContext';
+import { APIProvider } from '../../contexts/apiContexts';
 
 export const App = () => {
   return (
     <div className={styles.app}>
       <Router>
         <ThemeProvider>
-          <NetworkProvider>
+          <APIProvider>
             <BlocksProvider>
               <SingleBlocksProvider>
                 <Header />
@@ -25,8 +25,8 @@ export const App = () => {
                 <Footer />
               </SingleBlocksProvider>
             </BlocksProvider>
-          </NetworkProvider>
-          <ToastContainer />
+            <ToastContainer />
+          </APIProvider>
         </ThemeProvider>
       </Router>
     </div>
