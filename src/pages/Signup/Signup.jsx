@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-undef */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 
@@ -6,10 +7,12 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 import { useHistory } from 'react-router-dom';
 import styles from './Signup.module.scss';
-import { Input, InputPassword } from '../../components/Input';
+import { Input } from '../../components/Input';
 import { useThemeContext } from '../../contexts/themeContext';
-import { Checkbox } from '../../components/Checkbox';
 import { FormComponent } from '../../components/FormComponent';
+import { InputGroup } from '../../components/Input/InputGroup';
+import { FieldSwitcher } from '../../components/FieldSwitcher';
+import { Checkbox } from '../../components/Checkbox';
 
 export const Signup = () => {
   const history = useHistory();
@@ -54,6 +57,7 @@ export const Signup = () => {
 
   const fields = (
     <>
+<<<<<<< HEAD
       <Input
         placeholder='Enter your email address...'
         name='address'
@@ -84,6 +88,32 @@ export const Signup = () => {
           </span>
         </div>
       </InputPassword>
+=======
+      <InputGroup name='address' label='address' type='text'>
+        <Input placeholder='address' />
+      </InputGroup>
+      <InputGroup name='password' label='password' type='password'>
+        <Input placeholder='password' />
+        <FieldSwitcher />
+      </InputGroup>
+      <InputGroup name='confirm' label='confirm' type='password'>
+        <Input placeholder='confirm' />
+        <FieldSwitcher />
+      </InputGroup>
+      <div className={styles.signup__agree}>
+        <Checkbox name='agree' />
+        <span className={styles.signup__terms}>
+          By creating an account, you agree to Tezos Explorer{' '}
+          <a href='#' className={styles.signup__policy}>
+            Terms of Service{' '}
+          </a>
+          <span>&</span>{' '}
+          <a href='#' className={styles.signup__policy}>
+            Privacy Policy.
+          </a>
+        </span>
+      </div>
+>>>>>>> refactor(input): refactor input component
     </>
   );
   const bottom = (

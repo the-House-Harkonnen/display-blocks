@@ -1,32 +1,30 @@
-/* eslint-disable react/jsx-no-undef */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-console */
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+
 import React from 'react';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { useHistory } from 'react-router-dom';
-import styles from './Login.module.scss';
+import styles from './Signup.module.scss';
 import { Input, InputPassword } from '../../components/Input';
 import { useThemeContext } from '../../contexts/themeContext';
+import { Checkbox } from '../../components/Checkbox';
 import { FormComponent } from '../../components/FormComponent';
-import { InputGroup } from '../../components/Input/InputGroup';
-import { InputField } from '../../components/Input/InputField';
-import { FieldSwitcher } from '../../components/FieldSwitcher';
 
-export const Login = () => {
+export const Signup = () => {
   const history = useHistory();
   const [{ theme }] = useThemeContext();
+
   const validationSchema = yup.object({
     address: yup
       .string()
       .required('Required')
       .min(4, 'Too short - should be 4 chars minimum.')
       .matches('@', 'Email address must contain the @ character')
-      .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.')
       .email(),
     password: yup
       .string()
-      .required('Please Enter your password')
+      .required('Required')
       .matches(
         /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
         'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character',
@@ -40,14 +38,13 @@ export const Login = () => {
         // eslint-disable-next-line react/no-this-in-sfc
         return this.parent.password === value;
       }),
-    test: yup.string().required('required'),
   });
 
   const initialValues = {
     address: '',
     password: '',
     confirm: '',
-    test: '',
+    agree: false,
   };
 
   const handleSubmit = (values) => {
@@ -55,57 +52,66 @@ export const Login = () => {
     console.log(values);
   };
 
+  const fields = (
+    <>
+      <Input
+        placeholder='Enter your email address...'
+        name='address'
+        label='Email address'
+      />
+      <InputPassword
+        placeholder='Enter your password...'
+        name='password'
+        label='Password'
+      />
+      <InputPassword
+        placeholder='Confirm password...'
+        name='confirm'
+        label='Confirm password'
+      >
+        <div className={styles.signup__agree}>
+          <Checkbox name='agree' />
+          <span className={styles.signup__terms}>
+            By creating an account, you agree to Tezos Explorer{' '}
+            <a href='#' className={styles.signup__policy}>
+              Terms of Service{' '}
+            </a>
+            <span>&</span>{' '}
+            <a href='#' className={styles.signup__policy}>
+              Privacy Policy.
+            </a>
+          </span>
+        </div>
+      </InputPassword>
+    </>
+  );
   const bottom = (
-    <div className={styles.login__bottom}>
-      <span className={styles.login__question}>
-        {' '}
-        Don’t have a Tezos Explorer Account?
-      </span>
+    <div className={styles.signup__bottom}>
+      <span className={styles.signup__question}> Already have an Account?</span>
       <button
         type='button'
-        className={styles.login__link}
-        onClick={() => history.push('/home/signup')}
+        className={styles.signup__link}
+        onClick={() => history.push('/home/login')}
       >
-        Sing up Now?
+        Log In
       </button>
     </div>
   );
 
-  const fields = (
-    <>
-      <InputGroup name='address' label='address' type='text'>
-        <Input placeholder='address' />
-      </InputGroup>
-      <InputGroup name='password' label='password' type='password'>
-        <Input placeholder='password' />
-        <FieldSwitcher />
-      </InputGroup>
-      <InputGroup
-        name='confirm'
-        label='confirm'
-        type='password'
-        help='Forgot password?'
-      >
-        <Input placeholder='confirm' />
-        <FieldSwitcher />
-      </InputGroup>
-    </>
-  );
-
   return (
     <div
-      className={styles.login}
+      className={styles.signup}
       style={{
         color: theme.color,
       }}
     >
-      <hgroup className={styles.login__info}>
-        <h2 className={styles.login__title}>Login</h2>
-        <span className={styles.login__subtitle}>
-          Welcome back! Log In with your Email
+      <hgroup className={styles.signup__info}>
+        <h2 className={styles.signup__title}>Signup</h2>
+        <span className={styles.signup__subtitle}>
+          Get Started by Signing Up Now
         </span>
       </hgroup>
-      <div className={styles.login__form}>
+      <div className={styles.signup__form}>
         <Formik
           initialValues={initialValues}
           onSubmit={handleSubmit}

@@ -11,7 +11,6 @@ import { useThemeContext } from '../../contexts/themeContext';
 import { FormComponent } from '../../components/FormComponent';
 import { InputGroup } from '../../components/Input/InputGroup';
 import { InputField } from '../../components/Input/InputField';
-import { FieldSwitcher } from '../../components/FieldSwitcher';
 
 export const Login = () => {
   const history = useHistory();
@@ -73,21 +72,28 @@ export const Login = () => {
 
   const fields = (
     <>
-      <InputGroup name='address' label='address' type='text'>
-        <Input placeholder='address' />
-      </InputGroup>
-      <InputGroup name='password' label='password' type='password'>
-        <Input placeholder='password' />
-        <FieldSwitcher />
-      </InputGroup>
-      <InputGroup
+      <Input
+        placeholder='Enter your email address...'
+        name='address'
+        label='Email address'
+        type='text'
+      />
+      <InputPassword
+        placeholder='Enter your password...'
+        name='password'
+        label='Password'
+      />
+      <InputPassword
+        placeholder='Confirm password...'
         name='confirm'
-        label='confirm'
-        type='password'
-        help='Forgot password?'
+        label='Confirm password'
       >
-        <Input placeholder='confirm' />
-        <FieldSwitcher />
+        <button type='button' className={styles.login__help}>
+          Forgot password?
+        </button>
+      </InputPassword>
+      <InputGroup name='test' label='test'>
+        <InputField />
       </InputGroup>
     </>
   );

@@ -16,8 +16,12 @@
     margin-top: 14px;
     border: solid 1px;
     display: grid;
-    grid-template-columns: 1fr auto;
-    border-radius: 10px
+    // grid-template-columns: 1fr auto;
+    grid-auto-flow: column;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    
 }
 
 .normal{
@@ -31,6 +35,13 @@
     font-size: 18px;
     font-weight: 500;
     text-align: left;
+
+}
+.test{
+    border: solid;
+    padding: 5px;
+    background-color: blanchedalmond;
+
 }
 
 .icon{
@@ -43,6 +54,7 @@
     grid-auto-flow: column;
     justify-content: space-between;
 }
+
 
 .error {
     color: #FF3B30;
@@ -59,12 +71,14 @@
 }
 
 .help {
-    background-color: transparent;
     border: none;
-    font-size: 16px;
+    background-color: transparent;
     font-weight: 500;
-    line-height: 20px;
+    font-size: 16px;
     color: #2D3B5999;
+    justify-self: flex-end;
+    grid-column: 2/3;
+    margin-top: 18px;
 }
 
 .touched{
