@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-no-undef */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/label-has-associated-control */
@@ -93,13 +94,14 @@ export const Signup = () => {
         <Input placeholder='address' />
       </InputGroup>
       <InputGroup name='password' label='password' type='password'>
+        <FieldSwitcher />
         <Input placeholder='password' />
         <FieldSwitcher />
       </InputGroup>
-      <InputGroup name='confirm' label='confirm' type='password'>
-        <Input placeholder='confirm' />
+      {/* <InputGroup name='confirm' label='confirm' type='password'>
         <FieldSwitcher />
-      </InputGroup>
+        <Input placeholder='confirm' />
+      </InputGroup> */}
       <div className={styles.signup__agree}>
         <Checkbox name='agree' />
         <span className={styles.signup__terms}>

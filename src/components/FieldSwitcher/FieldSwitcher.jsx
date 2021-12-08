@@ -3,8 +3,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-multi-assign */
 /* eslint-disable no-console */
-import React, { useCallback, useRef, useState } from 'react';
-import { useEffect } from 'react/cjs/react.development';
+import React, { useCallback, useRef, useState, useEffect } from 'react';
 import styles from './FieldSwitcher.module.scss';
 import eye from '../../imgs/eye.svg';
 import crossed from '../../imgs/crossed.svg';
