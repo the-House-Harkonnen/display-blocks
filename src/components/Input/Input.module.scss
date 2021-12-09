@@ -19,6 +19,9 @@
     border-radius: 10px;
     display: flex;
     align-items: center;
+    @media screen and (max-width: 768px) {
+        margin-top: 12px;
+    }
 }
 .border:focus-within{
     border: 1px solid #536DFB;
@@ -59,7 +62,7 @@
 
 
 .error {
-    color: #FF3B30;
+    border: 1px solid #FF3B30;
     grid-column: 1/2;
     box-shadow: 0px 4px 4px rgba(255, 59, 48, 0.08);
 }
@@ -81,6 +84,9 @@
     justify-self: flex-end;
     grid-column: 2/3;
     margin-top: 18px;
+    @media screen and (max-width: 768px) {
+        margin-top: 8px;
+    }
 }
 
 .touched{

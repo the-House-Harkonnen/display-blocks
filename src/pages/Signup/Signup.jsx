@@ -68,13 +68,13 @@ export const Signup = () => {
       <div className={styles.signup__agree}>
         <Checkbox name='agree' />
         <span className={styles.signup__terms}>
-          By creating an account, you agree to Tezos Explorer{' '}
+          By creating an account, you agree to Tezos Explorer
           <a href='#' className={styles.signup__policy}>
-            Terms of Service{' '}
+            &nbsp; Terms of Service&nbsp;
           </a>
-          <span>&</span>{' '}
+          <span>&</span>
           <a href='#' className={styles.signup__policy}>
-            Privacy Policy.
+            &nbsp;Privacy Policy.
           </a>
         </span>
       </div>
@@ -82,7 +82,7 @@ export const Signup = () => {
   );
   const bottom = (
     <div className={styles.signup__bottom}>
-      <span className={styles.signup__question}> Already have an Account?</span>
+      <span className={styles.signup__question}>Already have an Account?</span>
       <button
         type='button'
         className={styles.signup__link}
