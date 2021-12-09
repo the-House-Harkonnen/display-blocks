@@ -71,6 +71,7 @@ export const Signup = () => {
       >
         <div className={styles.signup__agree}>
           <Checkbox name='agree' />
+
           <span className={styles.signup__terms}>
             By creating an account, you agree to Tezos Explorer{' '}
             <a href='#' className={styles.signup__policy}>

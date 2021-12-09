@@ -15,15 +15,20 @@
     font-weight: 400;
     font-size: 16px;
     color: currentColor;
-
+    @media screen and (max-width: 768px) {
+      font-size: 14px;
+      grid-template-columns: none;
+    }
   }
-
 
   &__td {
     font-weight: 600;
     font-size: 18px;
     word-break: break-all;
     color: currentColor;
+    @media screen and (max-width: 768px) {
+      font-size: 14px;
+    }
   }
 
   &__th {
@@ -33,7 +38,7 @@
   @include media(992px) {
     grid-template-columns: minmax(min-content, 1fr);
     justify-content: start;
-    grid-gap: 0;
+    grid-gap: 18px;
 
 
     > :nth-child(even){

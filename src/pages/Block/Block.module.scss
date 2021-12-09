@@ -7,7 +7,7 @@
 }
 
 .head {
-  margin-bottom: 62px;
+  margin-bottom: 60px;
   display: grid;
   justify-content: center;
   grid-auto-flow: column;
@@ -17,6 +17,9 @@
   text-align: center;
   color: currentColor;
   z-index: 1;
+  @media screen and (max-width: 768px) {
+    margin-bottom: 30px;
+  }
 
   &__btn {
     background-color: transparent;
@@ -39,22 +42,31 @@
     font-size: 32px;
     font-weight: 600;
     color: currentColor;
+    @media screen and (max-width: 768px) {
+      font-size: 24px;
+    }
   }
 
   &__subtitle {
     color: currentColor;
-    font-size: 18;
+    font-size: 18px;
     font-weight: 400;
+    @media screen and (max-width: 768px) {
+      font-weight: 300;
+    }
   }
 }
 
 .table {
   border-radius: 30px;
-  padding: 48px 25px;
+  padding: 43px 119px 43px 20px;
   display: grid;
   // add relative position for loader
   position: relative;
   z-index: 1;
+  @media screen and (max-width: 768px) {
+    padding: 19px 39px 19px 10px;
+  }
 }
 
 .item {

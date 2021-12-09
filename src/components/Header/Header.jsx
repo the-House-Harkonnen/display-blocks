@@ -6,7 +6,7 @@ import { useThemeContext } from '../../contexts/themeContext';
 import styles from './Header.module.scss';
 
 const Header = () => {
-  const [{ theme }] = useThemeContext();
+  const [{ theme, isDark }, toggleTheme] = useThemeContext();
   return (
     <div
       className={styles.header}
@@ -17,6 +17,15 @@ const Header = () => {
       </div>
       <div className={styles.header__nav}>
         <Nav />
+      </div>
+      <div className={styles.toggle}>
+        <button
+          className={styles.toggle__btn}
+          type='button'
+          onClick={toggleTheme}
+        >
+          {isDark ? '🌞' : '🌜'}
+        </button>
       </div>
       <div className={styles.header__btn}>
         <LoginBtn />
