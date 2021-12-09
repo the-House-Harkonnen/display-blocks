@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+/* eslint-disable no-undef */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import {
@@ -11,11 +11,9 @@ import {
 import { DropDown } from '../DropDown/DropDown';
 import { useThemeContext } from '../../contexts/themeContext';
 import styles from './NavLink.module.scss';
-import { useApiContext } from '../../contexts/apiContexts';
 
 const NavLink = () => {
-  const { network, networkList, handleNetwork } = useApiContext();
-  const networkOptions = networkList.map((el) => el.value);
+  const { network, handleNetwork, networkOptions } = useNetworkContext();
   const [{ isDark }] = useThemeContext();
   const hoverRow =
     isDark === false ? `${styles.links__light}` : `${styles.links__dark}`;
