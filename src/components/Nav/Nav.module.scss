@@ -3,18 +3,18 @@
 .burger {
   display: none;
 
-  button {
-    background-color: transparent;
-    border: none;
-    outline: none;
-    cursor: pointer;
-  }
-
   @media screen and (max-width: 768px) {
     display: grid;
     grid-column-gap: 16px;
     grid-auto-flow: column;
     justify-self: flex-end;
+  }
+
+  &__btn {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
   }
 }
 
@@ -22,7 +22,7 @@
   @media screen and (max-width: 768px) {
     display: none;
     position: fixed;
-    top: 69px;
+    top: 62px;
     left: 0;
     z-index: 3;
     width: 100%;
@@ -37,119 +37,25 @@
   }
 }
 
-.links {
+.nav {
   width: 433px;
 
   @media screen and (max-width: 768px) {
     height: 100%;
     width: 280px;
+    overflow: auto;
   }
-
-  &__burger {
-    display: none;
-    @media screen and (max-width: 768px) {
-      display: block;
-      padding: 30px 0;
-      color: currentColor;
-    }
-  }
-
-  &__list {
-    display: flex;
-    justify-content: space-between;
-
-    @media screen and (max-width: 768px) {
-      display: none;
-      color: currentColor;
-    }
-  }
-
-  &__item {
-    color: currentColor;
-    @media screen and (max-width: 768px) {
-      display: flex;
-      height: 37px;
-      align-items: center;
-      padding-left: 30px;
-      cursor: pointer;
-
-      &:hover {
-        background-color: #ECF0F9BF;
-      }
-    }
-  }
-
-  &__link {
-    color: #F0F2F4;
-    font-weight: 500;
-    font-size: 18px;
-
-    @media screen and (max-width: 768px) {
-      color: currentColor;
-      font-weight: 400;
-      font-size: 14px;
-    }
-  }
-
-  &__icon {
-      display: flex;
-      margin-right: 10px;
-  }
-
-  &__arrow {
-    color: currentColor;
-    @media screen and (max-width: 768px) {
-      display: block;
-      position: relative;
-
-      &::after {
-        content: '';
-        position: absolute;
-        display: block;
-        border: 7px solid transparent;
-        border-top: 7px solid;
-        color: inherit;
-        transform: translateY(-20%);
-        left: 8px;
-        top: 0;
-      }
-    }
-  }
-
-  &__arr {
-      display: block;
-      position: relative;
-
-      &::after {
-        content: '';
-        position: absolute;
-        display: block;
-        border: 7px solid transparent;
-        border-top: 7px solid #fff;
-        transform: translateY(-20%);
-        left: 72px;
-        top: -12px;
-      }
-      @media screen and (max-width: 768px) {
-        &::after {
-          border: 7px solid transparent;
-          transform: translateY(-20%);
-          left: 8px;
-          top: 0;
-        }
-      }
-    }
 }
 
 .settings {
   display: none;
+  color: currentColor;
 
   @media screen and (max-width: 768px) {
     display: flex;
     flex-direction: column;
     width: 100%;
     padding: 30px 0;
-    color: currentColor;
   }
 
   &__item {
@@ -163,31 +69,27 @@
       padding-left: 30px;
       cursor: pointer;
       color: currentColor;
-
-      &:hover {
-        background-color: #ECF0F9BF;
-      }
     }
   }
 }
 
 .copyrights {
   display: none;
+  color: currentColor;
 
   @media screen and (max-width: 768px) {
     display: block;
     height: inherit;
-    color: currentColor;
   }
 
   &__item {
+    color: currentColor;
     @media screen and (max-width: 768px) {
       font-size: 12px;
       font-weight: 300;
       padding: 30px;
       width: 190px;
       line-height: 15px;
-      color: currentColor;
     }
   }
 }

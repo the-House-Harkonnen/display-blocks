@@ -6,7 +6,8 @@
   justify-content: start;
   grid-gap: 15px;
   color: currentColor;
-  @include media(678px) {
+  
+  @include media(768px) {
     margin-bottom: 40px;  
   }
 }

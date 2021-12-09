@@ -1,62 +1,39 @@
-/* eslint-disable no-nested-ternary */
+/* eslint-disable react/prop-types */
+/* eslint-disable no-console */
 /* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable jsx-a11y/label-has-associated-control */
+import PropTypes from 'prop-types';
 
 import React from 'react';
-import { Field } from 'formik';
-import PropTypes from 'prop-types';
 import styles from './Input.module.scss';
 
-export const Input = ({ name, label, ...props }) => {
-  const { children, switcher, ...inputProps } = props;
-
+export const Input = ({ placeholder, name, value, onChange, onBlur, type }) => {
   return (
-    <Field name={name} className={styles.row}>
-      {({ field, meta }) => {
-        const border =
-          meta.touched && meta.error
-            ? `${styles.border} ${styles.error}`
-            : meta.touched && meta.value
-            ? `${styles.border} ${styles.touched}`
-            : `${styles.border} ${styles.normal}`;
-        return (
-          <div className={styles.row}>
-            <label htmlFor='text' className={styles.label}>
-              {label}
-            </label>
-            <div className={border}>
-              <input
-                className={styles.input}
-                autoComplete='off'
-                type='text'
-                {...field}
-                {...inputProps}
-              />
-              {switcher}
-            </div>
-            <div className={styles.bottom}>
-              <span className={styles.condition}>
-                {meta.touched && meta.error && meta.error}
-              </span>
-              {children}
-            </div>
-          </div>
-        );
-      }}
-    </Field>
+    <input
+      type={type}
+      className={styles.input}
+      placeholder={placeholder}
+      autoComplete='off'
+      name={name}
+      onChange={onChange}
+      onBlur={onBlur}
+      value={value}
+    />
   );
 };
 
 Input.propTypes = {
-  name: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  children: PropTypes.node,
-  switcher: PropTypes.node,
-  props: PropTypes.node,
+  name: PropTypes.string,
+  value: PropTypes.string,
+  type: PropTypes.string,
+  onChange: PropTypes.func,
+  onBlur: PropTypes.func,
+  placeholder: PropTypes.string.isRequired,
 };
 
 Input.defaultProps = {
-  children: null,
-  props: null,
-  switcher: null,
+  name: '',
+  value: '',
+  type: 'text',
+  onChange: () => null,
+  onBlur: () => null,
 };

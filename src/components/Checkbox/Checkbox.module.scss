@@ -7,13 +7,16 @@ input[type='checkbox'] {
     + label{
         display: block;
         &::before{
+            padding-left: 5px;
+            padding-top: 1px;
             display: block;
-            width: 24px;
-            height: 24px;
-            content: '\2714';
-            content: url('./../../imgs/coolicon.svg');
+            width: 17px;
+            height: 21px;
+            // content: '\2714';
+            content: url('../../imgs/coolicon.svg');
             border: 1px solid #2D3B59;
             border-radius: 3px;
+            // border: 1px solid #fff;
         }
         
     }
@@ -23,7 +26,7 @@ input[type='checkbox']:checked {
     + label{
         display: block;
         &::before{
-            background-color: #1E1C37;
+            background-color: currentColor;
             border: 1px solid #fff;
             box-shadow: 0px 2px 4px rgba(83, 109, 251, 0.18);
         }        

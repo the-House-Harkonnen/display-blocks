@@ -9,6 +9,7 @@ import { BlockTable } from '../../components/BlockTable';
 import { Loader } from '../../components/Loader';
 import { useThemeContext } from '../../contexts/themeContext';
 import { convertTimestamp } from '../../utils/convertTimestamp';
+import { convertBlockId } from '../../utils/convertBlockId';
 
 export const Block = () => {
   const location = useLocation().pathname;
@@ -112,7 +113,9 @@ export const Block = () => {
           onClick={() => handlePage(currentBlockNumber - 1)}
         >{`<`}</button>
         <hgroup className={styles.head__hgroup}>
-          <h2 className={styles.head__title}>Block: {currentBlockNumber} </h2>
+          <h2 className={styles.head__title}>
+            Block: {convertBlockId(currentBlockNumber)}{' '}
+          </h2>
           <span className={styles.head__subtitle}>block information</span>
         </hgroup>
         <button
