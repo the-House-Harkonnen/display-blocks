@@ -57,12 +57,18 @@
 
   &__agree {
     max-width: 462px;
-    margin: -8px 0px 36px;
+    margin: -8px 0px 0px;
     display: grid;
     grid-template-columns: 24px auto;
     grid-auto-flow: column;
     column-gap: 16px;
     grid-column: 1/2;
+  }
+
+  &__terms {
+    color: rgba(45, 59, 89, 0.6);
+    padding: 0 0 20px;
+    line-height: 17px;
   }
 
   &__policy {

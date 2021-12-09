@@ -1,9 +1,9 @@
 
 .dropdown{
     position: relative;
-    background-color: transparent;
+    background-color: inherit;
     font: inherit;
-    color: inherit;
+    color: currentColor;
 
     &__head {
       display: grid;
@@ -45,6 +45,8 @@
       
     }
     &__option{
+      color: inherit;
+      background-color: inherit;
       &:hover{
         backdrop-filter: invert(30%);
      }
@@ -52,12 +54,12 @@
     }
     &__btn{
         padding: 3px 3px;
-        color: currentColor;
+        color: inherit;
         // color: #F0F2F4;
         font-weight: 500;
         font-size: 18px;
         cursor: pointer;
-        background-color: transparent;
+        background-color: inherit;
         border: none; 
         text-align: start;
         width: 100%;

@@ -54,8 +54,8 @@ export const Login = () => {
   const bottom = (
     <div className={styles.login__bottom}>
       <span className={styles.login__question}>
-        {' '}
-        Don’t have a Tezos Explorer Account?
+        Don’t have a <span className={styles.login__span}>Tezos Explorer</span>
+        Account?
       </span>
       <button
         type='button'
