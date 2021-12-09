@@ -4,11 +4,18 @@
     grid-row-gap: 36px;
     padding: 48px;
     border-radius: 30px;
+    @media screen and (max-width: 768px) {
+      padding: 28px 15px;
+      grid-row-gap: 24px;
+    }
 
     &__group {
         display: grid;
-        grid-row-gap: 28px;
+        grid-row-gap: 26px;
         border: none;
+        @media screen and (max-width: 768px) {
+          grid-row-gap: 20px;
+        }
       }
       &__btn {
         height: 64px;
