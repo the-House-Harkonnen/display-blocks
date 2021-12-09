@@ -1,16 +1,12 @@
-/* eslint-disable react/jsx-no-undef */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-console */
 import React from 'react';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { useHistory } from 'react-router-dom';
 import styles from './Login.module.scss';
-import { Input, InputPassword } from '../../components/Input';
+import { Input } from '../../components/Input';
 import { useThemeContext } from '../../contexts/themeContext';
 import { FormComponent } from '../../components/FormComponent';
 import { InputGroup } from '../../components/Input/InputGroup';
-import { InputField } from '../../components/Input/InputField';
 import { FieldSwitcher } from '../../components/FieldSwitcher';
 
 export const Login = () => {
@@ -73,20 +69,20 @@ export const Login = () => {
 
   const fields = (
     <>
-      <InputGroup name='address' label='address' type='text'>
-        <Input placeholder='address' />
+      <InputGroup name='address' label='Email Address' type='text'>
+        <Input placeholder='Enter your email address...' />
       </InputGroup>
-      <InputGroup name='password' label='password' type='password'>
-        <Input placeholder='password' />
+      <InputGroup name='password' label='Password' type='password'>
+        <Input placeholder='Enter your password...' />
         <FieldSwitcher />
       </InputGroup>
       <InputGroup
         name='confirm'
-        label='confirm'
+        label='Confirm password'
         type='password'
         help='Forgot password?'
       >
-        <Input placeholder='confirm' />
+        <Input placeholder='Confirm password...' />
         <FieldSwitcher />
       </InputGroup>
     </>

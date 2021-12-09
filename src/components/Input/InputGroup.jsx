@@ -1,24 +1,18 @@
-/* eslint-disable react/no-array-index-key */
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-console */
-/* eslint-disable react/prop-types */
-/* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable no-nested-ternary */
-import { Field, useField } from 'formik';
+import { useField } from 'formik';
 import React, { cloneElement, Children } from 'react';
-import { InputRow } from '.';
+import PropTypes from 'prop-types';
+import { InputRow } from './InputRow';
 import styles from './Input.module.scss';
 
-export const InputGroup = ({ name, label, help, ...props }) => {
+export const InputGroup = ({ name, label, help, type, children }) => {
   const [field, meta] = useField(name);
-  const { type } = props;
+
   return (
     <div className={styles.row}>
       <label htmlFor='text' className={styles.label}>
         {label}
-        <InputRow meta={meta}>
-          {Children.map(props.children, (child) => {
+        <InputRow meta={meta} field={field}>
+          {Children.map(children, (child) => {
             if (child.props?.placeholder) {
               return cloneElement(child, { field, meta, type });
             }
@@ -38,4 +32,16 @@ export const InputGroup = ({ name, label, help, ...props }) => {
       </div>
     </div>
   );
+};
+
+InputGroup.propTypes = {
+  name: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  help: PropTypes.string,
+  type: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+};
+
+InputGroup.defaultProps = {
+  help: '',
 };
