@@ -1,15 +1,15 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable jsx-a11y/label-has-associated-control */
-
 import React from 'react';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { useHistory } from 'react-router-dom';
 import styles from './Signup.module.scss';
-import { Input, InputPassword } from '../../components/Input';
+import { Input } from '../../components/Input';
 import { useThemeContext } from '../../contexts/themeContext';
-import { Checkbox } from '../../components/Checkbox';
 import { FormComponent } from '../../components/FormComponent';
+import { InputGroup } from '../../components/Input/InputGroup';
+import { FieldSwitcher } from '../../components/FieldSwitcher';
+import { Checkbox } from '../../components/Checkbox';
 
 export const Signup = () => {
   const history = useHistory();
@@ -54,36 +54,30 @@ export const Signup = () => {
 
   const fields = (
     <>
-      <Input
-        placeholder='Enter your email address...'
-        name='address'
-        label='Email address'
-      />
-      <InputPassword
-        placeholder='Enter your password...'
-        name='password'
-        label='Password'
-      />
-      <InputPassword
-        placeholder='Confirm password...'
-        name='confirm'
-        label='Confirm password'
-      >
-        <div className={styles.signup__agree}>
-          <Checkbox name='agree' />
-
-          <span className={styles.signup__terms}>
-            By creating an account, you agree to Tezos Explorer{' '}
-            <a href='#' className={styles.signup__policy}>
-              Terms of Service{' '}
-            </a>
-            <span>&</span>{' '}
-            <a href='#' className={styles.signup__policy}>
-              Privacy Policy.
-            </a>
-          </span>
-        </div>
-      </InputPassword>
+      <InputGroup name='address' label='Email Address' type='text'>
+        <Input placeholder='Enter your email address...' />
+      </InputGroup>
+      <InputGroup name='password' label='Password' type='password'>
+        <Input placeholder='Enter your password...' />
+        <FieldSwitcher />
+      </InputGroup>
+      <InputGroup name='confirm' label='Confirm password' type='password'>
+        <Input placeholder='Confirm password...' />
+        <FieldSwitcher />
+      </InputGroup>
+      <div className={styles.signup__agree}>
+        <Checkbox name='agree' />
+        <span className={styles.signup__terms}>
+          By creating an account, you agree to Tezos Explorer{' '}
+          <a href='#' className={styles.signup__policy}>
+            Terms of Service{' '}
+          </a>
+          <span>&</span>{' '}
+          <a href='#' className={styles.signup__policy}>
+            Privacy Policy.
+          </a>
+        </span>
+      </div>
     </>
   );
   const bottom = (

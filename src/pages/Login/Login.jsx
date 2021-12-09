@@ -3,9 +3,11 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 import { useHistory } from 'react-router-dom';
 import styles from './Login.module.scss';
-import { Input, InputPassword } from '../../components/Input';
+import { Input } from '../../components/Input';
 import { useThemeContext } from '../../contexts/themeContext';
 import { FormComponent } from '../../components/FormComponent';
+import { InputGroup } from '../../components/Input/InputGroup';
+import { FieldSwitcher } from '../../components/FieldSwitcher';
 
 export const Login = () => {
   const history = useHistory();
@@ -34,12 +36,14 @@ export const Login = () => {
         // eslint-disable-next-line react/no-this-in-sfc
         return this.parent.password === value;
       }),
+    test: yup.string().required('required'),
   });
 
   const initialValues = {
     address: '',
     password: '',
     confirm: '',
+    test: '',
   };
 
   const handleSubmit = (values) => {
@@ -65,26 +69,22 @@ export const Login = () => {
 
   const fields = (
     <>
-      <Input
-        placeholder='Enter your email address...'
-        name='address'
-        label='Email address'
-        type='text'
-      />
-      <InputPassword
-        placeholder='Enter your password...'
-        name='password'
-        label='Password'
-      />
-      <InputPassword
-        placeholder='Confirm password...'
+      <InputGroup name='address' label='Email Address' type='text'>
+        <Input placeholder='Enter your email address...' />
+      </InputGroup>
+      <InputGroup name='password' label='Password' type='password'>
+        <Input placeholder='Enter your password...' />
+        <FieldSwitcher />
+      </InputGroup>
+      <InputGroup
         name='confirm'
         label='Confirm password'
+        type='password'
+        help='Forgot password?'
       >
-        <button type='button' className={styles.login__help}>
-          Forgot password?
-        </button>
-      </InputPassword>
+        <Input placeholder='Confirm password...' />
+        <FieldSwitcher />
+      </InputGroup>
     </>
   );
 
