@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { useField } from 'formik';
 import React, { cloneElement, Children } from 'react';
 import PropTypes from 'prop-types';
@@ -14,7 +15,15 @@ export const InputGroup = ({ name, label, help, type, children }) => {
         <InputRow meta={meta} field={field}>
           {Children.map(children, (child) => {
             if (child.props?.placeholder) {
-              return cloneElement(child, { field, meta, type });
+              // eslint-disable-next-line no-shadow
+              const { name, value, onChange, onBlur } = field;
+              return cloneElement(child, {
+                name,
+                value,
+                type,
+                onChange,
+                onBlur,
+              });
             }
             return cloneElement(child, { type });
           })}

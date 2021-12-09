@@ -1,15 +1,12 @@
-/* eslint-disable no-debugger */
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-multi-assign */
-/* eslint-disable no-console */
-import React, { useCallback, useRef, useState, useEffect } from 'react';
+/* eslint-disable react/require-default-props */
+import React, { useCallback, useRef, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import styles from './FieldSwitcher.module.scss';
 import eye from '../../imgs/eye.svg';
 import crossed from '../../imgs/crossed.svg';
 
 const inputTypes = ['text', 'number', 'phone', 'email', 'password'];
-export const FieldSwitcher = ({ type, ...props }) => {
+export const FieldSwitcher = ({ type }) => {
   const isPassword = type === 'password';
   const ref = useRef();
   const hideFieldText = useCallback(() => {
@@ -37,4 +34,11 @@ export const FieldSwitcher = ({ type, ...props }) => {
       <img src={eye} alt='show' />
     </button>
   );
+};
+
+FieldSwitcher.propTypes = {
+  type: PropTypes.string,
+};
+FieldSwitcher.defaultProps = {
+  type: 'text',
 };
