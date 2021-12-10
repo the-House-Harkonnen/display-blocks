@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable no-debugger */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useThemeContext } from '../../contexts/themeContext';

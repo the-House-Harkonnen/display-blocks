@@ -1,4 +1,3 @@
-/* eslint-disable react/require-default-props */
 import React, { useCallback, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styles from './FieldSwitcher.module.scss';
