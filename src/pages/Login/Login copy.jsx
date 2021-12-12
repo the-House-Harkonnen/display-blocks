@@ -85,10 +85,7 @@ export const Login = () => {
                 field={field}
                 type={isPassword ? 'password' : 'text'}
               />
-              <BtnIcon
-                img={isPassword ? eye : crossed}
-                onClick={() => setPassword(!isPassword)}
-              />
+              <button onClick={() => setPassword(!isPassword)}>push me</button>
             </InputGroup>
           );
         }}
@@ -97,21 +94,13 @@ export const Login = () => {
         {({ meta, field }) => {
           const [isPassword, setPassword] = useState(true);
           return (
-            <InputGroup
-              name='password'
-              label='Password'
-              meta={meta}
-              help='Forgot password?'
-            >
+            <InputGroup name='password' label='Password' meta={meta}>
               <Input
                 placeholder='Enter your password...'
                 field={field}
                 type={isPassword ? 'password' : 'text'}
               />
-              <BtnIcon
-                img={isPassword ? eye : crossed}
-                onClick={() => setPassword(!isPassword)}
-              />
+              <button onClick={() => setPassword(!isPassword)}>push me</button>
             </InputGroup>
           );
         }}
@@ -126,14 +115,25 @@ export const Login = () => {
                 field={field}
                 type={isPassword ? 'password' : 'text'}
               />
-              <BtnIcon
-                img={isPassword ? eye : crossed}
-                onClick={() => setPassword(!isPassword)}
-              />
+              <BtnIcon img={eye} onClick={() => setPassword(!isPassword)} />
             </InputGroup>
           );
         }}
       </Field>
+
+      {/* <InputGroup name='password' label='Password' type='password'>
+        <Input placeholder='Enter your password...' />
+        <FieldSwitcher />
+      </InputGroup>
+      <InputGroup
+        name='confirm'
+        label='Confirm password'
+        type='password'
+        help='Forgot password?'
+      >
+        <Input placeholder='Confirm password...' />
+        <FieldSwitcher />
+      </InputGroup> */}
     </>
   );
 
