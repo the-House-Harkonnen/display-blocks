@@ -11,7 +11,7 @@
 
     &__group {
         display: grid;
-        grid-row-gap: 26px;
+        grid-row-gap: 26px;        
         border: none;
         @media screen and (max-width: 768px) {
           grid-row-gap: 20px;

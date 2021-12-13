@@ -57,22 +57,6 @@ export const Login = () => {
     console.log(values);
   };
 
-  const bottom = (
-    <div className={styles.login__bottom}>
-      <span className={styles.login__question}>
-        Don’t have a <span className={styles.login__span}>Tezos Explorer</span>
-        Account?
-      </span>
-      <button
-        type='button'
-        className={styles.login__link}
-        onClick={() => history.push('/home/signup')}
-      >
-        Sing up Now?
-      </button>
-    </div>
-  );
-
   const fields = (
     <>
       <Field name='address'>
@@ -156,7 +140,22 @@ export const Login = () => {
           onSubmit={handleSubmit}
           validationSchema={validationSchema}
         >
-          <FormComponent fields={fields} bottom={bottom} />
+          <FormComponent fields={fields}>
+            <div className={styles.login__bottom}>
+              <span className={styles.login__question}>
+                Don’t have a{' '}
+                <span className={styles.login__span}>Tezos Explorer</span>
+                Account?
+              </span>
+              <button
+                type='button'
+                className={styles.login__link}
+                onClick={() => history.push('/home/signup')}
+              >
+                Sing up Now?
+              </button>
+            </div>
+          </FormComponent>
         </Formik>
       </div>
     </div>

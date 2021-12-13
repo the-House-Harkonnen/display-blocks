@@ -1,6 +1,5 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
-import { Formik } from 'formik';
+import React, { useState } from 'react';
+import { Field, Formik } from 'formik';
 import * as yup from 'yup';
 import { useHistory } from 'react-router-dom';
 import styles from './Signup.module.scss';
@@ -8,8 +7,10 @@ import { Input } from '../../components/Input';
 import { useThemeContext } from '../../contexts/themeContext';
 import { FormComponent } from '../../components/FormComponent';
 import { InputGroup } from '../../components/Input/InputGroup';
-import { FieldSwitcher } from '../../components/FieldSwitcher';
+import { BtnIcon } from '../../components/FieldSwitcher';
 import { Checkbox } from '../../components/Checkbox';
+import eye from '../../imgs/eye.svg';
+import crossed from '../../imgs/crossed.svg';
 
 export const Signup = () => {
   const history = useHistory();
@@ -54,43 +55,79 @@ export const Signup = () => {
 
   const fields = (
     <>
-      <InputGroup name='address' label='Email Address' type='text'>
-        <Input placeholder='Enter your email address...' />
-      </InputGroup>
-      <InputGroup name='password' label='Password' type='password'>
-        <Input placeholder='Enter your password...' />
-        <FieldSwitcher />
-      </InputGroup>
-      <InputGroup name='confirm' label='Confirm password' type='password'>
-        <Input placeholder='Confirm password...' />
-        <FieldSwitcher />
-      </InputGroup>
+      <Field name='address'>
+        {({ meta, field }) => {
+          const [isPassword, setPassword] = useState(true);
+          return (
+            <InputGroup name='address' label='Email Address' meta={meta}>
+              <Input
+                placeholder='Enter your email address...'
+                field={field}
+                type={isPassword ? 'password' : 'text'}
+              />
+              <BtnIcon
+                img={isPassword ? eye : crossed}
+                onClick={() => setPassword(!isPassword)}
+              />
+            </InputGroup>
+          );
+        }}
+      </Field>
+      <Field name='password'>
+        {({ meta, field }) => {
+          const [isPassword, setPassword] = useState(true);
+          return (
+            <InputGroup
+              name='password'
+              label='Password'
+              meta={meta}
+              help='Forgot password?'
+            >
+              <Input
+                placeholder='Enter your password...'
+                field={field}
+                type={isPassword ? 'password' : 'text'}
+              />
+              <BtnIcon
+                img={isPassword ? eye : crossed}
+                onClick={() => setPassword(!isPassword)}
+              />
+            </InputGroup>
+          );
+        }}
+      </Field>
+      <Field name='confirm'>
+        {({ meta, field }) => {
+          const [isPassword, setPassword] = useState(true);
+          return (
+            <InputGroup label='Password' meta={meta}>
+              <Input
+                placeholder='Confirm password...'
+                field={field}
+                type={isPassword ? 'password' : 'text'}
+              />
+              <BtnIcon
+                img={isPassword ? eye : crossed}
+                onClick={() => setPassword(!isPassword)}
+              />
+            </InputGroup>
+          );
+        }}
+      </Field>
       <div className={styles.signup__agree}>
         <Checkbox name='agree' />
         <span className={styles.signup__terms}>
           By creating an account, you agree to Tezos Explorer
-          <a href='#' className={styles.signup__policy}>
+          <a href='#top' className={styles.signup__policy}>
             &nbsp; Terms of Service&nbsp;
           </a>
           <span>&</span>
-          <a href='#' className={styles.signup__policy}>
+          <a href='#top' className={styles.signup__policy}>
             &nbsp;Privacy Policy.
           </a>
         </span>
       </div>
     </>
-  );
-  const bottom = (
-    <div className={styles.signup__bottom}>
-      <span className={styles.signup__question}>Already have an Account?</span>
-      <button
-        type='button'
-        className={styles.signup__link}
-        onClick={() => history.push('/home/login')}
-      >
-        Log In
-      </button>
-    </div>
   );
 
   return (
@@ -112,7 +149,20 @@ export const Signup = () => {
           onSubmit={handleSubmit}
           validationSchema={validationSchema}
         >
-          <FormComponent fields={fields} bottom={bottom} />
+          <FormComponent fields={fields}>
+            <div className={styles.signup__bottom}>
+              <span className={styles.signup__question}>
+                Already have an Account?
+              </span>
+              <button
+                type='button'
+                className={styles.signup__link}
+                onClick={() => history.push('/home/login')}
+              >
+                Log In
+              </button>
+            </div>
+          </FormComponent>
         </Formik>
       </div>
     </div>
