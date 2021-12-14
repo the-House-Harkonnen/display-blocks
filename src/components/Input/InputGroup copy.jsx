@@ -11,13 +11,18 @@ export const InputGroup = ({ name, label, help, type, children }) => {
   return (
     <div className={styles.row}>
       <label htmlFor='text' className={styles.label}>
-        {label || true}
+        {label}
         <InputRow meta={meta} field={field}>
           {Children.map(children, (child) => {
             if (child.props?.placeholder) {
+              // eslint-disable-next-line no-shadow
+              const { name, value, onChange, onBlur } = field;
               return cloneElement(child, {
-                field,
+                name,
+                value,
                 type,
+                onChange,
+                onBlur,
               });
             }
             return cloneElement(child, { type });
@@ -40,13 +45,12 @@ export const InputGroup = ({ name, label, help, type, children }) => {
 
 InputGroup.propTypes = {
   name: PropTypes.string.isRequired,
-  label: PropTypes.string,
+  label: PropTypes.string.isRequired,
   help: PropTypes.string,
   type: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
 };
 
 InputGroup.defaultProps = {
-  label: '',
   help: '',
 };

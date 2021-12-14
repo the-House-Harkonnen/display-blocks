@@ -1,7 +1,3 @@
-/* eslint-disable no-debugger */
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-console */
-/* eslint-disable react/prop-types */
 import axios from 'axios';
 import React, {
   createContext,
@@ -11,6 +7,7 @@ import React, {
   useState,
 } from 'react';
 import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { networkList } from '../constants';
 import { changeNetwork } from '../utils/changeNetwork';
 
@@ -73,4 +70,8 @@ export const APIProvider = ({ children }) => {
   );
 
   return <APIContext.Provider value={value}>{children}</APIContext.Provider>;
+};
+
+APIProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };
