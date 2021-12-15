@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useThemeContext } from '../../contexts/themeContext';
 import styles from './DropDown.module.scss';
@@ -11,6 +11,22 @@ export const DropDown = ({ name, options, callBack }) => {
     setShowBody(false);
   };
 
+  const wrapperRef = useRef(null);
+
+  function clickOutside(ref) {
+    useEffect(() => {
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          setShowBody(false);
+        }
+      }
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    }, [ref]);
+  }
+  clickOutside(wrapperRef);
   return (
     <div className={styles.dropdown}>
       <button
@@ -21,22 +37,27 @@ export const DropDown = ({ name, options, callBack }) => {
         {name} <div className={styles.dropdown__arrow} />
       </button>
       {showBody && (
-        <ul
-          className={styles.dropdown__body}
-          style={{ backgroundColor: theme.backgroundColor }}
-        >
-          {options.map((option) => (
-            <li className={styles.dropdown__option} key={option}>
-              <button
-                className={styles.dropdown__btn}
-                type='button'
-                onClick={() => onclick(option)}
-              >
-                {option}
-              </button>
-            </li>
-          ))}
-        </ul>
+        <div className={styles.dropdown__wrapper}>
+          <ul
+            ref={wrapperRef}
+            className={styles.dropdown__body}
+            style={{
+              border: theme.dropBorder,
+            }}
+          >
+            {options.map((option) => (
+              <li className={styles.dropdown__option} key={option}>
+                <button
+                  className={styles.dropdown__btn}
+                  type='button'
+                  onClick={() => onclick(option)}
+                >
+                  {option}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
     </div>
   );

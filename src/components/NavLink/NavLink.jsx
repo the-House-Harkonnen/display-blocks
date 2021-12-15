@@ -24,17 +24,16 @@ const NavLink = () => {
   const classes = `${styles.links} ${listBg}`;
   const links = [
     {
-      id: 0,
       name: 'Home',
       icon: <HomeIcon />,
+      link: '#',
     },
     {
-      id: 1,
       name: 'Blocks',
       icon: <BlocksIcon />,
+      link: '#',
     },
     {
-      id: 2,
       name: (
         <DropDown
           name={network}
@@ -45,22 +44,22 @@ const NavLink = () => {
       icon: <BakersIcon />,
     },
     {
-      id: 3,
       name: 'Charts',
       icon: <ChartsIcon />,
+      link: '#',
     },
     {
-      id: 4,
       name: 'Ecosystem',
       icon: <EcosystemIcon />,
+      link: '#',
     },
   ];
   return (
     <ul className={classes}>
       {links.map((link) => (
-        <li key={link.id} className={hoverRow}>
+        <li key={link.name} className={hoverRow}>
           <div className={styles.links__icon}>{link.icon}</div>
-          <a className={styles.links__link} href='#'>
+          <a className={styles.links__link} href={link.link}>
             {link.name}
           </a>
           <span className={styles.links__arrow} />

@@ -1,4 +1,4 @@
-@import '../../styles/variable.scss';
+@import '../../styles/index.scss';
 
 .header {
   transition: background 0.2s linear;
@@ -14,7 +14,6 @@
 
   &__nav {
     margin-left: auto;
-    // margin-right: 116.5px;
     margin-right: 82.5px;
     @media screen and (max-width: 1200px) {
       margin-right: 29px;
