@@ -1,6 +1,10 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable no-console */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import {
   HomeIcon,
   BlocksIcon,
@@ -12,10 +16,23 @@ import { DropDown } from '../DropDown/DropDown';
 import { useThemeContext } from '../../contexts/themeContext';
 import styles from './NavLink.module.scss';
 import { useApiContext } from '../../contexts/apiContexts';
+import { useBlocksContext } from '../../contexts/blocksContext';
 
 const NavLink = () => {
   const { network, networkList, handleNetwork } = useApiContext();
   const networkOptions = networkList.map((el) => el.value);
+
+  const history = useHistory();
+  const { isError } = useBlocksContext();
+
+  const linkHandler = (val) => {
+    if (isError) {
+      handleNetwork(networkList[0].value);
+    } else {
+      history.push(val);
+    }
+  };
+
   const [{ isDark }] = useThemeContext();
   const hoverRow =
     isDark === false ? `${styles.links__light}` : `${styles.links__dark}`;
@@ -26,12 +43,12 @@ const NavLink = () => {
     {
       name: 'Home',
       icon: <HomeIcon />,
-      link: '#',
+      link: '/',
     },
     {
       name: 'Blocks',
       icon: <BlocksIcon />,
-      link: '#',
+      link: '/home/blocks',
     },
     {
       name: (
@@ -46,12 +63,12 @@ const NavLink = () => {
     {
       name: 'Charts',
       icon: <ChartsIcon />,
-      link: '#',
+      link: '/',
     },
     {
       name: 'Ecosystem',
       icon: <EcosystemIcon />,
-      link: '#',
+      link: '/',
     },
   ];
   return (
@@ -59,7 +76,10 @@ const NavLink = () => {
       {links.map((link) => (
         <li key={link.name} className={hoverRow}>
           <div className={styles.links__icon}>{link.icon}</div>
-          <a className={styles.links__link} href={link.link}>
+          <a
+            className={styles.links__link}
+            onClick={() => linkHandler(link.link)}
+          >
             {link.name}
           </a>
           <span className={styles.links__arrow} />

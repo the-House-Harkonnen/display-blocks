@@ -1,11 +1,13 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
+import { useApiContext } from '../../contexts/apiContexts';
 import { useThemeContext } from '../../contexts/themeContext';
 
 import styles from './NotResponding.module.scss';
 
 const NotResponding = () => {
   const [{ theme }] = useThemeContext();
+  const { networkList, handleNetwork } = useApiContext();
   return (
     <div
       className={styles.container}
@@ -26,7 +28,11 @@ const NotResponding = () => {
             backgroundColor: theme.homeBtn,
           }}
         >
-          <a href='#' className={styles.btn__link}>
+          <a
+            href='#'
+            className={styles.btn__link}
+            onClick={() => handleNetwork(networkList[0].value)}
+          >
             Home page
           </a>
         </button>
