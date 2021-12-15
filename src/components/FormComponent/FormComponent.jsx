@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { Fragment } from 'react';
 import { Field, Form } from 'formik';
 import PropTypes from 'prop-types';
@@ -8,7 +7,6 @@ import { InputGroup } from '../Input/InputGroup';
 import { Input } from '../Input';
 
 export const FormComponent = ({ fields, children }) => {
-  console.log(fields);
   const [{ theme }] = useThemeContext();
   return (
     <Form

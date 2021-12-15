@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React from 'react';
 import { Formik } from 'formik';
 import { useHistory } from 'react-router-dom';
@@ -15,7 +14,6 @@ export const Signup = () => {
   const formInstance = new FormCreator(fieldsConfig);
   const initialValues = formInstance.getInitialValues();
   const validationSchema = formInstance.validationSchema();
-  console.log(validationSchema);
 
   const handleSubmit = (values) => {
     // eslint-disable-next-line no-console
