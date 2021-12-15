@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import styles from './FormComponent.module.scss';
 import { useThemeContext } from '../../contexts/themeContext';
 
-export const FormComponent = ({ fields, bottom }) => {
+export const FormComponent = ({ fields, children }) => {
   const [{ theme }] = useThemeContext();
   return (
     <Form
@@ -22,16 +22,16 @@ export const FormComponent = ({ fields, bottom }) => {
         type='submit'
         value='Submit'
       />
-      {bottom}
+      {children}
     </Form>
   );
 };
 
 FormComponent.propTypes = {
   fields: PropTypes.node.isRequired,
-  bottom: PropTypes.node,
+  children: PropTypes.node,
 };
 
 FormComponent.defaultProps = {
-  bottom: '',
+  children: '',
 };
