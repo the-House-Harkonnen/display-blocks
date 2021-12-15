@@ -59,11 +59,14 @@
 
 .table {
   border-radius: 30px;
-  padding: 43px 119px 43px 20px;
+  padding: 43px 20px;
   display: grid;
   // add relative position for loader
   position: relative;
   z-index: 1;
+  @media screen and (max-width: 992px) {
+    padding: 43px 119px 43px 20px;
+  }
   @media screen and (max-width: 768px) {
     padding: 19px 39px 19px 10px;
   }

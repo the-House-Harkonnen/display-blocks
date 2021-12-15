@@ -7,6 +7,7 @@
   row-gap: 8px;
   column-gap: 165px;
   grid-template-columns: repeat(2, minmax(436px, 1fr));
+  overflow: auto;
 
   &__tr {
     display: grid;
