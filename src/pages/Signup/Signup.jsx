@@ -22,7 +22,7 @@ export const Signup = () => {
     console.log(values);
   };
 
-  const fields = formInstance.renderFields();
+  const fields = formInstance.getFields();
 
   return (
     <div
