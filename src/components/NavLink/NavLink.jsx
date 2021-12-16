@@ -43,12 +43,12 @@ const NavLink = () => {
     {
       name: 'Home',
       icon: <HomeIcon />,
-      link: '/',
+      path: '/',
     },
     {
       name: 'Blocks',
       icon: <BlocksIcon />,
-      link: '/home/blocks',
+      path: '/home/blocks',
     },
     {
       name: (
@@ -63,12 +63,12 @@ const NavLink = () => {
     {
       name: 'Charts',
       icon: <ChartsIcon />,
-      link: '/',
+      path: '/',
     },
     {
       name: 'Ecosystem',
       icon: <EcosystemIcon />,
-      link: '/',
+      path: '/',
     },
   ];
   return (
@@ -76,12 +76,13 @@ const NavLink = () => {
       {links.map((link) => (
         <li key={link.name} className={hoverRow}>
           <div className={styles.links__icon}>{link.icon}</div>
-          <a
+          <button
+            type='button'
             className={styles.links__link}
-            onClick={() => linkHandler(link.link)}
+            onClick={() => linkHandler(link.path)}
           >
             {link.name}
-          </a>
+          </button>
           <span className={styles.links__arrow} />
         </li>
       ))}
