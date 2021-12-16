@@ -1,6 +1,6 @@
-/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { Field } from 'formik';
+import PropTypes from 'prop-types';
 import { BtnIcon } from '../FieldSwitcher';
 import { Input } from '.';
 import eye from '../../imgs/eye.svg';
@@ -20,7 +20,7 @@ export const PasswordField = ({ name, placeholder, help }) => {
               type={isPassword ? 'password' : 'text'}
             />
             <BtnIcon
-              img={isPassword ? eye : crossed}
+              img={isPassword ? crossed : eye}
               onClick={() => setPassword(!isPassword)}
             />
           </InputGroup>
@@ -28,4 +28,15 @@ export const PasswordField = ({ name, placeholder, help }) => {
       }}
     </Field>
   );
+};
+
+PasswordField.propTypes = {
+  name: PropTypes.string.isRequired,
+  help: PropTypes.string,
+  placeholder: PropTypes.string,
+};
+
+PasswordField.defaultProps = {
+  help: '',
+  placeholder: '',
 };

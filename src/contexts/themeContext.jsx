@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState, useContext } from 'react';
 import PropTypes from 'prop-types';
+import '../styles/variable.scss';
 
 const themes = {
   dark: {
@@ -12,6 +13,7 @@ const themes = {
     toggleBtn: '#FFFFFF',
     tableBackground: '#25233D',
     tableBorder: '5px solid #2D3B59',
+    dropBorder: '1px solid #2D3B59',
     tableLine: '#274673CC',
     tableHeaders: '#FFFFFF',
     pagination: '#FFFFFF',
@@ -29,6 +31,7 @@ const themes = {
     toggleBtn: '#274673',
     tableBackground: '#FFFFFF',
     tableBorder: '5px solid #D9DFF8',
+    dropBorder: '1px solid #D9DFF8',
     tableLine: '#D9DFF8',
     tableHeaders: '#536DFB',
     pagination: '#536DFB',
