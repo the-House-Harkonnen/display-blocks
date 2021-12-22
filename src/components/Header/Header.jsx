@@ -1,31 +1,30 @@
+/* eslint-disable no-console */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
 import Logo from '../Logo';
 import Nav from '../Nav';
 import LoginBtn from '../LoginBtn';
-import { useThemeContext } from '../../contexts/themeContext';
 import styles from './Header.module.scss';
+import { useThemeContext } from '../../contexts/themeContext';
 
 const Header = () => {
-  const [{ theme, isDark }, toggleTheme] = useThemeContext();
+  const { toggleTheme } = useThemeContext();
+
   return (
-    <div
-      className={styles.header}
-      style={{ backgroundColor: theme.backgroundColor }}
-    >
+    <div className={styles.header}>
       <div className={styles.header__logo}>
         <Logo />
       </div>
       <div className={styles.header__nav}>
+        <input
+          onChange={() => toggleTheme()}
+          type='checkbox'
+          name='theme'
+          id='theme'
+          className={styles.checkbox}
+        />
         <Nav />
-      </div>
-      <div className={styles.toggle}>
-        <button
-          className={styles.toggle__btn}
-          type='button'
-          onClick={toggleTheme}
-        >
-          {isDark ? '🌞' : '🌜'}
-        </button>
       </div>
       <div className={styles.header__btn}>
         <LoginBtn />

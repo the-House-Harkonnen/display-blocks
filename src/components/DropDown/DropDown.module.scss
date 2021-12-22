@@ -1,4 +1,4 @@
-
+@import './../../styles/index.scss';
 .dropdown{
     position: relative;
     // background-color: inherit;
@@ -49,6 +49,7 @@
       border-radius: 5px;
       background-color: #fff;
       color: #2D3B59;
+      @include theme-aware('border','dropBorder');
       @media screen and (max-width: 768px) {
         top: 20%;
         left: 100%;

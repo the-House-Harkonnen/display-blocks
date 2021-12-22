@@ -5,7 +5,8 @@
   grid-auto-flow: column;
   justify-content: start;
   grid-gap: 15px;
-  color: currentColor;
+  @include theme-aware('color', 'color');
+
   
   @include media(768px) {
     margin-bottom: 40px;  
@@ -16,7 +17,7 @@
   font-size: 18px;
   font-weight: 400;
   cursor: pointer;
-  color: currentColor;
+  color: inherit;
   z-index: 1;
   &:first-letter{
     text-transform: uppercase;
@@ -27,7 +28,7 @@
   display: block;
   line-height: 24px;
   font-weight: 500;
-  color: currentColor;
+  color: inherit;
   z-index: 1;
 }
 
@@ -35,8 +36,8 @@
   font-size: 18px;
   font-weight: 600;
   cursor: pointer;
-  color: currentColor;
-  z-index: 1;
+  color: inherit;
+  // z-index: 1;
   &:first-letter  {
     text-transform: uppercase;
   }

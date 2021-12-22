@@ -21,6 +21,7 @@
 }
 
 .head {
+  @include theme-aware('color','tableHeaders');
   &__tr {
     height: 45px;
     color: currentColor;
@@ -53,26 +54,17 @@
     color: currentColor;
   }
 }
-
-.dark {
+.row{
   height: 60px;
   border-bottom: 1px solid currentColor;
   border-top: 1px solid currentColor;
+  @include theme-aware('color','tableLine');
   &:hover {
-    background-color: #ECF0F9BF;
     transition: 0.5s;
+    @include theme-aware('background-color','tdHover')
   }
 }
 
-.light {
-  height: 60px;
-  border-bottom: 1px solid currentColor;
-  border-top: 1px solid currentColor;
-  &:hover {
-    background-color: #2E2B4D;
-    transition: 0.5s;
-  }
-}
 
 .body {
 
@@ -80,6 +72,7 @@
     padding: 0 35px 0 10px;
     cursor: default;
     white-space: nowrap;
+    @include theme-aware('color','color');
     &:last-child {
       padding: 5px 0;
     }

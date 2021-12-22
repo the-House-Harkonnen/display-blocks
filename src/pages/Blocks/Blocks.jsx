@@ -13,12 +13,10 @@ import { Table } from '../../components/Table';
 import { useBlocksContext } from '../../contexts/blocksContext';
 import { convertTezos } from '../../utils/convertTezos';
 import { convertTimestamp } from '../../utils/convertTimestamp';
-import { useThemeContext } from '../../contexts/themeContext';
 import styles from './Blocks.module.scss';
 import { Loader } from '../../components/Loader';
 
 export const Blocks = () => {
-  const [{ theme }] = useThemeContext();
   const { blocks, isFetching } = useBlocksContext();
 
   const columns = useMemo(
@@ -89,16 +87,8 @@ export const Blocks = () => {
   return (
     <>
       <Crumbs />
-      <h2 className={styles.title} style={{ color: theme.color }}>
-        Blocks
-      </h2>
-      <div
-        className={styles.list}
-        style={{
-          backgroundColor: theme.tableBackground,
-          border: theme.tableBorder,
-        }}
-      >
+      <h2 className={styles.title}>Blocks</h2>
+      <div className={styles.list}>
         {isFetching && <Loader />}
         {blocks && (
           <div className={styles.table}>

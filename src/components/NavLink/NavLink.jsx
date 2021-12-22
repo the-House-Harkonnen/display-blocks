@@ -13,7 +13,6 @@ import {
   EcosystemIcon,
 } from '../Icons/Icons';
 import { DropDown } from '../DropDown/DropDown';
-import { useThemeContext } from '../../contexts/themeContext';
 import styles from './NavLink.module.scss';
 import { useApiContext } from '../../contexts/apiContexts';
 import { useBlocksContext } from '../../contexts/blocksContext';
@@ -33,12 +32,6 @@ const NavLink = () => {
     }
   };
 
-  const [{ isDark }] = useThemeContext();
-  const hoverRow =
-    isDark === false ? `${styles.links__light}` : `${styles.links__dark}`;
-  const listBg =
-    isDark === false ? `${styles.bg__light}` : `${styles.bg__dark}`;
-  const classes = `${styles.links} ${listBg}`;
   const links = [
     {
       name: 'Home',
@@ -49,6 +42,7 @@ const NavLink = () => {
       name: 'Blocks',
       icon: <BlocksIcon />,
       path: '/home/blocks',
+      arrow: true,
     },
     {
       name: (
@@ -72,17 +66,21 @@ const NavLink = () => {
     },
   ];
   return (
-    <ul className={classes}>
+    <ul className={styles.links}>
       {links.map((link) => (
-        <li key={link.name} className={hoverRow}>
+        <li key={link.name} className={styles.item}>
           <div className={styles.links__icon}>{link.icon}</div>
-          <button
+          <a
             type='button'
-            className={styles.links__link}
+            className={
+              link.arrow
+                ? `${styles.links__link} ${styles.arrow}`
+                : styles.links__link
+            }
             onClick={() => linkHandler(link.path)}
           >
             {link.name}
-          </button>
+          </a>
           <span className={styles.links__arrow} />
         </li>
       ))}

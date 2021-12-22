@@ -7,7 +7,7 @@ import { Crumbs } from '../../components/Crumbs/Crumbs';
 import { useSingleBlockContext } from '../../contexts/singleBlockContext';
 import { BlockTable } from '../../components/BlockTable';
 import { Loader } from '../../components/Loader';
-import { useThemeContext } from '../../contexts/themeContext';
+// import { useThemeContext } from '../../contexts/themeContext';
 import { convertTimestamp } from '../../utils/convertTimestamp';
 import { convertBlockId } from '../../utils/convertBlockId';
 
@@ -15,7 +15,7 @@ export const Block = () => {
   const location = useLocation().pathname;
   const currentBlockNumber = location.split('/').pop(-1);
   const { block, isFetching, setBlock } = useSingleBlockContext();
-  const [{ theme }] = useThemeContext();
+  // const [{ theme }] = useThemeContext();
   const history = useHistory();
   const handlePage = (val) => history.push(location.replace(/[^\\/]*$/, val));
 
@@ -126,11 +126,11 @@ export const Block = () => {
       </div>
       <div
         className={styles.table}
-        style={{
-          backgroundColor: theme.tableBackground,
-          border: theme.tableBorder,
-          color: theme.color,
-        }}
+        // style={{
+        //   backgroundColor: theme.tableBackground,
+        //   border: theme.tableBorder,
+        //   color: theme.color,
+        // }}
       >
         {isFetching && <Loader />}
         {block && <BlockTable cols={columnGroups} data={block} />}

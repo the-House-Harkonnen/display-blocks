@@ -3,7 +3,7 @@
 .container {
   display: grid;
   font-family: $f-family;
-  color: currentColor;
+  @include theme-aware('color', 'color');
 }
 
 .head {
@@ -42,6 +42,7 @@
     font-size: 32px;
     font-weight: 600;
     color: currentColor;
+    
     @media screen and (max-width: 768px) {
       font-size: 24px;
     }
@@ -63,6 +64,9 @@
   display: grid;
   // add relative position for loader
   position: relative;
+  @include theme-aware('color', 'color');
+  @include theme-aware('border', 'tableBorder');
+  @include theme-aware('background-color', 'tableBackground');
   z-index: 1;
   @media screen and (max-width: 992px) {
     padding: 43px 119px 43px 20px;

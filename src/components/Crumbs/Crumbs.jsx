@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { Fragment } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import styles from './Crumbs.module.scss';

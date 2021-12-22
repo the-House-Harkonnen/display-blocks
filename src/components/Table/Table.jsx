@@ -3,13 +3,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useSortBy, useTable } from 'react-table';
-import { useThemeContext } from '../../contexts/themeContext';
+// import { useThemeContext } from '../../contexts/themeContext';
 import styles from './Table.module.scss';
 
 export const Table = ({ columns, data }) => {
-  const [{ theme, isDark }] = useThemeContext();
+  // const [{ theme, isDark }] = useThemeContext();
 
-  const hoverRow = isDark === false ? `${styles.dark}` : `${styles.light}`;
+  // const hoverRow = isDark === false ? `${styles.dark}` : `${styles.light}`;
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable(
@@ -21,12 +21,7 @@ export const Table = ({ columns, data }) => {
     );
   return (
     <table {...getTableProps()} className={styles.table}>
-      <thead
-        className={styles.head}
-        style={{
-          color: theme.tableHeaders,
-        }}
-      >
+      <thead className={styles.head}>
         {headerGroups.map((headerGroup) => {
           return (
             <tr
@@ -72,22 +67,10 @@ export const Table = ({ columns, data }) => {
         {rows.map((row) => {
           prepareRow(row);
           return (
-            <tr
-              {...row.getRowProps()}
-              className={hoverRow}
-              style={{
-                color: theme.tableLine,
-              }}
-            >
+            <tr {...row.getRowProps()} className={styles.row}>
               {row.cells.map((cell) => {
                 return (
-                  <td
-                    {...cell.getCellProps()}
-                    className={styles.body__td}
-                    style={{
-                      color: theme.color,
-                    }}
-                  >
+                  <td {...cell.getCellProps()} className={styles.body__td}>
                     {cell.render('Cell')}
                   </td>
                 );
