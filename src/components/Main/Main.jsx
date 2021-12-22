@@ -5,27 +5,15 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { Block } from '../../pages/Block';
 import { Blocks } from '../../pages/Blocks';
 import NotResponding from '../../pages/NotResponding';
-import { useThemeContext } from '../../contexts/themeContext';
+// import { useThemeContext } from '../../contexts/themeContext';
 import styles from './Main.module.scss';
 import { Login } from '../../pages/Login';
 import { Signup } from '../../pages/Signup';
 
 const Main = () => {
-  const [{ theme, isDark }] = useThemeContext();
-  const bgOpasity =
-    isDark === false
-      ? `${styles.container__light}`
-      : `${styles.container__dark}`;
-
   return (
-    <div
-      className={styles.container}
-      style={{
-        backgroundColor: theme.mainBackground,
-        color: theme.color,
-      }}
-    >
-      <div className={bgOpasity}>
+    <div className={styles.container}>
+      <div>
         <Switch>
           <Route exact path='/'>
             <Redirect to='/home/blocks' />

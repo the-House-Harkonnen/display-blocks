@@ -1,4 +1,5 @@
 @import '../../styles/variable.scss';
+@import './../../styles/index.scss';
 
 .burger {
   display: none;
@@ -38,7 +39,8 @@
 }
 
 .nav {
-  width: 433px;
+  // width: 433px;
+  @include theme-aware('color','color');
 
   @media screen and (max-width: 768px) {
     height: 100%;
@@ -50,6 +52,7 @@
 .settings {
   display: none;
   color: currentColor;
+  @include theme-aware('background-color', 'burgerBackground');
 
   @media screen and (max-width: 768px) {
     display: flex;
@@ -76,7 +79,7 @@
 .copyrights {
   display: none;
   color: currentColor;
-
+  @include theme-aware('background-color', 'burgerBackground');
   @media screen and (max-width: 768px) {
     display: block;
     height: inherit;
@@ -96,6 +99,7 @@
 
 .line {
     display: none;
+    @include theme-aware('background-color','burgerMenuLine');
     @media screen and (max-width: 768px) {
       display: block;
       width: 100%;

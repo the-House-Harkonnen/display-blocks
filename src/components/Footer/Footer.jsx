@@ -2,19 +2,17 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import Logo from '../Logo';
-import { useThemeContext } from '../../contexts/themeContext';
 import styles from './Footer.module.scss';
 
 const Footer = () => {
-  const [{ theme }] = useThemeContext();
   const location = useLocation();
   const arr = location.pathname.split('/');
-  const lenght = arr.length;
-  const currLocation = arr[lenght - 1];
+  const { length } = arr;
+  const currLocation = arr[length - 1];
   const config = ['login', 'signup'];
 
   return (
-    <div style={{ backgroundColor: theme.backgroundColor }}>
+    <div>
       {config.find((el) => el === currLocation) ? (
         <>
           <div className={styles.footer__login}>

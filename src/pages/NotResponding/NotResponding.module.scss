@@ -1,3 +1,7 @@
+@import './../../styles/index.scss';
+.container{
+@include theme-aware('color','color');
+}
 .title,
 .subtitle,
 .btn {
@@ -45,6 +49,9 @@
     border: none;
     font-size: 24px;
     font-weight: 600;
+    @include theme-aware('color','homeBtnColor');
+    @include theme-aware('background-color','homeBtn');
+
 
     @media screen and (max-width:1200px) {
       width: 300px;

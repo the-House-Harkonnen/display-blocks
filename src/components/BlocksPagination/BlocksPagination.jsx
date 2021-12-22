@@ -1,10 +1,8 @@
 import React from 'react';
 import { useBlocksContext } from '../../contexts/blocksContext';
 import styles from './BlocksPagination.module.scss';
-import { useThemeContext } from '../../contexts/themeContext';
 
 export const BlocksPagination = () => {
-  const [{ theme }] = useThemeContext();
   const { limit, offset, totalCount, handleLimit, handleOffset } =
     useBlocksContext();
   const totalPage = Math.ceil(totalCount / limit);
@@ -13,12 +11,7 @@ export const BlocksPagination = () => {
 
   const currentPage = offset / limit + 1;
   return (
-    <div
-      className={styles.pagination}
-      style={{
-        color: theme.pagination,
-      }}
-    >
+    <div className={styles.pagination}>
       <div id='handler' className={styles.pagination__handler}>
         Rows per page:
         <label htmlFor='select' className={styles.pagination__arrow}>

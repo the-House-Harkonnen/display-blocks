@@ -1,17 +1,18 @@
+@import './../../styles/index.scss';
+
 .container {
-  transition: background 0.4s linear;
-  &__light,
-  &__dark {
-    padding: 50px 30px 110px; 
-    position: relative;
-    width: 100%;
-    height: 100%;
-    color: inherit;
-    @media screen and (max-width: 768px) {
-      padding: 25px 30px 60px;
-    }
+transition: background 0.4s linear;
+@include theme-aware('background-color','mainBackground');
+padding: 50px 30px 110px; 
+width: 100%;
+height: 100%;
+position: relative;
+@media screen and (max-width: 768px) {
+  padding: 25px 30px 60px;
+}
     &::after {
       content: "";
+      display: block;
       background: url(../../imgs/main-background.png);
       background-repeat: no-repeat;
       background-size: cover;
@@ -21,20 +22,20 @@
       right: 0;
       position: absolute;
       z-index: 0;   
+      opacity: 0.06;
     }
-  }
 }
 
-.container__dark::after {
-  opacity: 0.03;
-  @media screen and (max-width: 1200px) {
-    opacity: 0.06;
-  }
-}
+// .container__dark::after {
+//   opacity: 0.03;
+//   @media screen and (max-width: 1200px) {
+//     opacity: 0.06;
+//   }
+// }
 
-.container__light::after {
-  opacity: 0.45;
-  @media screen and (max-width: 1200px) {
-    opacity: 0.3;
-  }
-}
+// .container__light::after {
+//   opacity: 0.45;
+//   @media screen and (max-width: 1200px) {
+//     opacity: 0.3;
+//   }
+// }

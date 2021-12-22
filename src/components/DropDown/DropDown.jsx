@@ -1,11 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { useThemeContext } from '../../contexts/themeContext';
 import styles from './DropDown.module.scss';
 
 export const DropDown = ({ name, options, callBack }) => {
   const [showBody, setShowBody] = useState(false);
-  const [{ theme }] = useThemeContext();
   const onclick = (value) => {
     callBack(value);
     setShowBody(false);
@@ -38,13 +36,7 @@ export const DropDown = ({ name, options, callBack }) => {
       </button>
       {showBody && (
         <div className={styles.dropdown__wrapper}>
-          <ul
-            ref={wrapperRef}
-            className={styles.dropdown__body}
-            style={{
-              border: theme.dropBorder,
-            }}
-          >
+          <ul ref={wrapperRef} className={styles.dropdown__body}>
             {options.map((option) => (
               <li className={styles.dropdown__option} key={option}>
                 <button

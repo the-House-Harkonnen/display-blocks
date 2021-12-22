@@ -1,5 +1,4 @@
 import React from 'react';
-import { useThemeContext } from '../../contexts/themeContext';
 
 const BurgerIcon = () => {
   return (
@@ -37,12 +36,8 @@ const UserIcon = () => {
 };
 
 const HomeIcon = () => {
-  const [{ theme }] = useThemeContext();
   return (
     <svg
-      style={{
-        fill: theme.color,
-      }}
       width='16'
       height='17'
       viewBox='0 0 16 17'
@@ -58,12 +53,8 @@ const HomeIcon = () => {
 };
 
 const BakersIcon = () => {
-  const [{ theme }] = useThemeContext();
   return (
     <svg
-      style={{
-        fill: theme.color,
-      }}
       width='16'
       height='17'
       viewBox='0 0 16 17'
@@ -89,12 +80,8 @@ const BakersIcon = () => {
 };
 
 const BlocksIcon = () => {
-  const [{ theme }] = useThemeContext();
   return (
     <svg
-      style={{
-        fill: theme.color,
-      }}
       width='16'
       height='17'
       viewBox='0 0 16 17'
@@ -110,12 +97,8 @@ const BlocksIcon = () => {
 };
 
 const ChartsIcon = () => {
-  const [{ theme }] = useThemeContext();
   return (
     <svg
-      style={{
-        fill: theme.color,
-      }}
       width='16'
       height='17'
       viewBox='0 0 16 17'
@@ -135,21 +118,17 @@ const ChartsIcon = () => {
 };
 
 const EcosystemIcon = () => {
-  const [{ theme }] = useThemeContext();
   return (
     <svg
-      style={{
-        fill: theme.color,
-      }}
       width='16'
       height='17'
       viewBox='0 0 16 17'
-      fill='none'
+      // fill='none'
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
         d='M7.66667 2C3.99067 2 1 4.99067 1 8.66667C1 12.3427 3.99067 15.3333 7.66667 15.3333C11.3427 15.3333 14.3333 12.3427 14.3333 8.66667C14.3333 4.99067 11.3427 2 7.66667 2ZM2.33333 8.66667C2.33333 8.06733 2.43733 7.492 2.62067 6.954L3.66667 8L5 9.33333V10.6667L6.33333 12L7 12.6667V13.954C4.374 13.624 2.33333 11.3813 2.33333 8.66667ZM11.8867 11.9153C11.4513 11.5647 10.7913 11.3333 10.3333 11.3333V10.6667C10.3333 10.313 10.1929 9.97391 9.94281 9.72386C9.69276 9.47381 9.35362 9.33333 9 9.33333H6.33333V7.33333C6.68696 7.33333 7.02609 7.19286 7.27614 6.94281C7.52619 6.69276 7.66667 6.35362 7.66667 6V5.33333H8.33333C8.68696 5.33333 9.02609 5.19286 9.27614 4.94281C9.52619 4.69276 9.66667 4.35362 9.66667 4V3.726C11.6187 4.51867 13 6.43333 13 8.66667C12.9999 9.84313 12.6082 10.9861 11.8867 11.9153Z'
-        fill=''
+        // fill=''
       />
     </svg>
   );
