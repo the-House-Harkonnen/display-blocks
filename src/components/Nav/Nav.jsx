@@ -2,13 +2,11 @@ import React, { useState, useEffect, createRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useCallback } from 'react/cjs/react.development';
 import { UserIcon, BurgerIcon } from '../Icons/Icons';
-// import { useThemeContext } from '../../contexts/themeContext';
 import styles from './Nav.module.scss';
 import NavLink from '../NavLink';
 
 const Nav = () => {
   const history = useHistory();
-  // const [{ theme }] = useThemeContext();
   const [showNav, setShowNav] = useState(false);
   const classNav = showNav
     ? `${styles.navigation} ${styles.show}`

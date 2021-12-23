@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-console */
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styles from './DropDown.module.scss';
@@ -11,20 +13,22 @@ export const DropDown = ({ name, options, callBack }) => {
 
   const wrapperRef = useRef(null);
 
-  function clickOutside(ref) {
-    useEffect(() => {
-      function handleClickOutside(event) {
-        if (ref.current && !ref.current.contains(event.target)) {
-          setShowBody(false);
-        }
-      }
-      document.addEventListener('mousedown', handleClickOutside);
-      return () => {
-        document.removeEventListener('mousedown', handleClickOutside);
-      };
-    }, [ref]);
-  }
-  clickOutside(wrapperRef);
+  const close = (e) => {
+    if (wrapperRef.current && !wrapperRef.current.contains(e.target)) {
+      e.stopImmediatePropagation();
+      setShowBody(false);
+    }
+  };
+
+  useEffect(() => {
+    if (wrapperRef.current) {
+      document.addEventListener('click', close, true);
+    }
+    return () => {
+      document.removeEventListener('click', close, true);
+    };
+  });
+
   return (
     <div className={styles.dropdown}>
       <button
