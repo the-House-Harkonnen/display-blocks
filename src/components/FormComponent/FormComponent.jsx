@@ -2,19 +2,12 @@ import React, { Fragment } from 'react';
 import { Field, Form } from 'formik';
 import PropTypes from 'prop-types';
 import styles from './FormComponent.module.scss';
-import { useThemeContext } from '../../contexts/themeContext';
 import { InputGroup } from '../Input/InputGroup';
 import { Input } from '../Input';
 
 export const FormComponent = ({ fields, children }) => {
-  const [{ theme }] = useThemeContext();
   return (
-    <Form
-      className={styles.form}
-      style={{
-        border: theme.tableBorder,
-      }}
-    >
+    <Form className={styles.form}>
       <fieldset className={styles.form__group}>
         {fields.map((el, i) => {
           const key = `${i}-key`;
@@ -41,14 +34,7 @@ export const FormComponent = ({ fields, children }) => {
           );
         })}
       </fieldset>
-      <input
-        className={styles.form__btn}
-        style={{
-          backgroundColor: theme.formBtn,
-        }}
-        type='submit'
-        value='Submit'
-      />
+      <input className={styles.form__btn} type='submit' value='Submit' />
       {children}
     </Form>
   );
