@@ -1,15 +1,15 @@
+/* eslint-disable no-console */
 import React from 'react';
 import { Formik } from 'formik';
 import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 import styles from './Signup.module.scss';
-import { useThemeContext } from '../../contexts/themeContext';
 import { FormComponent } from '../../components/FormComponent';
 import { fieldsConfig } from './config';
 import { FormCreator } from '../../utils/formCreator';
 
 export const Signup = () => {
   const history = useHistory();
-  const [{ theme }] = useThemeContext();
 
   const formInstance = new FormCreator(fieldsConfig);
   const initialValues = formInstance.getInitialValues();
@@ -18,17 +18,18 @@ export const Signup = () => {
   const handleSubmit = (values) => {
     // eslint-disable-next-line no-console
     console.log(values);
+    axios
+      .post('http://151.115.59.252:1323/api/auth/sign-up', {
+        email: 'oberig@gmail.com',
+        password: 'Vova111#',
+      })
+      .then((r) => console.log(r));
   };
 
   const fields = formInstance.getFields();
 
   return (
-    <div
-      className={styles.signup}
-      style={{
-        color: theme.color,
-      }}
-    >
+    <div className={styles.signup}>
       <hgroup className={styles.signup__info}>
         <h2 className={styles.signup__title}>Signup</h2>
         <span className={styles.signup__subtitle}>

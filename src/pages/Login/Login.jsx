@@ -3,14 +3,12 @@ import React from 'react';
 import { Formik } from 'formik';
 import { useHistory } from 'react-router-dom';
 import styles from './Login.module.scss';
-import { useThemeContext } from '../../contexts/themeContext';
 import { FormComponent } from '../../components/FormComponent';
 import { FormCreator } from '../../utils/formCreator';
 import { fieldsConfig } from './config';
 
 export const Login = () => {
   const history = useHistory();
-  const [{ theme }] = useThemeContext();
 
   const formInstance = new FormCreator(fieldsConfig);
   const initialValues = formInstance.getInitialValues();
@@ -23,12 +21,7 @@ export const Login = () => {
   };
 
   return (
-    <div
-      className={styles.login}
-      style={{
-        color: theme.color,
-      }}
-    >
+    <div className={styles.login}>
       <hgroup className={styles.login__info}>
         <h2 className={styles.login__title}>Login</h2>
         <span className={styles.login__subtitle}>

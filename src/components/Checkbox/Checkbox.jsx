@@ -4,11 +4,11 @@
 import { useField } from 'formik';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useThemeContext } from '../../contexts/themeContext';
+// import { useThemeContext } from '../../contexts/themeContext';
 import styles from './Checkbox.module.scss';
 
 export const Checkbox = ({ name }) => {
-  const [{ theme }] = useThemeContext();
+  // const [{ theme }] = useThemeContext();
   // eslint-disable-next-line no-unused-vars
   const [field, meta] = useField(name);
   return (
@@ -21,9 +21,9 @@ export const Checkbox = ({ name }) => {
         name={field.name}
       />
       <label
-        style={{
-          color: theme.formBtn,
-        }}
+        // style={{
+        //   color: theme.formBtn,
+        // }}
         className={styles.checkbox__label}
         htmlFor={field.name}
       />
