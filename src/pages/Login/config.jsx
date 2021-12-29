@@ -8,7 +8,7 @@ export const fieldsConfig = [
     label: 'Email Address',
     placeholder: 'Confirm your password...',
     type: 'email',
-    value: '',
+    value: 'oberig@com.ua',
     validation: yup
       .string()
       .required('Required')
@@ -21,7 +21,7 @@ export const fieldsConfig = [
     type: 'password',
     label: 'Enter your password...',
     placeholder: 'Confirm your password...',
-    value: '',
+    value: 'Vova111#',
     validation: yup
       .string()
       .required('Required')
@@ -38,7 +38,7 @@ export const fieldsConfig = [
     type: 'password',
     label: 'Confirm your password...',
     placeholder: 'Confirm your password...',
-    value: '',
+    value: 'Vova111#',
     validation: yup
       .string()
       .required('Required')

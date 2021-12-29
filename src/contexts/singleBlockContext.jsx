@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useRequest } from '../hooks/useRequest';
-import { useApiContext } from './apiContexts';
+import { API } from '../api/api';
 
 const SingleBlockContext = createContext();
 export const useSingleBlockContext = () => {
@@ -16,7 +16,6 @@ export const useSingleBlockContext = () => {
 };
 
 export const SingleBlocksProvider = ({ children }) => {
-  const { API } = useApiContext();
   const [id, setId] = useState(119211);
   const [data, loading, error] = useRequest(API.getBlock, [id], [id]);
   const value = useMemo(

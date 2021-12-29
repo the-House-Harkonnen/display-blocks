@@ -1,11 +1,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
-import { useApiContext } from '../../contexts/apiContexts';
+import { useNetworkContext } from '../../contexts/networkContext';
 
 import styles from './NotResponding.module.scss';
 
 const NotResponding = () => {
-  const { networkList, handleNetwork } = useApiContext();
+  const { networkList, handleNetwork } = useNetworkContext();
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>404</h1>
@@ -17,7 +17,7 @@ const NotResponding = () => {
           <a
             href='#'
             className={styles.btn__link}
-            onClick={() => handleNetwork(networkList[0].value)}
+            onClick={() => handleNetwork(networkList[0])}
           >
             Home page
           </a>

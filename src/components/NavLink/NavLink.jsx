@@ -14,19 +14,18 @@ import {
 } from '../Icons/Icons';
 import { DropDown } from '../DropDown/DropDown';
 import styles from './NavLink.module.scss';
-import { useApiContext } from '../../contexts/apiContexts';
 import { useBlocksContext } from '../../contexts/blocksContext';
+import { useNetworkContext } from '../../contexts/networkContext';
 
 const NavLink = () => {
-  const { network, networkList, handleNetwork } = useApiContext();
-  const networkOptions = networkList.map((el) => el.value);
+  const { network, networkOptions, handleNetwork } = useNetworkContext();
 
   const history = useHistory();
   const { isError } = useBlocksContext();
 
   const linkHandler = (val) => {
     if (isError) {
-      handleNetwork(networkList[0].value);
+      handleNetwork(networkOptions[0]);
     } else {
       history.push(val);
     }
