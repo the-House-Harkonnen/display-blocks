@@ -2,6 +2,7 @@
 import React from 'react';
 import { Formik } from 'formik';
 import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 import styles from './Login.module.scss';
 import { FormComponent } from '../../components/FormComponent';
 import { FormCreator } from '../../utils/formCreator';
@@ -18,6 +19,17 @@ export const Login = () => {
   const handleSubmit = (values) => {
     // eslint-disable-next-line no-console
     console.log(values);
+    axios
+      .post('http://151.115.59.252:1323/api/auth/sign-in', {
+        email: 'oberig@gmail.com',
+        password: 'Vova111#',
+        confirm_password: 'Vova111#',
+      })
+      .then((r) => {
+        console.log(r);
+        localStorage.setItem('idToken', r.data.idToken);
+        localStorage.setItem('refreshToken', r.data.idToken);
+      });
   };
 
   return (

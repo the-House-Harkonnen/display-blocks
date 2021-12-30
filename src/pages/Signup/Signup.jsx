@@ -22,6 +22,7 @@ export const Signup = () => {
       .post('http://151.115.59.252:1323/api/auth/sign-up', {
         email: 'oberig@gmail.com',
         password: 'Vova111#',
+        confirm_password: 'Vova111#',
       })
       .then((r) => console.log(r));
   };
